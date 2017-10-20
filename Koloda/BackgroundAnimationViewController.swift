@@ -10,7 +10,7 @@ import UIKit
 import Koloda
 import pop
 
-private let numberOfCards: Int = 5
+private let numberOfCards: Int = 10
 private let frameAnimationSpringBounciness: CGFloat = 9
 private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
@@ -28,8 +28,11 @@ class BackgroundAnimationViewController: UIViewController {
         kolodaView.delegate = self
         kolodaView.dataSource = self
         kolodaView.animator = BackgroundKolodaAnimator(koloda: kolodaView)
-        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        
+        // Round corners
+        //kolodaView.layer.cornerRadius = kolodaView.frame.size.width / 8
+        //kolodaView.clipsToBounds = true
     }
     
     
@@ -54,16 +57,13 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
         kolodaView.resetCurrentCardIndex()
     }
     
-    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
-    }
     
     func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
         return true
     }
     
     func kolodaShouldMoveBackgroundCard(_ koloda: KolodaView) -> Bool {
-        return false
+        return true
     }
     
     func kolodaShouldTransparentizeNextCard(_ koloda: KolodaView) -> Bool {
@@ -90,7 +90,12 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: UIImage(named: "cards_\(index + 1)"))
+        let view : UIView = UIImageView(image: UIImage(named: "meal\(index + 1)"))
+        // FIXME: round corners, ugly because it is set each time. Better encapsualte it into an object later
+        view.layer.cornerRadius = view.frame.size.width / 8
+        view.clipsToBounds = true
+        return view
+        //return UIImageView(image: UIImage(named: "meal\(index + 1)"))
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
