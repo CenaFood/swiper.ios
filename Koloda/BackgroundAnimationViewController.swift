@@ -9,6 +9,7 @@
 import UIKit
 import Koloda
 import pop
+import TransitionButton
 
 private let numberOfCards: Int = 10
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -16,7 +17,7 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
-class BackgroundAnimationViewController: UIViewController {
+class BackgroundAnimationViewController: CustomTransitionViewController {
 
     @IBOutlet weak var kolodaView: CustomKolodaView!
     
@@ -48,7 +49,12 @@ class BackgroundAnimationViewController: UIViewController {
     @IBAction func undoButtonTapped() {
         kolodaView?.revertAction()
     }
+    
+    @IBAction func dismissViewController(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
+
 
 //MARK: KolodaViewDelegate
 extension BackgroundAnimationViewController: KolodaViewDelegate {

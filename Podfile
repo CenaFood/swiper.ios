@@ -3,6 +3,8 @@ use_frameworks!
 
 target 'Koloda_Example' do
   pod "Koloda", :path => "./"
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'TransitionButton'
 end
 
 post_install do |installer|
