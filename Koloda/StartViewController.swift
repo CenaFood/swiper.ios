@@ -13,11 +13,11 @@ import TransitionButton
 let numberOfMeals : Int = 5
 
 class StartViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!
-    @IBOutlet weak var emailField: SkyFloatingLabelTextField!
-    @IBOutlet weak var discoverButton: TransitionButton!
-    @IBOutlet weak var homeStackView: UIStackView!
-    @IBOutlet weak var welcomeText: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
+    
+    
     
     
     fileprivate var dataSource: [UIImage] = {
@@ -32,15 +32,17 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     // MARK: Lifecycle
     
     override func viewDidLoad() {
-        // TODO: Need to update itthe email field when the keyboard is openend so that the keyboard doesn't hide the field.
         // TODO: Accept input from autocompletion into the email field
+        //self.title = "Welcome to cena"
         super.viewDidLoad()
-        emailField.delegate = self
+        //emailField.delegate = self
+        self.navigationController?.navigationBar.tintColor = .white
         
-        setupBackgroundImage()
-        setupEmailField()
-        setupButton()
-        setupTextField()
+        setupStartImage()
+        signupButton.layer.cornerRadius = 8
+        //setupEmailField()
+        //setupButton()
+        //setupTitle()
         
     }
     
@@ -58,10 +60,12 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     }
  */
     
+    /*
     func textFieldDidBeginEditing(_ textField: UITextField) {
         emailField.title = "email"
         emailField.titleColor = .white
     }
+ */
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -86,16 +90,17 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Private methods
     
-    func setupTextField() {
-        welcomeText.layer.cornerRadius = 8.0
+    func setupTitle() {
+        welcomeTitle.layer.cornerRadius = 8.0
     }
     
-    func setupBackgroundImage() {
+    func setupStartImage() {
         startView.layer.cornerRadius = 8.0
         startView.clipsToBounds = true
         let randIndex : Int = Int(arc4random_uniform(UInt32(numberOfMeals)))
          startView.image = dataSource[randIndex]
     }
+    /*
  
     func setupEmailField() {
         emailField.placeholder = "email"
@@ -109,13 +114,15 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         emailField.errorColor = UIColor(named: "red")!
     
     }
+ 
+ */
     
+    /*
     func setupButton() {
         discoverButton.backgroundColor = UIColor(named: "pink")!
         discoverButton.setTitle("Discover your taste", for: .normal)
-        discoverButton.spinnerColor = .white
+        //discoverButton.spinnerColor = .white
     }
-    
     
     @IBAction func buttonPressed(_ sender: TransitionButton) {
         emailField.resignFirstResponder()
@@ -157,6 +164,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+ 
+ */
 }
 
 
