@@ -232,7 +232,7 @@
                                 <rect key="frame" x="16" y="0.0" width="343" height="638"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHz-kv-UZe" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="43.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="58.666666666666664"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -261,8 +261,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egN-vh-T0i" customClass="TransitionButton" customModule="TransitionButton">
-                                        <rect key="frame" x="0.0" y="51.333333333333343" width="343" height="43.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="66.666666666666657" width="343" height="44"/>
                                         <color key="backgroundColor" name="pink"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="5sd-18-EvY"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Discover your taste">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -277,12 +280,9 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="GjC-KF-4na" userLabel="Placeholder View">
-                                        <rect key="frame" x="0.0" y="102.66666666666669" width="343" height="535.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="118.66666666666669" width="343" height="519.33333333333326"/>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="egN-vh-T0i" firstAttribute="height" secondItem="aHz-kv-UZe" secondAttribute="height" id="afI-pM-VOY"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -319,11 +319,14 @@
                                 <rect key="frame" x="16" y="8" width="343" height="622"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-Cs-Uuh">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="239.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="570"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
-                                        <rect key="frame" x="0.0" y="247.33333333333329" width="343" height="374.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="578" width="343" height="44"/>
                                         <color key="backgroundColor" name="pink"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="qYz-G3-dFy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Continue with email">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
