@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Eugene Andreyev. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 import Koloda
 
 private var numberOfCards: Int = 5
@@ -89,4 +89,5 @@ extension ViewController: KolodaViewDataSource {
         return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
 }
+ */
 

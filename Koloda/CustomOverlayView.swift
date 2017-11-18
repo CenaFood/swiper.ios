@@ -28,6 +28,7 @@ class CustomOverlayView: OverlayView {
             switch overlayState {
             case .left? :
                 overlayImageView.image = UIImage(named: overlayLeftImageName)
+                
             case .right? :
                 overlayImageView.image = UIImage(named: overlayRightImageName)
             default:

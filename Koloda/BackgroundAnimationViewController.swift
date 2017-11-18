@@ -17,9 +17,10 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
+
 class BackgroundAnimationViewController: CustomTransitionViewController {
 
-    @IBOutlet weak var kolodaView: CustomKolodaView!
+    @IBOutlet weak var kolodaView: KolodaView!
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -31,9 +32,9 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         kolodaView.animator = BackgroundKolodaAnimator(koloda: kolodaView)
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         
-        // Round corners
-        //kolodaView.layer.cornerRadius = kolodaView.frame.size.width / 8
-        //kolodaView.clipsToBounds = true
+        // so that you cannot drag the picture over the edge of the view (e.g. over the buttons below or the title above
+        kolodaView.clipsToBounds = true
+
     }
     
     
@@ -88,7 +89,7 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
 extension BackgroundAnimationViewController: KolodaViewDataSource {
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-        return .default
+        return .fast
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
@@ -96,10 +97,15 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let view : UIView = UIImageView(image: UIImage(named: "meal\(index + 1)"))
+        let view: UIView = UIImageView(image: UIImage(named: "meal\(index + 1)"))
         // FIXME: round corners, ugly because it is set each time. Better encapsualte it into an object later
-        view.layer.cornerRadius = view.frame.size.width / 8
+        //view.layer.cornerRadius = view.frame.size.width / 8
         view.clipsToBounds = true
+        
+        // need to be set so that the corners are also rounded when the card gets swiped left or right
+        view.layer.cornerRadius = 8
+        // change the view ratio
+        view.contentMode = .scaleAspectFill
         return view
         //return UIImageView(image: UIImage(named: "meal\(index + 1)"))
     }

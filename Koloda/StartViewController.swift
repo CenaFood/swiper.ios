@@ -40,6 +40,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         
         setupStartImage()
         signupButton.layer.cornerRadius = 8
+        let size = UIFont.buttonFontSize
+        let font = UIFont.systemFont(ofSize: size)
+        signupButton.titleLabel?.font = font
         //setupEmailField()
         //setupButton()
         //setupTitle()

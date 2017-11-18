@@ -79,6 +79,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     //MARK: Private methods
      
      func setupEmailField() {
+        let size = UIFont.labelFontSize
+        let font = UIFont.systemFont(ofSize: size)
+        emailField.font = font
         emailField.placeholder = "Please enter your email"
         emailField.lineColor = .white
         emailField.selectedTitleColor = .white
@@ -93,6 +96,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     
      func setupButton() {
+        let size = UIFont.buttonFontSize
+        let font = UIFont.systemFont(ofSize: size)
+        discoverButton.titleLabel?.font = font
         discoverButton.backgroundColor = UIColor(named: "pink")!
         discoverButton.setTitle("Discover your taste", for: .normal)
         discoverButton.spinnerColor = .white
@@ -117,9 +123,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                     })
                     return
                 }
-                if (!self.isValidEmail(testStr: emailText)) {
+                if (!self.isValidEmail(email: emailText)) {
                     sender.stopAnimation(animationStyle: .shake, completion: {
-                        self.emailField.titleColor = UIColor(named: "red")!
+                        let redColor = UIColor(red: 255, green: 59, blue: 48, alpha: 0)
+                        //self.emailField.titleColor = UIColor(named: "red")!
+                        self.emailField.titleColor = redColor
                         self.emailField.title = "Invalid email"
                     })
                 } else {
@@ -133,11 +141,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         })
      }
      
-     func isValidEmail(testStr:String) -> Bool {
+     func isValidEmail(email:String) -> Bool {
      // print("validate calendar: \(testStr)")
-     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-     return emailTest.evaluate(with: testStr)
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format:"SELF MATCHES %@", emailRegex).evaluate(with: email)
      }
 }
 

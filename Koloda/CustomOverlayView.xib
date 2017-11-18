@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,14 +20,15 @@
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="EAs-ve-9HP" secondAttribute="trailing" id="I7C-9n-fg6"/>
-                <constraint firstItem="EAs-ve-9HP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QnN-DL-doU"/>
-                <constraint firstAttribute="bottom" secondItem="EAs-ve-9HP" secondAttribute="bottom" id="cE3-Dz-p7e"/>
-                <constraint firstItem="EAs-ve-9HP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lfj-y5-ObY"/>
+                <constraint firstItem="EAs-ve-9HP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CyW-O9-jfu"/>
+                <constraint firstAttribute="trailing" secondItem="EAs-ve-9HP" secondAttribute="trailing" id="SUG-fF-tLB"/>
+                <constraint firstItem="EAs-ve-9HP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UsI-HJ-IlR"/>
+                <constraint firstAttribute="bottom" secondItem="EAs-ve-9HP" secondAttribute="bottom" id="i7A-GS-g1c"/>
             </constraints>
             <connections>
                 <outlet property="overlayImageView" destination="EAs-ve-9HP" id="Pjf-3t-qgh"/>
             </connections>
+            <point key="canvasLocation" x="37.5" y="-145.5"/>
         </view>
     </objects>
 </document>
