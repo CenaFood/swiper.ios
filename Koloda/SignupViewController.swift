@@ -125,9 +125,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 }
                 if (!self.isValidEmail(email: emailText)) {
                     sender.stopAnimation(animationStyle: .shake, completion: {
-                        let redColor = UIColor(red: 255, green: 59, blue: 48, alpha: 0)
-                        //self.emailField.titleColor = UIColor(named: "red")!
-                        self.emailField.titleColor = redColor
+                        self.emailField.titleColor = UIColor(named: "red")!
                         self.emailField.title = "Invalid email"
                     })
                 } else {
