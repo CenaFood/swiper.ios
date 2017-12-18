@@ -11,9 +11,14 @@ import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
 
+private let swiper = BackgroundAnimationViewController()
+
 class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var discoverButton: TransitionButton!
+    
+    private var images: [UIImage] = []
+    private var challenges: [Challenge] = []
     
     
     
@@ -108,44 +113,89 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonPressed(_ sender: TransitionButton) {
         emailField.resignFirstResponder()
         sender.startAnimation() // 2: Then start the animation when the user tap the button
-        let qualityOfServiceClass = DispatchQoS.QoSClass.background
-        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
-        backgroundQueue.async(execute: {
-            //usleep(50000) // 3: Do your networking task or background work here.
-            DispatchQueue.main.async(execute: { () -> Void in
-                // 4: Stop the animation, here you have three options for the `animationStyle` property:
-                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
-                // .shake: when you want to reflect to the user that the task did not complete successfly
-                // .normal
-                guard let emailText = self.emailField.text, !emailText.isEmpty else {
+//        DispatchQueue.global(qos: .background).async {
+//            api.fetchChallenges()
+        //let group = DispatchGroup()
+        //group.enter()
+        DispatchQueue.global(qos: .background).async {
+        //DispatchQueue.main.sync {
+            sleep(1)
+            
+            DispatchQueue.main.async {
+    
+    
+                if self.isEmptyEmail() {
                     sender.stopAnimation(animationStyle: .shake, completion: {
-                    self.emailField.placeholder = "Invalid email"
+                        self.emailField.placeholder = "Invalid email"
                     })
                     return
                 }
-                if (!self.isValidEmail(email: emailText)) {
+                else if (!self.isValidEmail(email: self.emailField.text!)) {
                     sender.stopAnimation(animationStyle: .shake, completion: {
-                        let redColor = UIColor(red: 255, green: 59, blue: 48, alpha: 0)
-                        //self.emailField.titleColor = UIColor(named: "red")!
-                        self.emailField.titleColor = redColor
+                        self.emailField.titleColor = UIColor(named: "red")!
                         self.emailField.title = "Invalid email"
                     })
+                    return
                 } else {
+                    //api.prefetchImages()
                     sender.stopAnimation(animationStyle: .expand, completion: {
+                        
+                        //print("When presenting the swiper we have \(swiper.getNumberOfImages()) images")
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let backgroundAnimationViewController = storyboard.instantiateViewController(withIdentifier: "cenaSwiper")
                         self.present(backgroundAnimationViewController, animated: true, completion: nil)
                     })
                 }
-            })
-        })
-     }
-     
-     func isValidEmail(email:String) -> Bool {
+            }
+        }
+    }
+        
+//            api.fetchChallenges()
+//            //usleep(50000) // 3: Do your networking task or background work here.
+//
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                // 4: Stop the animation, here you have three options for the `animationStyle` property:
+//                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+//                // .shake: when you want to reflect to the user that the task did not complete successfly
+//                // .normal
+//                guard let emailText = self.emailField.text, !emailText.isEmpty else {
+//                    sender.stopAnimation(animationStyle: .shake, completion: {
+//                    self.emailField.placeholder = "Invalid email"
+//                    })
+//                    return
+//                }
+//                if (!self.isValidEmail(email: emailText)) {
+//                    sender.stopAnimation(animationStyle: .shake, completion: {
+//                        let redColor = UIColor(red: 255, green: 59, blue: 48, alpha: 0)
+//                        //self.emailField.titleColor = UIColor(named: "red")!
+//                        self.emailField.titleColor = redColor
+//                        self.emailField.title = "Invalid email"
+//                    })
+//                } else {
+//                    sender.stopAnimation(animationStyle: .expand, completion: {
+//                        print(api.images.count)
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                        let backgroundAnimationViewController = storyboard.instantiateViewController(withIdentifier: "cenaSwiper")
+//                        self.present(backgroundAnimationViewController, animated: true, completion: nil)
+//                    })
+//                }
+//            })
+//        }
+//     }
+    
+     func isValidEmail(email: String) -> Bool {
      // print("validate calendar: \(testStr)")
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return NSPredicate(format:"SELF MATCHES %@", emailRegex).evaluate(with: email)
      }
+    
+    func isEmptyEmail() -> Bool {
+        guard let emailText = self.emailField.text, !emailText.isEmpty else {
+            return true
+        }
+        return false
+    }
+    
 }
 
 

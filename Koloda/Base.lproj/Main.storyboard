@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l4R-tu-H6D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l4R-tu-H6D">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-fh-GTr">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-fh-GTr">
                                 <rect key="frame" x="16" y="44" width="343" height="734"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-yc-oMB">
@@ -39,27 +40,30 @@
                                         </items>
                                     </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you eat this here and now?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9Y-Xh-0Jj">
-                                        <rect key="frame" x="0.0" y="104" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="112" width="343" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="20n-bX-GNa" userLabel="KolodaView" customClass="KolodaView" customModule="Koloda">
-                                        <rect key="frame" x="0.0" y="136" width="343" height="494"/>
+                                        <rect key="frame" x="0.0" y="152" width="343" height="343"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="20n-bX-GNa" secondAttribute="height" multiplier="1:1" id="ZfL-Q1-95e"/>
+                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4mm-x9-Mko">
-                                        <rect key="frame" x="0.0" y="638" width="343" height="96"/>
+                                        <rect key="frame" x="0.0" y="511" width="343" height="223"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSN-ru-dp4">
-                                                <rect key="frame" x="0.0" y="17" width="167.66666666666666" height="62"/>
+                                                <rect key="frame" x="0.0" y="80.666666666666629" width="167.66666666666666" height="62"/>
                                                 <state key="normal" image="btn_dislike"/>
                                                 <connections>
                                                     <action selector="leftButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="iiP-xI-oR1"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEA-k8-77V">
-                                                <rect key="frame" x="175.66666666666663" y="17" width="167.33333333333337" height="62"/>
+                                                <rect key="frame" x="175.66666666666663" y="80.666666666666629" width="167.33333333333337" height="62"/>
                                                 <state key="normal" image="btn_like"/>
                                                 <connections>
                                                     <action selector="rightButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="N4v-of-nuN"/>
@@ -205,7 +209,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="fxe-os-rgH" kind="show" id="B8u-rz-fE5"/>
+                                            <segue destination="fxe-os-rgH" kind="show" id="HSt-oe-cJa"/>
                                         </connections>
                                     </button>
                                 </subviews>
