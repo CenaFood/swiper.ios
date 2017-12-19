@@ -25,7 +25,7 @@ class CenaAPI {
         case createAnnotation(Annotation)
         case updateAnnotation(Int, Annotation)
         case deleteAnnotation(Int)
-        
+        case authenticateWithToken
         // Base endpoint
         private static let basePath = "http://localhost:5000/"
        
@@ -40,7 +40,7 @@ class CenaAPI {
         var method: String {
             switch self {
             case .getAllChallenges, .getChallenge: return "GET"
-            case .createAnnotation: return "POST"
+            case .createAnnotation, .authenticateWithToken: return "POST"
             case .updateAnnotation: return "PUT"
             case .deleteAnnotation: return "DELETE"
             }
@@ -58,6 +58,7 @@ class CenaAPI {
                 case .getChallenge(let id): relativePath = "challenges/\(id)"
                 case .createAnnotation: relativePath = "annotations"
                 case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "annotations/\(id)"
+                case .authenticateWithToken: relativePath = "authenticate"
                 }
                 
                 var url = URL(string: API.basePath)!
@@ -70,7 +71,7 @@ class CenaAPI {
             // Set up request parameters
             let parameters: Annotation? = {
                 switch self {
-                case .getAllChallenges, .getChallenge, .deleteAnnotation: return nil
+                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken: return nil
                 case .createAnnotation(let annotation), .updateAnnotation(_, let annotation): return annotation
                 }
             }()
@@ -84,8 +85,7 @@ class CenaAPI {
             encoder.dateEncodingStrategy = .iso8601
             do {
                 let data = try encoder.encode(post)
-                let json = String(data: data, encoding: .utf8)
-                //print(json!)
+//                let json = String(data: data, encoding: .utf8)
                 request.httpBody = data
             } catch let encodeError as NSError {
                 print("Encoder error: \(encodeError.localizedDescription)\n")
@@ -162,7 +162,7 @@ class CenaAPI {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 print(String(data: data, encoding: .utf8)!)
-                let annotation = try decoder.decode(Annotation.self, from: data)
+//                let annotation = try decoder.decode(Annotation.self, from: data)
                 
                 //self.annotation = annotation
             } catch let decodeError as NSError {

@@ -117,8 +117,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         annotations[index].longitude = location.longitude
         annotations[index].localTime = currentLocation?.timestamp
         //print(annotations[index])
-        CenaAPI().postAnnotations(annotation: annotations[index])
-        
+        CenaAPI().postAnnotations(annotation: annotations[index])        
     }
     
     

@@ -46,7 +46,7 @@
 		44B5EC2A1B660C9100895E3D /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		5243B3EDBF06248559332C86 /* Pods_Koloda_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koloda_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6DBB80685DABAE785B8715 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		607FACD01AFB9204008FA782 /* Koloda_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koloda_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD01AFB9204008FA782 /* cena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD01AFB9204008FA782 /* Koloda_Example.app */,
+				607FACD01AFB9204008FA782 /* cena.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,9 +199,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		607FACCF1AFB9204008FA782 /* Koloda_Example */ = {
+		607FACCF1AFB9204008FA782 /* cena */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Koloda_Example" */;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "cena" */;
 			buildPhases = (
 				0182469EE898CFC3334C577B /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
@@ -214,9 +214,9 @@
 			);
 			dependencies = (
 			);
-			name = Koloda_Example;
+			name = cena;
 			productName = Koloda;
-			productReference = 607FACD01AFB9204008FA782 /* Koloda_Example.app */;
+			productReference = 607FACD01AFB9204008FA782 /* cena.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -249,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACCF1AFB9204008FA782 /* Koloda_Example */,
+				607FACCF1AFB9204008FA782 /* cena */,
 			);
 		};
 /* End PBXProject section */
@@ -499,7 +499,7 @@
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
 				INFOPLIST_FILE = Koloda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
+				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -517,7 +517,7 @@
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
 				INFOPLIST_FILE = Koloda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
+				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -537,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Koloda_Example" */ = {
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "cena" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,

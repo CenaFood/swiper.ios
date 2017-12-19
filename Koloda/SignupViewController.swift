@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
+import CloudKit
 
 private let swiper = BackgroundAnimationViewController()
 
@@ -119,6 +120,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         //group.enter()
         DispatchQueue.global(qos: .background).async {
         //DispatchQueue.main.sync {
+//            let container = CKContainer.default()
+//            container.
+//            container.fetchUserRecordID { (recordID, error) in
+//                guard let recordID = recordID else {
+//                    NSLog("Error: \(error!)")
+//                    return
+//                }
+//                NSLog("Identifier: \(recordID.recordName)")
+//            }
             sleep(1)
             
             DispatchQueue.main.async {

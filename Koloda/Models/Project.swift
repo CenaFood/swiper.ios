@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class Project: Codable {
+    let id: String
+    let description: String
+    let issueDate: Date
+    let expiryDate: Date
+    
+    init(id: String, description: String, issueDate: Date, expiryDate: Date) {
+        self.id = id
+        self.description = description
+        self.issueDate = issueDate
+        self.expiryDate = expiryDate
+    }
+}

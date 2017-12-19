@@ -14,7 +14,7 @@
         <!--Background Animation View Controller-->
         <scene sceneID="Tzl-PZ-ig6">
             <objects>
-                <viewController storyboardIdentifier="cenaSwiper" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dh2-Wx-deB" customClass="BackgroundAnimationViewController" customModule="Koloda_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cenaSwiper" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dh2-Wx-deB" customClass="BackgroundAnimationViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OPM-HU-f7U"/>
                         <viewControllerLayoutGuide type="bottom" id="gMg-MP-KSD"/>
@@ -93,7 +93,7 @@
         <!--Signup View Controller-->
         <scene sceneID="Eo4-eU-0BW">
             <objects>
-                <viewController id="fxe-os-rgH" userLabel="Signup View Controller" customClass="SignupViewController" customModule="Koloda_Example" sceneMemberID="viewController">
+                <viewController id="fxe-os-rgH" userLabel="Signup View Controller" customClass="SignupViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3O2-2Q-5tV"/>
                         <viewControllerLayoutGuide type="bottom" id="o6u-d9-PcC"/>
@@ -183,7 +183,7 @@
         <!--Welcome to cena-->
         <scene sceneID="clt-H7-lLA">
             <objects>
-                <viewController id="5uR-im-idW" customClass="StartViewController" customModule="Koloda_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5uR-im-idW" customClass="StartViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sf4-jJ-mgt"/>
                         <viewControllerLayoutGuide type="bottom" id="Ryr-hS-3QC"/>
