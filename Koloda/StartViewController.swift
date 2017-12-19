@@ -12,6 +12,7 @@ import SkyFloatingLabelTextField
 import TransitionButton
 let numberOfMeals : Int = 5
 
+
 class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!

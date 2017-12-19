@@ -21,6 +21,16 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5231A81F9A1190001A184D /* StartViewController.swift */; };
+		AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */; };
+		AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AB1FDEEDF7004ECE1F /* QueryOperation.swift */; };
+		AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */; };
+		AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68009E1FE120A400F03CB4 /* Annotation.swift */; };
+		AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */; };
+		AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6A1FDABB55005FE69F /* Challenge.swift */; };
+		AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6C1FDABB8C005FE69F /* Image.swift */; };
+		AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6E1FDABC35005FE69F /* Location.swift */; };
+		AFA61F711FDABC75005FE69F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F701FDABC75005FE69F /* Project.swift */; };
+		AFA61F731FDABCD0005FE69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F721FDABCD0005FE69F /* User.swift */; };
 		AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +46,7 @@
 		44B5EC2A1B660C9100895E3D /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		5243B3EDBF06248559332C86 /* Pods_Koloda_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koloda_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6DBB80685DABAE785B8715 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		607FACD01AFB9204008FA782 /* Koloda_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koloda_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD01AFB9204008FA782 /* cena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +56,16 @@
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF5231A81F9A1190001A184D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		AF5819AB1FDEEDF7004ECE1F /* QueryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOperation.swift; sourceTree = "<group>"; };
+		AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
+		AF68009E1FE120A400F03CB4 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenaAPI.swift; sourceTree = "<group>"; };
+		AFA61F6A1FDABB55005FE69F /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		AFA61F6C1FDABB8C005FE69F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		AFA61F6E1FDABC35005FE69F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		AFA61F701FDABC75005FE69F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		AFA61F721FDABCD0005FE69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6781607B5327BAF503C32E3 /* Koloda.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Koloda.podspec; path = ../Koloda.podspec; sourceTree = "<group>"; };
@@ -77,7 +97,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD01AFB9204008FA782 /* Koloda_Example.app */,
+				607FACD01AFB9204008FA782 /* cena.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +105,9 @@
 		607FACD21AFB9204008FA782 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				AFA61F641FDAA0A1005FE69F /* Services */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				AFA61F671FDAA3DA005FE69F /* Models */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
 				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
@@ -142,12 +164,44 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF5819A91FDEEDD6004ECE1F /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */,
+				AF5819AB1FDEEDF7004ECE1F /* QueryOperation.swift */,
+				AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		AFA61F641FDAA0A1005FE69F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AF5819A91FDEEDD6004ECE1F /* Operations */,
+				AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AFA61F671FDAA3DA005FE69F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFA61F6A1FDABB55005FE69F /* Challenge.swift */,
+				AFA61F6C1FDABB8C005FE69F /* Image.swift */,
+				AFA61F6E1FDABC35005FE69F /* Location.swift */,
+				AFA61F701FDABC75005FE69F /* Project.swift */,
+				AFA61F721FDABCD0005FE69F /* User.swift */,
+				AF68009E1FE120A400F03CB4 /* Annotation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		607FACCF1AFB9204008FA782 /* Koloda_Example */ = {
+		607FACCF1AFB9204008FA782 /* cena */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Koloda_Example" */;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "cena" */;
 			buildPhases = (
 				0182469EE898CFC3334C577B /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
@@ -160,9 +214,9 @@
 			);
 			dependencies = (
 			);
-			name = Koloda_Example;
+			name = cena;
 			productName = Koloda;
-			productReference = 607FACD01AFB9204008FA782 /* Koloda_Example.app */;
+			productReference = 607FACD01AFB9204008FA782 /* cena.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACCF1AFB9204008FA782 /* Koloda_Example */,
+				607FACCF1AFB9204008FA782 /* cena */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +295,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
@@ -248,6 +303,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
@@ -281,13 +337,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */,
+				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
+				AFA61F711FDABC75005FE69F /* Project.swift in Sources */,
+				AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */,
+				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
+				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
+				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
+				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */,
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
+				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
+				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
 				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +499,7 @@
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
 				INFOPLIST_FILE = Koloda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
+				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -451,7 +517,7 @@
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
 				INFOPLIST_FILE = Koloda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
+				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -471,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Koloda_Example" */ = {
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "cena" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,

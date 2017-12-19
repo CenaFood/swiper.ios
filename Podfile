@@ -5,6 +5,7 @@ target 'Koloda_Example' do
   pod "Koloda", :path => "./"
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'TransitionButton'
+  pod 'Kingfisher', '~> 4.0'
 end
 
 post_install do |installer|
