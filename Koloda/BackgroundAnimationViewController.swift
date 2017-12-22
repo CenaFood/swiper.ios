@@ -110,6 +110,12 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         }
     }
     
+    func updateAnnotations() {
+        for annotation in annotations {
+            CenaAPI().postAnnotations(annotation: annotation)
+        }
+    }
+    
     func updateAnnotation(index: Int, answer: String) {
         let location = Location(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!)
         annotations[index].answer = answer
@@ -117,7 +123,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         annotations[index].longitude = location.longitude
         annotations[index].localTime = currentLocation?.timestamp
         //print(annotations[index])
-        CenaAPI().postAnnotations(annotation: annotations[index])        
+        CenaAPI().postAnnotations(annotation: annotations[index])
     }
     
     
@@ -129,21 +135,17 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         
     }
     
-    func getTime() {
-        // TODO: Get the current time
-    }
-    
     //MARK: IBActions
     @IBAction func leftButtonTapped() {
-        updateAnnotation(index: kolodaView.currentCardIndex, answer: "No")
+        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "No")
         kolodaView?.swipe(.left)
-        print("I am at index \(kolodaView.currentCardIndex)")
+        //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
     @IBAction func rightButtonTapped() {
-        updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
+        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
         kolodaView?.swipe(.right)
-        print("I am at index \(kolodaView.currentCardIndex)")
+        //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
     @IBAction func undoButtonTapped() {
@@ -160,6 +162,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 extension BackgroundAnimationViewController: KolodaViewDelegate {
     
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        //updateAnnotations()
         fetchImages()
         //kolodaView.resetCurrentCardIndex()
     }
@@ -182,6 +185,14 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
         animation?.springBounciness = frameAnimationSpringBounciness
         animation?.springSpeed = frameAnimationSpringSpeed
         return animation
+    }
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        if direction == SwipeResultDirection.right {
+            updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "Yes")
+        } else {
+            updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "No")
+        }
     }
 }
 

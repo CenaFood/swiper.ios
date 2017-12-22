@@ -129,6 +129,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 //                }
 //                NSLog("Identifier: \(recordID.recordName)")
 //            }
+            //CenaAPI().authenticateWithToken()
+            
             sleep(1)
             
             DispatchQueue.main.async {

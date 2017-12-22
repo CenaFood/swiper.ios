@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 import Kingfisher
+import DeviceCheck
 
 class CenaAPI {
     //private let queue = OperationQueue()
+    private let currentDevice = DCDevice.current
     
     private struct Response: Codable {
         //let test: [Challenge]?
@@ -27,7 +29,7 @@ class CenaAPI {
         case deleteAnnotation(Int)
         case authenticateWithToken
         // Base endpoint
-        private static let basePath = "http://localhost:5000/"
+        private static let basePath = "http://172.20.10.2"
        
         /*
          Head on over to https://bonseyes. to get your
@@ -54,11 +56,11 @@ class CenaAPI {
                 let relativePath: String?
                 // DONE: Set relativePath to use id, as appropriate
                 switch self {
-                case .getAllChallenges: relativePath = "challenges"
-                case .getChallenge(let id): relativePath = "challenges/\(id)"
-                case .createAnnotation: relativePath = "annotations"
-                case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "annotations/\(id)"
-                case .authenticateWithToken: relativePath = "authenticate"
+                case .getAllChallenges: relativePath = "/challenges"
+                case .getChallenge(let id): relativePath = "/challenges/\(id)"
+                case .createAnnotation: relativePath = "/annotations"
+                case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "/annotations/\(id)"
+                case .authenticateWithToken: relativePath = "/authenticate"
                 }
                 
                 var url = URL(string: API.basePath)!
@@ -161,8 +163,9 @@ class CenaAPI {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                print(String(data: data, encoding: .utf8)!)
-//                let annotation = try decoder.decode(Annotation.self, from: data)
+                //print(String(data: data, encoding: .utf8)!)
+                let annotation = try decoder.decode(Annotation.self, from: data)
+                print("Successfully posted annotation")
                 
                 //self.annotation = annotation
             } catch let decodeError as NSError {
@@ -171,5 +174,36 @@ class CenaAPI {
             }
         }
         task.resume()
+    }
+    
+    func generateToken(completion: @escaping (String) -> ()) {
+        guard currentDevice.isSupported else {
+            print("Platform is not supported. Make sure you aren't running in the simulator.")
+            return
+        }
+        currentDevice.generateToken { (data, error) in
+            guard let token = data else {
+                print("No token could be generated!")
+                return
+            }
+            let stringToken = token.base64EncodedString()
+            print(stringToken)
+            completion(stringToken)
+        }
+    }
+    
+    func authenticateWithToken() {
+        generateToken { tokenString in
+            var request = API.authenticateWithToken.asURLRequest()
+            request.setValue("Bearer \(tokenString)", forHTTPHeaderField: "Authorization")
+            let task = self.session.dataTask(with: request) { (data, response, error) in
+                guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 201 else {
+                    print("No data or statusCode not OK")
+                    return
+                }
+                // save valid token into keychain
+            }
+            task.resume()
+        }
     }
 }
