@@ -29,14 +29,7 @@
                                     <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-yc-oMB">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="96"/>
                                         <items>
-                                            <navigationItem title="Discover" id="qgt-ol-oek">
-                                                <barButtonItem key="rightBarButtonItem" title="Logout" id="Hem-Yt-nWy" userLabel="Logout">
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <connections>
-                                                        <segue destination="l4R-tu-H6D" kind="presentation" id="u5f-Tv-4GE"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
+                                            <navigationItem title="Discover" id="qgt-ol-oek"/>
                                         </items>
                                     </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you eat this here and now?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9Y-Xh-0Jj">
@@ -99,14 +92,14 @@
                         <viewControllerLayoutGuide type="bottom" id="o6u-d9-PcC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="61z-TP-084">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TTZ-d3-N1y">
-                                <rect key="frame" x="16" y="0.0" width="343" height="638"/>
+                                <rect key="frame" x="16" y="44" width="343" height="734"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHz-kv-UZe" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="108"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -135,7 +128,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egN-vh-T0i" customClass="TransitionButton" customModule="TransitionButton">
-                                        <rect key="frame" x="0.0" y="76" width="343" height="60"/>
+                                        <rect key="frame" x="0.0" y="124" width="343" height="108"/>
                                         <color key="backgroundColor" name="pink"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="5sd-18-EvY"/>
@@ -154,7 +147,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="GjC-KF-4na" userLabel="Placeholder View">
-                                        <rect key="frame" x="0.0" y="152" width="343" height="486"/>
+                                        <rect key="frame" x="0.0" y="248" width="343" height="486"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -205,11 +198,11 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="qYz-G3-dFy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Continue with email">
+                                        <state key="normal" title="Discover your taste">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="fxe-os-rgH" kind="show" id="HSt-oe-cJa"/>
+                                            <segue destination="dh2-Wx-deB" kind="presentation" modalTransitionStyle="crossDissolve" id="GJE-QP-bfo"/>
                                         </connections>
                                     </button>
                                 </subviews>
