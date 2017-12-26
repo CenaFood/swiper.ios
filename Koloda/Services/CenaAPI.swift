@@ -29,7 +29,7 @@ class CenaAPI {
         case deleteAnnotation(Int)
         case authenticateWithToken
         // Base endpoint
-        private static let basePath = "http://172.20.10.2"
+        private static let basePath = "http://86.119.37.97"
        
         /*
          Head on over to https://bonseyes. to get your
@@ -164,8 +164,8 @@ class CenaAPI {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 //print(String(data: data, encoding: .utf8)!)
-                let annotation = try decoder.decode(Annotation.self, from: data)
-                print("Successfully posted annotation")
+                _ = try decoder.decode(Annotation.self, from: data)
+                //print("Successfully posted annotation")
                 
                 //self.annotation = annotation
             } catch let decodeError as NSError {
@@ -197,7 +197,7 @@ class CenaAPI {
             var request = API.authenticateWithToken.asURLRequest()
             request.setValue("Bearer \(tokenString)", forHTTPHeaderField: "Authorization")
             let task = self.session.dataTask(with: request) { (data, response, error) in
-                guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 201 else {
+                guard let _ = data, let response = response as? HTTPURLResponse, response.statusCode == 201 else {
                     print("No data or statusCode not OK")
                     return
                 }
