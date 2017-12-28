@@ -29,7 +29,7 @@ class CenaAPI {
         case deleteAnnotation(Int)
         case authenticateWithToken
         // Base endpoint
-        private static let basePath = "http://86.119.37.97"
+        private static let basePath = "http://86.119.37.97:5001"
        
         /*
          Head on over to https://bonseyes. to get your

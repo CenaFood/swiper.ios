@@ -40,6 +40,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     
 
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var questionLabel: UILabel!
+    
     
 //    fileprivate var dataSource: [UIImage] = {
 //        var array: [UIImage] = []
@@ -64,6 +66,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         kolodaView.dataSource = self
         kolodaView.animator = BackgroundKolodaAnimator(koloda: kolodaView)
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        
+        setupQuestionLabel()
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
@@ -90,6 +94,17 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 //    public func getNumberOfImages() -> Int {
 //        return self.dataSource.count
 //    }
+    
+    func setupQuestionLabel() {
+        questionLabel.text = "Would you eat this here and now?"
+        let size = UIFont.labelFontSize
+        let font = UIFont.systemFont(ofSize: size)
+        questionLabel.font = font
+        
+        
+        
+    }
+    
     
     func fetchImages() {
         CenaAPI().prefetchImages() { challenges, urls in

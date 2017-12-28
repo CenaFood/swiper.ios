@@ -77,6 +77,7 @@
                     </view>
                     <connections>
                         <outlet property="kolodaView" destination="20n-bX-GNa" id="Sxi-xb-e6g"/>
+                        <outlet property="questionLabel" destination="x9Y-Xh-0Jj" id="Ghd-Gm-aR8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd5-80-mNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
