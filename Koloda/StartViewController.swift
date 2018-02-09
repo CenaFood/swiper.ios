@@ -18,18 +18,6 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var startView: UIImageView!
     @IBOutlet weak var signupButton: UIButton!
     
-    
-    
-    
-    fileprivate var dataSource: [UIImage] = {
-        var array: [UIImage] = []
-        for index in 0..<numberOfMeals {
-            array.append(UIImage(named: "startMeal\(index + 1)")!)
-        }
-        
-        return array
-    }()
-    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -101,8 +89,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     func setupStartImage() {
         startView.layer.cornerRadius = 8.0
         startView.clipsToBounds = true
-        let randIndex : Int = Int(arc4random_uniform(UInt32(numberOfMeals)))
-         startView.image = dataSource[randIndex]
+        let startImage = UIImage(named: "start")!
+         startView.image = startImage
     }
     /*
  
