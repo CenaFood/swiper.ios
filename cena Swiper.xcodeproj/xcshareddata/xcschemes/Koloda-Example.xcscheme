@@ -17,7 +17,7 @@
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
                BuildableName = "cena.app"
                BlueprintName = "cena"
-               ReferencedContainer = "container:Koloda.xcodeproj">
+               ReferencedContainer = "container:cena Swiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "Koloda_Tests.xctest"
                BlueprintName = "Koloda_Tests"
-               ReferencedContainer = "container:Koloda.xcodeproj">
+               ReferencedContainer = "container:cena Swiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,7 +50,7 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "Koloda_Tests.xctest"
                BlueprintName = "Koloda_Tests"
-               ReferencedContainer = "container:Koloda.xcodeproj">
+               ReferencedContainer = "container:cena Swiper.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -60,7 +60,7 @@
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "cena.app"
             BlueprintName = "cena"
-            ReferencedContainer = "container:Koloda.xcodeproj">
+            ReferencedContainer = "container:cena Swiper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "cena.app"
             BlueprintName = "cena"
-            ReferencedContainer = "container:Koloda.xcodeproj">
+            ReferencedContainer = "container:cena Swiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -104,7 +104,7 @@
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "cena.app"
             BlueprintName = "cena"
-            ReferencedContainer = "container:Koloda.xcodeproj">
+            ReferencedContainer = "container:cena Swiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
