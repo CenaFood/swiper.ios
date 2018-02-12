@@ -56,9 +56,9 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         
-        if TARGET_OS_SIMULATOR == 0 {
+        #if IOS
             getCloudKitIdentifier()
-        }
+        #endif
         
         // so that you cannot drag the picture over the edge of the view (e.g. over the buttons below or the title above
         kolodaView.clipsToBounds = true
