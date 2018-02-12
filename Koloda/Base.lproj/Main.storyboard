@@ -48,18 +48,25 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4mm-x9-Mko">
                                         <rect key="frame" x="0.0" y="511" width="343" height="223"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSN-ru-dp4">
-                                                <rect key="frame" x="0.0" y="80.666666666666629" width="167.66666666666666" height="62"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSN-ru-dp4" userLabel="Dislike">
+                                                <rect key="frame" x="0.0" y="80.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_dislike"/>
                                                 <connections>
-                                                    <action selector="leftButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="iiP-xI-oR1"/>
+                                                    <action selector="dislikeButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="iiP-xI-oR1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEA-k8-77V">
-                                                <rect key="frame" x="175.66666666666663" y="80.666666666666629" width="167.33333333333337" height="62"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mci-wG-aKI" userLabel="NoFood">
+                                                <rect key="frame" x="117" y="80.666666666666629" width="109" height="62"/>
+                                                <state key="normal" image="btn_no_food"/>
+                                                <connections>
+                                                    <action selector="noFoodButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="yHh-A5-poj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEA-k8-77V" userLabel="Like">
+                                                <rect key="frame" x="234" y="80.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_like"/>
                                                 <connections>
-                                                    <action selector="rightButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="N4v-of-nuN"/>
+                                                    <action selector="likeButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="N4v-of-nuN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -257,6 +264,7 @@
     <resources>
         <image name="btn_dislike" width="62" height="62"/>
         <image name="btn_like" width="62" height="62"/>
+        <image name="btn_no_food" width="62" height="62"/>
         <namedColor name="pink">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

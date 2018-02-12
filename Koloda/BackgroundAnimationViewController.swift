@@ -12,6 +12,7 @@ import pop
 import TransitionButton
 import Kingfisher
 import CoreLocation
+import CloudKit
 
 private let numberOfStartingCards: Int = 10
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -26,31 +27,13 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
-    
-//    struct MyIndicator: Indicator {
-//        let view: UIView = UIView()
-//
-//        func startAnimatingView() { view.isHidden = false }
-//        func stopAnimatingView() { view.isHidden = true }
-//
-//        init() {
-//            view.backgroundColor = .red
-//        }
-//    }
+    var userID: String = ""
     
 
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var questionLabel: UILabel!
     
     
-//    fileprivate var dataSource: [UIImage] = {
-//        var array: [UIImage] = []
-//        for index in 0..<numberOfStartingCards {
-//            array.append(UIImage(named: "meal\(index + 1)")!)
-//        }
-//
-//        return array
-//    }()
     fileprivate var challenges: [Challenge] = []
     fileprivate var annotations: [Annotation] = []
     //fileprivate var answerDict: [Challenge : Annotation] = [:]
@@ -73,6 +56,10 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         
+        if TARGET_OS_SIMULATOR == 0 {
+            getCloudKitIdentifier()
+        }
+        
         // so that you cannot drag the picture over the edge of the view (e.g. over the buttons below or the title above
         kolodaView.clipsToBounds = true
         fetchImages()
@@ -82,34 +69,33 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         // add images to array
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        dataSource = api.images
-//        print("When view is appearing we have \(dataSource.count) images")
-//    }
-//
-//    public func setDataSource(dataSource : [URL]) {
-//        self.dataSource = dataSource
-//        }
-//
-//    public func getNumberOfImages() -> Int {
-//        return self.dataSource.count
-//    }
+    func getCloudKitIdentifier() {
+        let container = CKContainer.default()
+        container.fetchUserRecordID {(recordID, error) in
+            guard let recordID = recordID else {
+                NSLog("Error: \(String(describing: error))")
+                return
+            }
+            self.userID = recordID.recordName
+            print(self.userID)
+            
+        }
+        
+    }
+    
     
     func setupQuestionLabel() {
         questionLabel.text = "Would you eat this here and now?"
         let size = UIFont.labelFontSize
         let font = UIFont.systemFont(ofSize: size)
         questionLabel.font = font
-        
-        
-        
     }
     
     
     func fetchImages() {
         CenaAPI().prefetchImages() { challenges, urls in
             self.challenges = challenges
-            print("We have \(challenges.count) challenges")
+            // print("We have \(challenges.count) challenges")
             self.dataSource = urls
             self.setupAnnotations()
             self.locationManager?.requestLocation()
@@ -141,25 +127,24 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         CenaAPI().postAnnotations(annotation: annotations[index])
     }
     
-    
-    func getLocation() {
-        // TODO: Get the location
-        //print(startLocation)
-        
-        
-        
-    }
+
     
     //MARK: IBActions
-    @IBAction func leftButtonTapped() {
+    @IBAction func dislikeButtonTapped() {
         //updateAnnotation(index: kolodaView.currentCardIndex, answer: "No")
         kolodaView?.swipe(.left)
         //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
-    @IBAction func rightButtonTapped() {
+    @IBAction func likeButtonTapped() {
         //updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
         kolodaView?.swipe(.right)
+        //print("I am at index \(kolodaView.currentCardIndex)")
+    }
+    
+    @IBAction func noFoodButtonTapped() {
+        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
+        kolodaView?.swipe(.up)
         //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
@@ -205,10 +190,17 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         if direction == SwipeResultDirection.right {
             updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "Yes")
-        } else {
+        } else if direction == SwipeResultDirection.left {
             updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "No")
+        } else if direction == SwipeResultDirection.up {
+            updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "No Food")
         }
     }
+    
+    func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
+        return [.left, .right, .up]
+    }
+    
 }
 
 // MARK: KolodaViewDataSource
@@ -223,22 +215,12 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        //let view: UIView = UIImageView(image: UIImage(named: "meal\(index + 1)"))
-        //let view: UIView = UIImageView(image: dataSource[index])
-        //let image = UIImage(named: "meal\(1)")
-//        let i = MyIndicator()
         let view: UIImageView = UIImageView()
-//        view.kf.indicatorType = .custom(indicator: i)
         view.kf.setImage(with: dataSource[index])
-        // FIXME: round corners, ugly because it is set each time. Better encapsualte it into an object later
-        //view.layer.cornerRadius = view.frame.size.width / 8
-        // need to be set so that the corners are also rounded when the card gets swiped left or right
-        // change the view ratio
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
-        //return UIImageView(image: UIImage(named: "meal\(index + 1)"))
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
@@ -263,3 +245,4 @@ extension BackgroundAnimationViewController: CLLocationManagerDelegate {
         
     }
 }
+
