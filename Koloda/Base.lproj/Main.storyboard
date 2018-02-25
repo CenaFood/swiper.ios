@@ -206,11 +206,11 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="qYz-G3-dFy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Discover your taste">
+                                        <state key="normal" title="Start tutorial">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dh2-Wx-deB" kind="presentation" modalTransitionStyle="crossDissolve" id="GJE-QP-bfo"/>
+                                            <segue destination="dcU-1G-76n" kind="presentation" id="5aP-nM-dii"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -259,6 +259,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OK2-lc-5fc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1315.2" y="1613.0541871921182"/>
+        </scene>
+        <!--Tutorial-->
+        <scene sceneID="QWH-Aj-Ybe">
+            <objects>
+                <viewController id="dcU-1G-76n" userLabel="Tutorial" customClass="TutorialViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7iy-A4-a8X"/>
+                        <viewControllerLayoutGuide type="bottom" id="LH4-uQ-f7X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gWl-vi-2EB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Rb6-Pu-klu">
+                                <rect key="frame" x="16" y="44" width="343" height="734"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hba-36-vSe">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="96"/>
+                                        <items>
+                                            <navigationItem title="Tutorial" id="JP7-YJ-9C0">
+                                                <barButtonItem key="rightBarButtonItem" title="Skip" id="N0v-U5-Xey">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleAspectFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3Kz-zL-SPh" userLabel="KolodaView" customClass="KolodaView" customModule="Koloda">
+                                        <rect key="frame" x="0.0" y="112" width="343" height="343"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3Kz-zL-SPh" secondAttribute="height" multiplier="1:1" id="H4L-N8-1IF"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMh-nh-bIJ">
+                                        <rect key="frame" x="0.0" y="471" width="343" height="263"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-iL-gKl" userLabel="Dislike">
+                                                <rect key="frame" x="0.0" y="100.66666666666663" width="109" height="62"/>
+                                                <state key="normal" image="btn_dislike"/>
+                                                <connections>
+                                                    <action selector="dislikeButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="vBz-Wh-Svt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkj-Ql-Ce7" userLabel="NoFood">
+                                                <rect key="frame" x="117" y="100.66666666666663" width="109" height="62"/>
+                                                <state key="normal" image="btn_no_food"/>
+                                                <connections>
+                                                    <action selector="noFoodButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="kwx-rD-ArB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAL-cm-EZd" userLabel="Like">
+                                                <rect key="frame" x="234" y="100.66666666666663" width="109" height="62"/>
+                                                <state key="normal" image="btn_like"/>
+                                                <connections>
+                                                    <action selector="likeButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="DHy-kn-xnF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rb6-Pu-klu" secondAttribute="trailing" id="2Hn-Pg-zx3"/>
+                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="top" secondItem="7iy-A4-a8X" secondAttribute="bottom" id="VyB-z6-RPL"/>
+                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="leading" secondItem="gWl-vi-2EB" secondAttribute="leadingMargin" id="nbi-qx-bxP"/>
+                            <constraint firstItem="LH4-uQ-f7X" firstAttribute="top" secondItem="Rb6-Pu-klu" secondAttribute="bottom" id="pQt-pH-fCW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="kolodaView" destination="3Kz-zL-SPh" id="x8C-YS-4tY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bL-Yf-0hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2770" y="1613"/>
         </scene>
     </scenes>
     <resources>
