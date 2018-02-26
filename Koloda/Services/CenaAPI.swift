@@ -60,7 +60,7 @@ class CenaAPI {
                 case .getChallenge(let id): relativePath = "/challenges/\(id)"
                 case .createAnnotation: relativePath = "/annotations"
                 case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "/annotations/\(id)"
-                case .authenticateWithToken: relativePath = "/authenticate"
+                case .authenticateWithToken: relativePath = "/auth/register"
                 }
                 
                 var url = URL(string: API.basePath)!

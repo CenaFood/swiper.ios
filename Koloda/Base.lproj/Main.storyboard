@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-fh-GTr">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8pa-fh-GTr">
                                 <rect key="frame" x="16" y="44" width="343" height="734"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-yc-oMB">
@@ -33,37 +33,37 @@
                                         </items>
                                     </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you eat this here and now?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9Y-Xh-0Jj">
-                                        <rect key="frame" x="0.0" y="112" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="104" width="343" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="20n-bX-GNa" userLabel="KolodaView" customClass="KolodaView" customModule="Koloda">
-                                        <rect key="frame" x="0.0" y="152" width="343" height="343"/>
+                                        <rect key="frame" x="0.0" y="136" width="343" height="343"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="20n-bX-GNa" secondAttribute="height" multiplier="1:1" id="ZfL-Q1-95e"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4mm-x9-Mko">
-                                        <rect key="frame" x="0.0" y="511" width="343" height="223"/>
+                                        <rect key="frame" x="0.0" y="487" width="343" height="247"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSN-ru-dp4" userLabel="Dislike">
-                                                <rect key="frame" x="0.0" y="80.666666666666629" width="109" height="62"/>
+                                                <rect key="frame" x="0.0" y="92.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_dislike"/>
                                                 <connections>
                                                     <action selector="dislikeButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="iiP-xI-oR1"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mci-wG-aKI" userLabel="NoFood">
-                                                <rect key="frame" x="117" y="80.666666666666629" width="109" height="62"/>
+                                                <rect key="frame" x="117" y="92.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_no_food"/>
                                                 <connections>
                                                     <action selector="noFoodButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="yHh-A5-poj"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEA-k8-77V" userLabel="Like">
-                                                <rect key="frame" x="234" y="80.666666666666629" width="109" height="62"/>
+                                                <rect key="frame" x="234" y="92.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_like"/>
                                                 <connections>
                                                     <action selector="likeButtonTapped" destination="dh2-Wx-deB" eventType="touchUpInside" id="N4v-of-nuN"/>
@@ -196,8 +196,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nt6-qJ-gWy">
                                 <rect key="frame" x="16" y="8" width="343" height="622"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's show you around." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmd-OL-YVg">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-Cs-Uuh">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="554"/>
+                                        <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="525.66666666666674"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
                                         <rect key="frame" x="0.0" y="562" width="343" height="60"/>
@@ -272,7 +278,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Rb6-Pu-klu">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rb6-Pu-klu">
                                 <rect key="frame" x="16" y="44" width="343" height="734"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hba-36-vSe">
@@ -286,31 +292,31 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleAspectFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3Kz-zL-SPh" userLabel="KolodaView" customClass="KolodaView" customModule="Koloda">
-                                        <rect key="frame" x="0.0" y="112" width="343" height="343"/>
+                                        <rect key="frame" x="0.0" y="104" width="343" height="343"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3Kz-zL-SPh" secondAttribute="height" multiplier="1:1" id="H4L-N8-1IF"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMh-nh-bIJ">
-                                        <rect key="frame" x="0.0" y="471" width="343" height="263"/>
+                                        <rect key="frame" x="0.0" y="455" width="343" height="211"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-iL-gKl" userLabel="Dislike">
-                                                <rect key="frame" x="0.0" y="100.66666666666663" width="109" height="62"/>
+                                                <rect key="frame" x="0.0" y="74.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_dislike"/>
                                                 <connections>
                                                     <action selector="dislikeButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="vBz-Wh-Svt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkj-Ql-Ce7" userLabel="NoFood">
-                                                <rect key="frame" x="117" y="100.66666666666663" width="109" height="62"/>
+                                                <rect key="frame" x="117" y="74.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_no_food"/>
                                                 <connections>
                                                     <action selector="noFoodButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="kwx-rD-ArB"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAL-cm-EZd" userLabel="Like">
-                                                <rect key="frame" x="234" y="100.66666666666663" width="109" height="62"/>
+                                                <rect key="frame" x="234" y="74.666666666666629" width="109" height="62"/>
                                                 <state key="normal" image="btn_like"/>
                                                 <connections>
                                                     <action selector="likeButtonTapped" destination="dcU-1G-76n" eventType="touchUpInside" id="DHy-kn-xnF"/>
@@ -318,6 +324,20 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ2-XN-GKc">
+                                        <rect key="frame" x="0.0" y="674" width="343" height="60"/>
+                                        <color key="backgroundColor" name="pink"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="LDk-fd-SDt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dh2-Wx-deB" kind="presentation" id="Lir-V9-rVN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -330,7 +350,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="HQ2-XN-GKc" id="Ojp-UQ-20W"/>
+                        <outlet property="dislikeButton" destination="lxE-iL-gKl" id="shX-1F-MHe"/>
                         <outlet property="kolodaView" destination="3Kz-zL-SPh" id="x8C-YS-4tY"/>
+                        <outlet property="likeButton" destination="vAL-cm-EZd" id="5m9-vJ-dJr"/>
+                        <outlet property="noFoodButton" destination="Gkj-Ql-Ce7" id="fRO-Xf-Leb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bL-Yf-0hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +368,9 @@
         <image name="btn_no_food" width="62" height="62"/>
         <namedColor name="pink">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pink">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

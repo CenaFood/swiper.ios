@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
-import Instructions
 
 let numberOfMeals : Int = 5
 
@@ -19,8 +18,6 @@ class StartViewController: UIViewController {
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!
     @IBOutlet weak var signupButton: UIButton!
-    
-    var coachMarksController = CoachMarksController()
     
     // MARK: Lifecycle
     
@@ -36,9 +33,6 @@ class StartViewController: UIViewController {
         let size = UIFont.buttonFontSize
         let font = UIFont.systemFont(ofSize: size)
         signupButton.titleLabel?.font = font
-        
-        self.coachMarksController.dataSource = self
-        self.coachMarksController.overlay.allowTap = true
         //setupEmailField()
         //setupButton()
         //setupTitle()
@@ -47,13 +41,10 @@ class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        sleep(2)
-        self.coachMarksController.start(on: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.coachMarksController.stop(immediately: true)
     }
     
     
@@ -176,26 +167,6 @@ class StartViewController: UIViewController {
     }
  
  */
-}
-
-
-extension StartViewController: CoachMarksControllerDataSource {
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
-        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        coachViews.bodyView.hintLabel.text = "Press here to start the tutorial"
-        coachViews.bodyView.nextLabel.text = "ok"
-        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
-    }
-    
-    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
-        return coachMarksController.helper.makeCoachMark(for: self.signupButton)
-    }
-    
-    
-    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 1
-    }
-    
 }
 
 
