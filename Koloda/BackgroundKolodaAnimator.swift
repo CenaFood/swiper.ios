@@ -1,11 +1,3 @@
-//
-//  BackgroundKolodaAnimator.swift
-//  Koloda
-//
-//  Created by Eugene Andreyev on 4/2/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
-//
-
 import Foundation
 import Koloda
 import pop

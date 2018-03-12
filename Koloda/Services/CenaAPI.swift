@@ -32,7 +32,7 @@ class CenaAPI {
         private static let basePath = "http://86.119.37.97:5001"
        
         /*
-         Head on over to https://bonseyes. to get your
+         Head on over to https://bonseyes.com to get your
          free API key, and then replace the value below with it.
          */
         private static let key = ""

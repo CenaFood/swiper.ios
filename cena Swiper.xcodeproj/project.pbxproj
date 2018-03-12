@@ -15,10 +15,10 @@
 		44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5EC281B660C8500895E3D /* CustomOverlayView.swift */; };
 		44B5EC2B1B660C9100895E3D /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B5EC2A1B660C9100895E3D /* CustomOverlayView.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
 		AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF514F1C203B39EE007222CE /* TutorialViewController.swift */; };
 		AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5231A81F9A1190001A184D /* StartViewController.swift */; };
 		AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */; };
@@ -52,13 +52,13 @@
 		607FACD01AFB9204008FA782 /* cena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		AF514F1C203B39EE007222CE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		AF5231A81F9A1190001A184D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			children = (
 				AFD480592031EFB20090E5D4 /* cena.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example */,
+				607FACD21AFB9204008FA782 /* cena swiper */,
 				607FACD11AFB9204008FA782 /* Products */,
 				AB88095976C7B6CA809587FB /* Pods */,
 				85B3405D0F2A73D9A709B3FA /* Frameworks */,
@@ -112,13 +112,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example */ = {
+		607FACD21AFB9204008FA782 /* cena swiper */ = {
 			isa = PBXGroup;
 			children = (
 				AFA61F641FDAA0A1005FE69F /* Services */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				AFA61F671FDAA3DA005FE69F /* Models */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
 				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
 				4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */,
@@ -127,6 +126,7 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
 				AF5231A81F9A1190001A184D /* StartViewController.swift */,
+				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				4420661B1B44577500FD4CAD /* OverlayView.xib */,
@@ -134,7 +134,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */,
 			);
-			name = Example;
+			name = "cena swiper";
 			path = Koloda;
 			sourceTree = "<group>";
 		};
@@ -364,7 +364,6 @@
 				AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */,
 				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
 				AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
 				AFA61F711FDABC75005FE69F /* Project.swift in Sources */,
@@ -381,6 +380,7 @@
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
 				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
 				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
+				AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,11 +1,3 @@
-//
-//  BackgroundAnimationViewController.swift
-//  Koloda
-//
-//  Created by Eugene Andreyev on 7/11/15.
-//  Copyright (c) 2015 CocoaPods. All rights reserved.
-//
-
 import UIKit
 import Koloda
 import pop
@@ -20,9 +12,6 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
-//private let dataSource: [Resource] = []
-
-
 class BackgroundAnimationViewController: CustomTransitionViewController {
     
     var locationManager: CLLocationManager?
@@ -36,7 +25,6 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     
     fileprivate var challenges: [Challenge] = []
     fileprivate var annotations: [Annotation] = []
-    //fileprivate var answerDict: [Challenge : Annotation] = [:]
     fileprivate var dataSource: [URL] = []
     
     
@@ -51,22 +39,14 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         
         setupQuestionLabel()
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestWhenInUseAuthorization()
+        setupLocationManager()
         
         #if IOS
             getCloudKitIdentifier()
         #endif
         
-        // so that you cannot drag the picture over the edge of the view (e.g. over the buttons below or the title above
         kolodaView.clipsToBounds = true
         fetchImages()
-        //print("We have \(dataSource.count) number of images")
-        
-        
-        // add images to array
     }
     
     func getCloudKitIdentifier() {
@@ -91,11 +71,17 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         questionLabel.font = font
     }
     
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestWhenInUseAuthorization()
+    }
+    
     
     func fetchImages() {
         CenaAPI().prefetchImages() { challenges, urls in
             self.challenges = challenges
-            // print("We have \(challenges.count) challenges")
             self.dataSource = urls
             self.setupAnnotations()
             self.locationManager?.requestLocation()
@@ -123,7 +109,6 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         annotations[index].latitude = location.latitude
         annotations[index].longitude = location.longitude
         annotations[index].localTime = currentLocation?.timestamp
-        //print(annotations[index])
         CenaAPI().postAnnotations(annotation: annotations[index])
     }
     
@@ -131,21 +116,15 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     
     //MARK: IBActions
     @IBAction func dislikeButtonTapped() {
-        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "No")
         kolodaView?.swipe(.left)
-        //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
     @IBAction func likeButtonTapped() {
-        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
         kolodaView?.swipe(.right)
-        //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
     @IBAction func noFoodButtonTapped() {
-        //updateAnnotation(index: kolodaView.currentCardIndex, answer: "Yes")
         kolodaView?.swipe(.up)
-        //print("I am at index \(kolodaView.currentCardIndex)")
     }
     
     @IBAction func undoButtonTapped() {
@@ -162,9 +141,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 extension BackgroundAnimationViewController: KolodaViewDelegate {
     
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        //updateAnnotations()
         fetchImages()
-        //kolodaView.resetCurrentCardIndex()
     }
     
     

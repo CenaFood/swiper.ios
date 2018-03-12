@@ -3,7 +3,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
 
-class StartViewController: UIViewController {
+class SummaryViewController: UIViewController {
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!
     @IBOutlet weak var startTutorialButton: UIButton!
@@ -38,15 +38,16 @@ class StartViewController: UIViewController {
         let size = UIFont.buttonFontSize
         let font = UIFont.systemFont(ofSize: size)
         startTutorialButton.titleLabel?.font = font
-        startTutorialButton.setTitle("Start Tutorial", for: .normal)
+        startTutorialButton.setTitle("Discover Your Taste", for: .normal)
     }
     
     func setupStartImage() {
         startView.layer.cornerRadius = 8.0
         startView.clipsToBounds = true
-        let startImage = UIImage(named: "start")!
-         startView.image = startImage
+        let startImage = UIImage(named: "summary")!
+        startView.image = startImage
     }
 }
+
 
 
