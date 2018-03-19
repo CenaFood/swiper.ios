@@ -184,7 +184,7 @@
         <!--Start View Controller-->
         <scene sceneID="clt-H7-lLA">
             <objects>
-                <viewController id="5uR-im-idW" customClass="StartViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="5uR-im-idW" customClass="StartViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sf4-jJ-mgt"/>
                         <viewControllerLayoutGuide type="bottom" id="Ryr-hS-3QC"/>
@@ -216,6 +216,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="UVE-3W-q8s"/>
                                             <segue destination="dcU-1G-76n" kind="presentation" id="lKk-qX-ljN"/>
                                         </connections>
                                     </button>
@@ -304,6 +305,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="finishTutorialAction:" destination="dcU-1G-76n" eventType="touchUpInside" id="B2a-KV-gxk"/>
                                             <segue destination="hWl-AS-oZ0" kind="show" id="S63-ZW-dhb"/>
                                         </connections>
                                     </button>
@@ -334,7 +336,7 @@
         <!--Summary-->
         <scene sceneID="xZe-pr-Vdx">
             <objects>
-                <viewController id="hWl-AS-oZ0" userLabel="Summary" customClass="SummaryViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SummaryViewController" id="hWl-AS-oZ0" userLabel="Summary" customClass="SummaryViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3tq-KT-mAu"/>
                         <viewControllerLayoutGuide type="bottom" id="U2t-Ra-nKB"/>
@@ -407,12 +409,8 @@
         <namedColor name="pink">
             <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="pink">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S63-ZW-dhb"/>
-        <segue reference="bUO-HP-ggH"/>
+        <segue reference="lKk-qX-ljN"/>
     </inferredMetricsTieBreakers>
 </document>

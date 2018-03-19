@@ -58,9 +58,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
             }
             self.userID = recordID.recordName
             print(self.userID)
-            
         }
-        
     }
     
     

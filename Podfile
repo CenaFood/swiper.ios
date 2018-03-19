@@ -7,6 +7,7 @@ target 'cena' do
   pod 'TransitionButton'
   pod 'Kingfisher', '~> 4.0'
   pod 'Instructions', '~> 1.0.0'
+  pod 'JWTDecode', '~> 2.1'
 end
 
 post_install do |installer|

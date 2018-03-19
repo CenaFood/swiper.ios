@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import Kingfisher
 import DeviceCheck
+import CloudKit
+
+private var globalToken = ""
+
 
 class CenaAPI {
     //private let queue = OperationQueue()
@@ -28,8 +32,11 @@ class CenaAPI {
         case updateAnnotation(Int, Annotation)
         case deleteAnnotation(Int)
         case authenticateWithToken
+        case register(Identifier)
+        case login(Credentials)
         // Base endpoint
-        private static let basePath = "http://86.119.37.97:5001"
+        //private static let basePath = "http://86.119.37.97:5001"
+        private static let basePath = "localhost"
        
         /*
          Head on over to https://bonseyes.com to get your
@@ -42,7 +49,7 @@ class CenaAPI {
         var method: String {
             switch self {
             case .getAllChallenges, .getChallenge: return "GET"
-            case .createAnnotation, .authenticateWithToken: return "POST"
+            case .createAnnotation, .authenticateWithToken, .register, .login: return "POST"
             case .updateAnnotation: return "PUT"
             case .deleteAnnotation: return "DELETE"
             }
@@ -60,7 +67,9 @@ class CenaAPI {
                 case .getChallenge(let id): relativePath = "/challenges/\(id)"
                 case .createAnnotation: relativePath = "/annotations"
                 case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "/annotations/\(id)"
-                case .authenticateWithToken: relativePath = "/auth/register"
+                case .authenticateWithToken: relativePath = "/auth/login"
+                case .register: relativePath = "/auth/registerios"
+                case .login: relativePath = "/auth/login"
                 }
                 
                 var url = URL(string: API.basePath)!
@@ -71,10 +80,34 @@ class CenaAPI {
             }()
             
             // Set up request parameters
-            let parameters: Annotation? = {
+            let parameters: APIBase? = {
                 switch self {
                 case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken: return nil
                 case .createAnnotation(let annotation), .updateAnnotation(_, let annotation): return annotation
+                case .register(let iCloudIdentifier): return iCloudIdentifier
+                case .login(let credentials): return credentials
+                }
+            }()
+            
+            func readPassword() -> String {
+                guard let user_id = UserDefaults.standard.value(forKey: "username") as? String else {
+                    print("Could not get iCloud identifier")
+                    return ""
+                }
+                
+                let passwordItem = KeychainPasswordItem(service: KeychhainConfiguration.serviceName, account: user_id, accessGroup: KeychhainConfiguration.accessGroup)
+                do {
+                    let keychainPassword = try passwordItem.readPassword()
+                    return keychainPassword
+                } catch {
+                    fatalError("Error updating keychain - \(error)")
+                }
+            }
+            
+            let token: String? = {
+                switch self {
+                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .createAnnotation(_), .updateAnnotation(_, _): return readPassword() // TODO: return JWTToken from keychain
+                case .register(_), .login(_): return nil
                 }
             }()
             
@@ -82,12 +115,17 @@ class CenaAPI {
             var request = URLRequest(url: url)
             request.httpMethod = method
             request.addValue("application/json", forHTTPHeaderField: "content-type")
+            if let JWToken = token {
+                print("Bearer " + JWToken)
+                request.addValue("Bearer " + JWToken, forHTTPHeaderField: "Authorization")
+            }
             guard let post = parameters else { return request }
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
             do {
                 let data = try encoder.encode(post)
-//                let json = String(data: data, encoding: .utf8)
+                let json = String(data: data, encoding: .utf8)
+                print(json!)
                 request.httpBody = data
             } catch let encodeError as NSError {
                 print("Encoder error: \(encodeError.localizedDescription)\n")
@@ -109,6 +147,8 @@ class CenaAPI {
         
     func getAllChallenges(completion: @escaping ([Challenge]) -> ()) {
         let task = session.dataTask(with: API.getAllChallenges.asURLRequest()) { (data, response, error) in
+            let resp = response as? HTTPURLResponse
+            print(resp!.statusCode)
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("No data or statusCode not OK")
                 return
@@ -143,7 +183,6 @@ class CenaAPI {
             let urls = imageURLs.map{ URL(string: $0)!}
             let prefetcher = ImagePrefetcher(urls: urls) {
                 skippedResources, failedResources, completedResources in
-                //print(skippedResources, failedResources, completedResources)
             }
             DispatchQueue.main.async {
                 completion(challenges, urls)
@@ -163,17 +202,80 @@ class CenaAPI {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                //print(String(data: data, encoding: .utf8)!)
                 _ = try decoder.decode(Annotation.self, from: data)
-                //print("Successfully posted annotation")
                 
-                //self.annotation = annotation
             } catch let decodeError as NSError {
                 print("Decoding error: \(decodeError.localizedDescription)\n")
                 return
             }
         }
         task.resume()
+    }
+    
+    func register(credentials: Identifier) {
+        let request = API.register(credentials).asURLRequest()
+        let task = session.dataTask(with: request) { (data, response, error) in
+            let resp = response as? HTTPURLResponse
+            print(resp!.statusCode)
+            
+            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                print("No data or statusCode not OK")
+                return
+            }
+            do {
+                guard let JWToken = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .punctuationCharacters) else {
+                    print("Could not process JWT token")
+                    return
+                }
+                print(credentials)
+                print(JWToken)
+                self.savePassword(username: credentials.icloudkitid, token: JWToken)
+            }
+        }
+        task.resume()
+    }
+    
+    func savePassword(username: String, token: String) {
+        let passwordItem = KeychainPasswordItem(service: KeychhainConfiguration.serviceName, account: username, accessGroup: KeychhainConfiguration.accessGroup)
+        do {
+            try passwordItem.savePassword(token)
+        } catch {
+            fatalError("Error updating keychain - \(error)")
+        }
+        UserDefaults.standard.set(true, forKey: "hasLoginKey")
+    }
+    
+    
+    func login(credentials: Credentials) {
+        let request = API.login(credentials).asURLRequest()
+        let task = session.dataTask(with: request) { (data, response, error) in
+            let resp = response as? HTTPURLResponse
+            print(resp!.statusCode)
+            
+            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                print("No data or statusCode not OK")
+                
+                // self.register(credentials: )
+                return
+            }
+            do {
+                let JWToken = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .punctuationCharacters)
+                print(JWToken!)
+                globalToken = JWToken!
+            }
+        }
+        task.resume()
+    }
+    
+    func saveCloudKitIdentifier() {
+        let container = CKContainer.default()
+        container.fetchUserRecordID {(recordID, error) in
+            guard let recordID = recordID else {
+                NSLog("Error: \(String(describing: error))")
+                return
+            }
+            UserDefaults.standard.setValue(recordID.recordName, forKey: "username")
+        }
     }
     
     func generateToken(completion: @escaping (String) -> ()) {

@@ -19,6 +19,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
+		AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FD2056E0EA0033FDA5 /* Credentials.swift */; };
+		AF4985002056E4CF0033FDA5 /* APIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FF2056E4CF0033FDA5 /* APIBase.swift */; };
 		AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF514F1C203B39EE007222CE /* TutorialViewController.swift */; };
 		AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5231A81F9A1190001A184D /* StartViewController.swift */; };
 		AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */; };
@@ -31,6 +33,8 @@
 		AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6E1FDABC35005FE69F /* Location.swift */; };
 		AFA61F711FDABC75005FE69F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F701FDABC75005FE69F /* Project.swift */; };
 		AFA61F731FDABCD0005FE69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F721FDABCD0005FE69F /* User.swift */; };
+		AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */; };
+		AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAC4C8205FEFB100157514 /* Identifier.swift */; };
 		AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */; };
 		AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */; };
 		BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */; };
@@ -59,6 +63,8 @@
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		AF4984FD2056E0EA0033FDA5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AF4984FF2056E4CF0033FDA5 /* APIBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBase.swift; sourceTree = "<group>"; };
 		AF514F1C203B39EE007222CE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		AF5231A81F9A1190001A184D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		AFA61F6E1FDABC35005FE69F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AFA61F701FDABC75005FE69F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		AFA61F721FDABCD0005FE69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		AFAAC4C8205FEFB100157514 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		AFD480592031EFB20090E5D4 /* cena.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cena.entitlements; sourceTree = "<group>"; };
 		AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 			children = (
 				AF5819A91FDEEDD6004ECE1F /* Operations */,
 				AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */,
+				AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,6 +216,9 @@
 				AFA61F701FDABC75005FE69F /* Project.swift */,
 				AFA61F721FDABCD0005FE69F /* User.swift */,
 				AF68009E1FE120A400F03CB4 /* Annotation.swift */,
+				AF4984FD2056E0EA0033FDA5 /* Credentials.swift */,
+				AFAAC4C8205FEFB100157514 /* Identifier.swift */,
+				AF4984FF2056E4CF0033FDA5 /* APIBase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +331,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -328,6 +341,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -364,9 +378,11 @@
 				AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */,
 				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
 				AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */,
+				AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
 				AFA61F711FDABC75005FE69F /* Project.swift in Sources */,
+				AF4985002056E4CF0033FDA5 /* APIBase.swift in Sources */,
 				AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */,
 				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
 				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
@@ -379,7 +395,9 @@
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
 				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
+				AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */,
 				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
+				AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */,
 				AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

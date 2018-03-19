@@ -3,7 +3,16 @@ import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
 
+struct KeychhainConfiguration {
+    static let serviceName = "CenaSwiper"
+    static let accessGroup: String? = nil   
+}
+
 class StartViewController: UIViewController {
+    var passwordItems: [KeychainPasswordItem] = []
+    let startTutorialButtonTag = 0
+    let startDiscoveringButtonTag = 1
+    
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!
     @IBOutlet weak var startTutorialButton: UIButton!
@@ -15,6 +24,8 @@ class StartViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .white
         setupStartImage()
         setupStartButton()
+        //CenaAPI().saveCloudKitIdentifier()
+        testAPI()
         
     }
     
@@ -26,8 +37,15 @@ class StartViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
+    @IBAction func startTutorialAction(_ sender: UIButton) {
+        
+    }
     
     //MARK: Private methods
+    
+    func registerUser() {
+        
+    }
     
     func setupTitle() {
         welcomeTitle.layer.cornerRadius = 8.0
@@ -46,6 +64,16 @@ class StartViewController: UIViewController {
         startView.clipsToBounds = true
         let startImage = UIImage(named: "start")!
          startView.image = startImage
+    }
+    
+    func testAPI() {
+        let email = "helloichbins12"
+        let password = "sindwirschonda12"
+        let credentials = Credentials(email: email, password: password)
+        //let credentials = Identifier(identifier: "_dd34f6e7e339e18c795d4f380403c099")
+        print("Starting test")
+        //CenaAPI().register(credentials: credentials)
+        CenaAPI().login(credentials: credentials)
     }
 }
 
