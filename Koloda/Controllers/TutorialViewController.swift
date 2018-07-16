@@ -33,7 +33,6 @@ class TutorialViewController: CustomTransitionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStartImages()
-        setupStartImages()
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
         kolodaView.delegate = self

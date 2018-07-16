@@ -26,6 +26,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     fileprivate var challenges: [Challenge] = []
     fileprivate var annotations: [Annotation] = []
     fileprivate var dataSource: [URL] = []
+    fileprivate var credentials: Credentials? = AuthController().getCredentials()
 
 
     //MARK: Lifecycle
@@ -112,8 +113,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 
     func setupAnnotations() {
         for challenge in challenges {
-            let annotation: Annotation = Annotation(challengeID: challenge.id, userID:
-            "6A1BA20A-8D25-4E71-8BD8-E6872FD53ADA", answer: "", location: nil, localTime: nil)
+            let userID: String = self.credentials?.email ?? DummyUser.userID
+            let annotation: Annotation = Annotation(challengeID: challenge.id, userID: userID, answer: "", location: nil, localTime: nil)
             annotations.append(annotation)
         }
     }
