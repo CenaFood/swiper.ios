@@ -67,13 +67,13 @@ class StartViewController: UIViewController {
     }
     
     func testAPI() {
-        let email = "helloichbins12"
-        let password = "sindwirschonda12"
+        let email = "helloichbins123"
+        let password = "sindwirschonda123"
         let credentials = Credentials(email: email, password: password)
-        //let credentials = Identifier(identifier: "_dd34f6e7e339e18c795d4f380403c099")
+        //let credentials = Identifier(identifier: "_dd34f6e7e339e18c795d4f380403c091")
         print("Starting test")
-        //CenaAPI().register(credentials: credentials)
-        CenaAPI().login(credentials: credentials)
+        CenaAPI().register(credentials: credentials)
+        //CenaAPI().login(credentials: credentials)
     }
 }
 

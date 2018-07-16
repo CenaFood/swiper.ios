@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5uR-im-idW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5uR-im-idW">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -305,7 +305,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="finishTutorialAction:" destination="dcU-1G-76n" eventType="touchUpInside" id="B2a-KV-gxk"/>
+                                            <action selector="login:" destination="dcU-1G-76n" eventType="touchUpInside" id="B2a-KV-gxk"/>
                                             <segue destination="hWl-AS-oZ0" kind="show" id="S63-ZW-dhb"/>
                                         </connections>
                                     </button>
@@ -348,7 +348,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K0n-gH-Vyh">
                                 <rect key="frame" x="16" y="52" width="343" height="718"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" barStyle="black" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKg-ae-b6j">
+                                    <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKg-ae-b6j">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="96"/>
                                         <items>
                                             <navigationItem title="Summary" id="vdL-r2-6sR">
@@ -393,7 +393,7 @@
                         <barButtonItem key="backBarButtonItem" title="Welcome" id="eIk-j3-Xfs"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="startTutorialButton" destination="MYs-7U-FOz" id="RPy-ik-SgE"/>
+                        <outlet property="discoverButton" destination="MYs-7U-FOz" id="MY2-er-YwH"/>
                         <outlet property="startView" destination="PpZ-yT-YVF" id="kmY-Px-LSx"/>
                     </connections>
                 </viewController>
@@ -411,6 +411,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lKk-qX-ljN"/>
+        <segue reference="bUO-HP-ggH"/>
     </inferredMetricsTieBreakers>
 </document>

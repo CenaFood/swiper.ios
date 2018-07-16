@@ -35,6 +35,8 @@
 		AFA61F731FDABCD0005FE69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F721FDABCD0005FE69F /* User.swift */; };
 		AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */; };
 		AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAC4C8205FEFB100157514 /* Identifier.swift */; };
+		AFBED51B20E0E01400F1B55C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51A20E0E01400F1B55C /* Config.swift */; };
+		AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51D20E0EC7500F1B55C /* AuthController.swift */; };
 		AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */; };
 		AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */; };
 		BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */; };
@@ -79,6 +81,8 @@
 		AFA61F721FDABCD0005FE69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		AFAAC4C8205FEFB100157514 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		AFBED51A20E0E01400F1B55C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AFBED51D20E0EC7500F1B55C /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AFD480592031EFB20090E5D4 /* cena.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cena.entitlements; sourceTree = "<group>"; };
 		AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -123,18 +127,14 @@
 		607FACD21AFB9204008FA782 /* cena swiper */ = {
 			isa = PBXGroup;
 			children = (
+				AFBED51C20E0EC4100F1B55C /* Controllers */,
 				AFA61F641FDAA0A1005FE69F /* Services */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				AFA61F671FDAA3DA005FE69F /* Models */,
-				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
-				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
 				4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */,
 				440FB7661B51499A009FC9FC /* CustomKolodaView.swift */,
 				44B5EC281B660C8500895E3D /* CustomOverlayView.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
-				AF5231A81F9A1190001A184D /* StartViewController.swift */,
-				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				4420661B1B44577500FD4CAD /* OverlayView.xib */,
@@ -202,6 +202,7 @@
 			children = (
 				AF5819A91FDEEDD6004ECE1F /* Operations */,
 				AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */,
+				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
 				AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */,
 			);
 			path = Services;
@@ -219,8 +220,21 @@
 				AF4984FD2056E0EA0033FDA5 /* Credentials.swift */,
 				AFAAC4C8205FEFB100157514 /* Identifier.swift */,
 				AF4984FF2056E4CF0033FDA5 /* APIBase.swift */,
+				AFBED51A20E0E01400F1B55C /* Config.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AFBED51C20E0EC4100F1B55C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
+				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
+				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
+				AF5231A81F9A1190001A184D /* StartViewController.swift */,
+				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +267,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -387,10 +401,12 @@
 				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
 				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
 				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
+				AFBED51B20E0E01400F1B55C /* Config.swift in Sources */,
 				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,
 				AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */,
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
@@ -444,12 +460,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -480,6 +498,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_SWIFT_FLAGS[sdk=iphonesimulator*]" = "-D IOS_SIMULATOR";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -498,12 +517,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

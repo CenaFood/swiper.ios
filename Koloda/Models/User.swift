@@ -9,11 +9,15 @@
 import Foundation
 
 class User: Codable {
-    let id: String
+    let password: String
     let email: String
     
-    init(id: String, email: String) {
-        self.id = id
+    init(email: String, password: String) {
         self.email = email
+        self.password = password
+    }
+    
+    var description: String {
+        return "email: \(email) - password: \(password)"
     }
 }

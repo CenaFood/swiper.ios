@@ -6,7 +6,7 @@ import TransitionButton
 class SummaryViewController: UIViewController {
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startView: UIImageView!
-    @IBOutlet weak var startTutorialButton: UIButton!
+    @IBOutlet weak var discoverButton: UIButton!
     
     // MARK: Lifecycle
     
@@ -15,7 +15,6 @@ class SummaryViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .white
         setupStartImage()
         setupStartButton()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,11 +33,11 @@ class SummaryViewController: UIViewController {
     }
     
     func setupStartButton() {
-        startTutorialButton.layer.cornerRadius = 8
+        discoverButton.layer.cornerRadius = 8
         let size = UIFont.buttonFontSize
         let font = UIFont.systemFont(ofSize: size)
-        startTutorialButton.titleLabel?.font = font
-        startTutorialButton.setTitle("Discover Your Taste", for: .normal)
+        discoverButton.titleLabel?.font = font
+        discoverButton.setTitle("Discover Your Taste", for: .normal)
     }
     
     func setupStartImage() {

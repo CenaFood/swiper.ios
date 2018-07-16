@@ -11,9 +11,9 @@ import UIKit
 import Kingfisher
 import DeviceCheck
 import CloudKit
+import JWTDecode
 
 private var globalToken = ""
-
 
 class CenaAPI {
     //private let queue = OperationQueue()
@@ -32,11 +32,13 @@ class CenaAPI {
         case updateAnnotation(Int, Annotation)
         case deleteAnnotation(Int)
         case authenticateWithToken
-        case register(Identifier)
+        case register(Credentials)
         case login(Credentials)
         // Base endpoint
         //private static let basePath = "http://86.119.37.97:5001"
-        private static let basePath = "localhost"
+        private static let basePath = "https://cenaswiper.luethi.rocks"
+        //private static let basePath = "http://localhost:5000"
+        
        
         /*
          Head on over to https://bonseyes.com to get your
@@ -68,7 +70,7 @@ class CenaAPI {
                 case .createAnnotation: relativePath = "/annotations"
                 case .updateAnnotation(let id, _), .deleteAnnotation(let id): relativePath = "/annotations/\(id)"
                 case .authenticateWithToken: relativePath = "/auth/login"
-                case .register: relativePath = "/auth/registerios"
+                case .register: relativePath = "/auth/register"
                 case .login: relativePath = "/auth/login"
                 }
                 
@@ -84,29 +86,35 @@ class CenaAPI {
                 switch self {
                 case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken: return nil
                 case .createAnnotation(let annotation), .updateAnnotation(_, let annotation): return annotation
-                case .register(let iCloudIdentifier): return iCloudIdentifier
+                case .register(let credentials): return credentials
                 case .login(let credentials): return credentials
                 }
             }()
             
             func readPassword() -> String {
-                guard let user_id = UserDefaults.standard.value(forKey: "username") as? String else {
-                    print("Could not get iCloud identifier")
-                    return ""
-                }
+                #if IOS_SIMULATOR
+                    return DummyUser.Password
+                #else
+                    guard let user_id = UserDefaults.standard.value(forKey: "username") as? String else {
+                        print("Could not get iCloud identifier")
+                        return ""
+                    }
                 
-                let passwordItem = KeychainPasswordItem(service: KeychhainConfiguration.serviceName, account: user_id, accessGroup: KeychhainConfiguration.accessGroup)
-                do {
-                    let keychainPassword = try passwordItem.readPassword()
-                    return keychainPassword
-                } catch {
-                    fatalError("Error updating keychain - \(error)")
+                    let passwordItem = KeychainPasswordItem(service: KeychhainConfiguration.serviceName, account: user_id, accessGroup: KeychhainConfiguration.accessGroup)
+                    do {
+                        let keychainPassword = try passwordItem.readPassword()
+                        
+                        return keychainPassword
+                    } catch {
+                        fatalError("Error updating keychain - \(error)")
+                    }
+                #endif
+                
                 }
-            }
             
             let token: String? = {
                 switch self {
-                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .createAnnotation(_), .updateAnnotation(_, _): return readPassword() // TODO: return JWTToken from keychain
+                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .createAnnotation(_), .updateAnnotation(_, _): return AuthController().getJWTToken() // TODO: return JWTToken from keychain
                 case .register(_), .login(_): return nil
                 }
             }()
@@ -128,7 +136,7 @@ class CenaAPI {
                 print(json!)
                 request.httpBody = data
             } catch let encodeError as NSError {
-                print("Encoder error: \(encodeError.localizedDescription)\n")
+                print("Encoder error: \(encodeError.localizedDescription) + \(post)\n")
             }
             return request
         }
@@ -212,7 +220,7 @@ class CenaAPI {
         task.resume()
     }
     
-    func register(credentials: Identifier) {
+    func register(credentials: Credentials) {
         let request = API.register(credentials).asURLRequest()
         let task = session.dataTask(with: request) { (data, response, error) in
             let resp = response as? HTTPURLResponse
@@ -222,28 +230,12 @@ class CenaAPI {
                 print("No data or statusCode not OK")
                 return
             }
-            do {
-                guard let JWToken = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .punctuationCharacters) else {
-                    print("Could not process JWT token")
-                    return
-                }
-                print(credentials)
-                print(JWToken)
-                self.savePassword(username: credentials.icloudkitid, token: JWToken)
-            }
+            let JWTToken = self.decodeJWT(data: data)
+            AuthController().savePassword(username: credentials.password, token: JWTToken)
         }
         task.resume()
     }
     
-    func savePassword(username: String, token: String) {
-        let passwordItem = KeychainPasswordItem(service: KeychhainConfiguration.serviceName, account: username, accessGroup: KeychhainConfiguration.accessGroup)
-        do {
-            try passwordItem.savePassword(token)
-        } catch {
-            fatalError("Error updating keychain - \(error)")
-        }
-        UserDefaults.standard.set(true, forKey: "hasLoginKey")
-    }
     
     
     func login(credentials: Credentials) {
@@ -254,17 +246,21 @@ class CenaAPI {
             
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("No data or statusCode not OK")
-                
-                // self.register(credentials: )
+                self.register(credentials: credentials)
                 return
             }
-            do {
-                let JWToken = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .punctuationCharacters)
-                print(JWToken!)
-                globalToken = JWToken!
-            }
+            let JWTToken = self.decodeJWT(data: data)
+            AuthController().savePassword(username: credentials.password, token: JWTToken)
         }
         task.resume()
+    }
+    
+    func decodeJWT(data: Data) -> String {
+        guard let JWToken = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .punctuationCharacters) else {
+                print("Could not process JWT token")
+                return ""
+            }
+        return JWToken
     }
     
     func saveCloudKitIdentifier() {

@@ -79,13 +79,12 @@ class TutorialViewController: CustomTransitionViewController {
         self.coachMarksController.stop(immediately: true)
     }
     
-    @IBAction func finishTutorialAction(_ sender: UIButton) {
-         guard let user_id = UserDefaults.standard.value(forKey: "username") as? String else {
+    @IBAction func login(_ sender: UIButton) {
+        guard let credentials = AuthController().getCredentials() else {
             print("Could not get iCloud identifier")
             return
         }
-        let credentials = Identifier(identifier: user_id)
-        CenaAPI().register(credentials: credentials)
+        CenaAPI().login(credentials: credentials)
         
     }
     

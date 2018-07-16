@@ -17,9 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
+        print("Is already a user? \(hasLoginKey)")
         let viewController =  hasLoginKey ? storyboard.instantiateViewController(withIdentifier: "SummaryViewController") : storyboard.instantiateViewController(withIdentifier: "StartViewController")
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
+        login()
         return true
+    }
+    
+    func login() {
+        guard let credentials = AuthController().getCredentials() else {
+            print("Could not get iCloud identifier")
+            return
+        }
+        CenaAPI().login(credentials: credentials)
     }
 }
