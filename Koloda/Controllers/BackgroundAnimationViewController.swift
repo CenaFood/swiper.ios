@@ -52,19 +52,6 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         
     }
 
-    func getCloudKitIdentifier() {
-        let container = CKContainer.default()
-        container.fetchUserRecordID { (recordID, error) in
-            guard let recordID = recordID else {
-                NSLog("Error: \(String(describing: error))")
-                return
-            }
-            self.userID = recordID.recordName
-            print(self.userID)
-        }
-    }
-
-
     func setupQuestionLabel() {
         questionLabel.text = "Would you eat this here and now?"
         let size = UIFont.labelFontSize
@@ -114,6 +101,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     func setupAnnotations() {
         for challenge in challenges {
             let userID: String = self.credentials?.email ?? DummyUser.userID
+            
+//            let userID: String = DummyUser.userID
             let annotation: Annotation = Annotation(challengeID: challenge.id, userID: userID, answer: "", location: nil, localTime: nil)
             annotations.append(annotation)
         }

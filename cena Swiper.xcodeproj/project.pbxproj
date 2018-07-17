@@ -202,7 +202,6 @@
 			children = (
 				AF5819A91FDEEDD6004ECE1F /* Operations */,
 				AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */,
-				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
 				AFAAC4C6205FD98A00157514 /* KeychainPasswordItem.swift */,
 			);
 			path = Services;
@@ -233,6 +232,7 @@
 				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
 				AF5231A81F9A1190001A184D /* StartViewController.swift */,
 				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
+				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
