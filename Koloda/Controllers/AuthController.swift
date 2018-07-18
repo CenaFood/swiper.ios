@@ -11,7 +11,7 @@ import Foundation
 class AuthController {
     public func getJWTToken() -> String {
         #if IOS_SIMULATOR
-        return UserDefaults.standard.object(forKey: "username") as! String
+            return UserDefaults.standard.object(forKey: "username") as! String
         #else
             guard let userId = UserDefaults.standard.value(forKey: "username") as? String else {
                 print("Could not get iCloud identifier")

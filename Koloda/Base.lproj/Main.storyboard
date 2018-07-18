@@ -29,7 +29,14 @@
                                     <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WoQ-yc-oMB">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="96"/>
                                         <items>
-                                            <navigationItem title="Discover" id="qgt-ol-oek"/>
+                                            <navigationItem title="Discover" id="qgt-ol-oek">
+                                                <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="S52-XM-YN3">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="refreshButtonTapped:" destination="dh2-Wx-deB" id="7XD-j6-YBj"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you eat this here and now?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9Y-Xh-0Jj">
@@ -85,6 +92,7 @@
                     <connections>
                         <outlet property="kolodaView" destination="20n-bX-GNa" id="Sxi-xb-e6g"/>
                         <outlet property="questionLabel" destination="x9Y-Xh-0Jj" id="Ghd-Gm-aR8"/>
+                        <outlet property="refreshButton" destination="S52-XM-YN3" id="9CZ-De-wLh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd5-80-mNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

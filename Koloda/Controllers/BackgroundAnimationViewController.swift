@@ -5,6 +5,7 @@ import TransitionButton
 import Kingfisher
 import CoreLocation
 import CloudKit
+import Reachability
 
 private let numberOfStartingCards: Int = 10
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -21,12 +22,16 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var questionLabel: UILabel!
-
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    
 
     fileprivate var challenges: [Challenge] = []
     fileprivate var annotations: [Annotation] = []
     fileprivate var dataSource: [URL] = []
     fileprivate var credentials: Credentials? = AuthController().getCredentials()
+    fileprivate let default_image: UIImage = UIImage(named: "summary")!
+    let reachability = Reachability()!
+    
 
 
     //MARK: Lifecycle
@@ -45,11 +50,11 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         fetchImages()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if CLLocationManager.authorizationStatus() == .denied {
-            askUserForPermissionAlert()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if reachability.connection == .none {
+            self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
         }
-        
     }
 
     func setupQuestionLabel() {
@@ -67,22 +72,12 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     }
 
 
-    private func askUserForPermissionAlert() {
-
-        let alert = UIAlertController(title: "Location Services Off", message: "Turn on location settings in cena",
+    private func showNoInteretConnectionAlert(message: String) {
+        let alert = UIAlertController(title: "No Internet Connection", message: message,
                 preferredStyle: .alert)
-        let settingsAction = UIAlertAction(title: "Go To Settings", style: .default) { (_) -> Void in
-            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl)
-            } else {
-                print("Error: Could not open Cena settings")
-            }
-        }
-        alert.addAction(settingsAction)
-        self.present(alert, animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
 
 
     }
@@ -100,9 +95,9 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 
     func setupAnnotations() {
         for challenge in challenges {
-            let userID: String = self.credentials?.email ?? DummyUser.userID
-            
-//            let userID: String = DummyUser.userID
+            // TODO: uncomment again when userID bug is fixed
+//            let userID: String = self.credentials?.email ?? DummyUser.userID
+            let userID: String = DummyUser.userID
             let annotation: Annotation = Annotation(challengeID: challenge.id, userID: userID, answer: "", location: nil, localTime: nil)
             annotations.append(annotation)
         }
@@ -115,7 +110,11 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     }
 
     func updateAnnotation(index: Int, answer: String) {
-        let location = Location(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!)
+        guard let latitude = currentLocation?.coordinate.latitude, let longitude = currentLocation?.coordinate.longitude else {
+            print("Error: Could not determine the location")
+            return
+        }
+        let location = Location(latitude: latitude, longitude: longitude)
         annotations[index].answer = answer
         annotations[index].latitude = location.latitude
         annotations[index].longitude = location.longitude
@@ -144,7 +143,25 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
     @IBAction func dismissViewController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        if reachability.connection == .none {
+            self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
+            return
+        }
+        refreshButton.isEnabled = false
+        guard let credentials = AuthController().getCredentials() else {
+            print("Could not get iCloud identifier")
+            return
+        }
+        CenaAPI().login(credentials: credentials)
+        fetchImages()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.refreshButton.isEnabled = true
+        }
+    }
 }
+
+
 
 
 //MARK: KolodaViewDelegate
@@ -153,7 +170,6 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         fetchImages()
     }
-
 
     func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
         return true
@@ -175,6 +191,11 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
     }
 
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        if reachability.connection == .none {
+            self.kolodaView.revertAction()
+            self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
+            return
+        }
         if direction == SwipeResultDirection.right {
             updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "Yes")
         } else if direction == SwipeResultDirection.left {
@@ -203,6 +224,7 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
 
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let view: UIImageView = UIImageView()
+        view.kf.indicatorType = .activity
         view.kf.setImage(with: dataSource[index])
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8
@@ -211,7 +233,10 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
 
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        return Bundle.main.loadNibNamed("CustomOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        let view = Bundle.main.loadNibNamed("CustomOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        view?.layer.cornerRadius = 8
+        view?.clipsToBounds = true
+        return view
     }
 }
 

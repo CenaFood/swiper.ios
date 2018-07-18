@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if CLLocationManager.authorizationStatus() == .denied {
+            askUserForPermissionAlert()
+        }
+    }
+    
     func login() {
         guard let credentials = AuthController().getCredentials() else {
             print("Could not get iCloud identifier")
@@ -32,4 +39,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         CenaAPI().login(credentials: credentials)
     }
+    
+    private func askUserForPermissionAlert() {
+        
+        let alert = UIAlertController(title: "Location Services Off", message: "Turn on location settings in cena",
+                                      preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Go To Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl)
+            } else {
+                print("Error: Could not open Cena settings")
+            }
+        }
+        alert.addAction(settingsAction)
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+}
 }

@@ -155,8 +155,6 @@ class CenaAPI {
         
     func getAllChallenges(completion: @escaping ([Challenge]) -> ()) {
         let task = session.dataTask(with: API.getAllChallenges.asURLRequest()) { (data, response, error) in
-            let resp = response as? HTTPURLResponse
-            print(resp!.statusCode)
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("No data or statusCode not OK")
                 return
@@ -223,9 +221,6 @@ class CenaAPI {
     func register(credentials: Credentials) {
         let request = API.register(credentials).asURLRequest()
         let task = session.dataTask(with: request) { (data, response, error) in
-            let resp = response as? HTTPURLResponse
-            print(resp!.statusCode)
-            
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("No data or statusCode not OK")
                 return
@@ -241,9 +236,6 @@ class CenaAPI {
     func login(credentials: Credentials) {
         let request = API.login(credentials).asURLRequest()
         let task = session.dataTask(with: request) { (data, response, error) in
-            let resp = response as? HTTPURLResponse
-            print(resp!.statusCode)
-            
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("No data or statusCode not OK")
                 self.register(credentials: credentials)

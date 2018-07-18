@@ -1,3 +1,4 @@
+platform :ios, '11.0'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
@@ -8,6 +9,7 @@ target 'cena' do
   pod 'Kingfisher', '~> 4.0'
   pod 'Instructions', '~> 1.0.0'
   pod 'JWTDecode', '~> 2.1'
+  pod 'ReachabilitySwift'
 end
 
 post_install do |installer|

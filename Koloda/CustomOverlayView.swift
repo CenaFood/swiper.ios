@@ -17,10 +17,8 @@ class CustomOverlayView: OverlayView {
 
     @IBOutlet lazy var overlayImageView: UIImageView! = {
         [unowned self] in
-        
         var imageView = UIImageView(frame: self.bounds)
         self.addSubview(imageView)
-        
         return imageView
         }()
     
