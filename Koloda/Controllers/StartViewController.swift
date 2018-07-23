@@ -19,7 +19,8 @@ class StartViewController: UIViewController {
 //    let termsAndPolicyLabel = ActiveLabel()
     
     @IBOutlet weak var welcomeTitle: UILabel!
-    @IBOutlet weak var startTutorialButton: UIButton!
+    @IBOutlet weak var startTutorialButton: TransitionButton!
+    
     @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
     
     // MARK: Lifecycle
@@ -50,7 +51,24 @@ class StartViewController: UIViewController {
     // MARK: IBActions
     @IBAction func startTutorialAction(_ sender: UIButton) {
         // TODO: Switch to promises or reactive programming
-        AuthController().saveCloudKitIdentifier()
+        startTutorialButton.startAnimation() // 2: Then start the animation when the user tap the button
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+//        let nextViewController = TutorialViewController()
+//        self.present(nextViewController, animated: true, completion: nil)
+//        backgroundQueue.async {
+//            AuthController().saveCloudKitIdentifier()
+//            sleep(1)
+//            DispatchQueue.main.async {
+//                // 4: Stop the animation, here you have three options for the `animationStyle` property:
+//                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+//                // .shake: when you want to reflect to the user that the task did not complete successfly
+//                // .normal
+//                self.startTutorialButton.stopAnimation(animationStyle: .expand, completion: {
+//                    let nextViewController = TutorialViewController()
+//                    self.present(nextViewController, animated: true, completion: nil)
+//                })
+//            }
+//        }
     }
     
     //MARK: Private methods

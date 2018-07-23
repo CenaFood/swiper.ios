@@ -221,7 +221,7 @@
                                                 <color key="textColor" red="1" green="0.99997999999999998" blue="0.99999000000000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r" customClass="TransitionButton" customModule="TransitionButton">
                                                 <rect key="frame" x="0.0" y="32" width="343" height="60"/>
                                                 <color key="backgroundColor" name="pink"/>
                                                 <constraints>
@@ -233,7 +233,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="f1f-di-9OF"/>
-                                                    <segue destination="dcU-1G-76n" kind="presentation" id="lKk-qX-ljN"/>
+                                                    <segue destination="dcU-1G-76n" kind="presentation" id="G2y-RJ-yei"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -251,7 +251,7 @@
                         <viewLayoutGuide key="safeArea" id="KQ6-0N-mF8"/>
                     </view>
                     <connections>
-                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="l7s-Hm-SF5"/>
+                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="z2z-bj-045"/>
                         <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
                     </connections>
                 </viewController>
@@ -424,6 +424,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lKk-qX-ljN"/>
+        <segue reference="G2y-RJ-yei"/>
     </inferredMetricsTieBreakers>
 </document>
