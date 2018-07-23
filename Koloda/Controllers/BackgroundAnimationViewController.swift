@@ -56,6 +56,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
             self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
         }
     }
+    
+    //MARK: Private functions
 
     func setupQuestionLabel() {
         questionLabel.text = "Would you eat this here and now?"
@@ -78,8 +80,6 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true)
-
-
     }
 
     func fetchImages() {
@@ -91,6 +91,31 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
             self.kolodaView.resetCurrentCardIndex()
         }
 
+    }
+    
+    private func isConnectedToInternet() -> Bool {
+        return reachability.connection != .none
+    }
+    
+    private func hasLocationServiceAllowed() -> Bool {
+        return CLLocationManager.authorizationStatus() != .denied
+    }
+    
+    private func askForLocationPermission() {
+        let alert = UIAlertController(title: "Location Services Off", message: "Turn on location settings in cena",
+                                      preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Go To Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl)
+            } else {
+                print("Error: Could not open Cena settings")
+            }
+        }
+        alert.addAction(settingsAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
     func setupAnnotations() {
@@ -144,13 +169,13 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        if reachability.connection == .none {
+        if !isConnectedToInternet() {
             self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
             return
         }
         refreshButton.isEnabled = false
+        
         guard let credentials = AuthController().getCredentials() else {
-            print("Could not get iCloud identifier")
             return
         }
         CenaAPI().login(credentials: credentials)
@@ -191,7 +216,12 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
     }
 
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
-        if reachability.connection == .none {
+        if !hasLocationServiceAllowed() {
+            self.kolodaView.revertAction()
+            askForLocationPermission()
+            return
+        }
+        if !isConnectedToInternet() {
             self.kolodaView.revertAction()
             self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
             return

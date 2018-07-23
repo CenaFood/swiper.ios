@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 import TransitionButton
+import ActiveLabel
+import RLBAlertsPickers
 
 struct KeychhainConfiguration {
     static let serviceName = "CenaSwiper"
@@ -12,21 +14,28 @@ class StartViewController: UIViewController {
     var passwordItems: [KeychainPasswordItem] = []
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
+    let customType = ActiveType.custom(pattern: Legal.TermsAndPrivacyRegex)
+    
+//    let termsAndPolicyLabel = ActiveLabel()
     
     @IBOutlet weak var welcomeTitle: UILabel!
-    @IBOutlet weak var startView: UIImageView!
     @IBOutlet weak var startTutorialButton: UIButton!
+    @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .white
-        setupStartImage()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         setupStartButton()
-        //CenaAPI().saveCloudKitIdentifier()
-        testAPI()
-        
+        setupTermsAndPolicyLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        termsAndPolicyLabel.handleCustomTap(for: customType) { legalType in
+            self.showLegalAlert(legalType: legalType)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,14 +46,35 @@ class StartViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
+    
+    // MARK: IBActions
     @IBAction func startTutorialAction(_ sender: UIButton) {
-        
+        // TODO: Switch to promises or reactive programming
+        AuthController().saveCloudKitIdentifier()
     }
     
     //MARK: Private methods
     
-    func registerUser() {
-        
+    func setupTermsAndPolicyLabel() {
+        termsAndPolicyLabel.customize { label in
+            label.numberOfLines = 0
+            label.enabledTypes = [customType]
+            label.text = "By using this application you agree to our \(Legal.TermsOfService) and \(Legal.PrivacyPolicy)"
+            label.textColor = .white
+            label.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
+            label.customColor[customType] = UIColor.init(named: "tealBlue")
+        }
+    }
+    
+    func showLegalAlert(legalType: String) {
+        let alert = UIAlertController(style: .actionSheet)
+        guard let legalText: [AttributedTextBlock] = Legal.legalTypeToText[legalType] else {
+            print("Error: wrong legalType: \(legalType)")
+            return
+        }
+        alert.addTextViewer(text: .attributedText(legalText))
+        alert.addAction(title: "OK", style: .cancel)
+        alert.show()
     }
     
     func setupTitle() {
@@ -56,15 +86,9 @@ class StartViewController: UIViewController {
         let size = UIFont.buttonFontSize
         let font = UIFont.systemFont(ofSize: size)
         startTutorialButton.titleLabel?.font = font
-        startTutorialButton.setTitle("Start Tutorial", for: .normal)
+        startTutorialButton.setTitle("Accept And Start Tutorial", for: .normal)
     }
     
-    func setupStartImage() {
-        startView.layer.cornerRadius = 8.0
-        startView.clipsToBounds = true
-        let startImage = UIImage(named: "start")!
-         startView.image = startImage
-    }
     
     func testAPI() {
         let email = "helloichbins123"

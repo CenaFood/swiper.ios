@@ -10,6 +10,8 @@ target 'cena' do
   pod 'Instructions', '~> 1.0.0'
   pod 'JWTDecode', '~> 2.1'
   pod 'ReachabilitySwift'
+  pod 'ActiveLabel'
+  pod 'RLBAlertsPickers'
 end
 
 post_install do |installer|

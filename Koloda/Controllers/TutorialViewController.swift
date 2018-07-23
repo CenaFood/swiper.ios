@@ -71,20 +71,15 @@ class TutorialViewController: CustomTransitionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.coachMarksController.start(on: self)
+        // TODO: Switch to promises or reactive programming
+        if !AuthController().isRegistered() {
+            AuthController().saveCloudKitIdentifier()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.coachMarksController.stop(immediately: true)
-    }
-    
-    @IBAction func login(_ sender: UIButton) {
-        guard let credentials = AuthController().getCredentials() else {
-            print("Could not get iCloud identifier")
-            return
-        }
-        CenaAPI().login(credentials: credentials)
-        
     }
     
     //MARK: IBActions

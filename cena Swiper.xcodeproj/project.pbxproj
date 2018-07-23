@@ -18,6 +18,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */; };
 		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
 		AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FD2056E0EA0033FDA5 /* Credentials.swift */; };
 		AF4985002056E4CF0033FDA5 /* APIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FF2056E4CF0033FDA5 /* APIBase.swift */; };
@@ -38,7 +39,6 @@
 		AFBED51B20E0E01400F1B55C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51A20E0E01400F1B55C /* Config.swift */; };
 		AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51D20E0EC7500F1B55C /* AuthController.swift */; };
 		AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */; };
-		AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */; };
 		BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +64,7 @@
 		6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		AF4984FD2056E0EA0033FDA5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		AF4984FF2056E4CF0033FDA5 /* APIBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBase.swift; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		AFBED51D20E0EC7500F1B55C /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AFD480592031EFB20090E5D4 /* cena.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cena.entitlements; sourceTree = "<group>"; };
 		AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6781607B5327BAF503C32E3 /* Koloda.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Koloda.podspec; path = ../Koloda.podspec; sourceTree = "<group>"; };
 		FD6C1F0A0D51AE17226C7CE9 /* Pods-cena.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,10 +137,10 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */,
 				4420661B1B44577500FD4CAD /* OverlayView.xib */,
 				44B5EC2A1B660C9100895E3D /* CustomOverlayView.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				AFFC62D11FB5FAA9002A22AB /* SignupViewController.swift */,
 			);
 			name = "cena swiper";
 			path = Koloda;
@@ -310,6 +310,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				4420661D1B44577500FD4CAD /* OverlayView.xib in Resources */,
 				44B5EC2B1B660C9100895E3D /* CustomOverlayView.xib in Resources */,
+				AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -343,10 +344,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/RLBAlertsPickers/RLBAlertsPickers.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
@@ -354,10 +357,12 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RLBAlertsPickers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
@@ -375,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFC62D21FB5FAA9002A22AB /* SignupViewController.swift in Sources */,
 				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
 				AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */,
 				AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */,

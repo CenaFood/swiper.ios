@@ -16,11 +16,9 @@ import JWTDecode
 private var globalToken = ""
 
 class CenaAPI {
-    //private let queue = OperationQueue()
     private let currentDevice = DCDevice.current
     
     private struct Response: Codable {
-        //let test: [Challenge]?
         let image: [Image?]
     }
     
@@ -255,16 +253,6 @@ class CenaAPI {
         return JWToken
     }
     
-    func saveCloudKitIdentifier() {
-        let container = CKContainer.default()
-        container.fetchUserRecordID {(recordID, error) in
-            guard let recordID = recordID else {
-                NSLog("Error: \(String(describing: error))")
-                return
-            }
-            UserDefaults.standard.setValue(recordID.recordName, forKey: "username")
-        }
-    }
     
     func generateToken(completion: @escaping (String) -> ()) {
         guard currentDevice.isSupported else {

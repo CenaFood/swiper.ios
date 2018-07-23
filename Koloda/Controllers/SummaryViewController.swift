@@ -46,6 +46,12 @@ class SummaryViewController: UIViewController {
         let startImage = UIImage(named: "summary")!
         startView.image = startImage
     }
+    
+    //MARK: IBActions
+    
+    @IBAction func discoverButtonPressed(_ sender: UIButton) {
+        AuthController().login()
+    }
 }
 
 

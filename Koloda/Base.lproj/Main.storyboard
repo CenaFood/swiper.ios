@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5uR-im-idW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5uR-im-idW">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,10 +16,6 @@
         <scene sceneID="Tzl-PZ-ig6">
             <objects>
                 <viewController storyboardIdentifier="cenaSwiper" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dh2-Wx-deB" customClass="BackgroundAnimationViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OPM-HU-f7U"/>
-                        <viewControllerLayoutGuide type="bottom" id="gMg-MP-KSD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PAT-Xa-b2g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,11 +80,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gMg-MP-KSD" firstAttribute="top" secondItem="8pa-fh-GTr" secondAttribute="bottom" id="0Bf-8D-wwp"/>
+                            <constraint firstItem="aDj-ln-GDm" firstAttribute="bottom" secondItem="8pa-fh-GTr" secondAttribute="bottom" id="0Bf-8D-wwp"/>
                             <constraint firstItem="8pa-fh-GTr" firstAttribute="leading" secondItem="PAT-Xa-b2g" secondAttribute="leadingMargin" id="446-yN-ih9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8pa-fh-GTr" secondAttribute="trailing" id="E6i-P0-fOZ"/>
-                            <constraint firstItem="8pa-fh-GTr" firstAttribute="top" secondItem="OPM-HU-f7U" secondAttribute="bottom" id="b3f-sD-c1Y"/>
+                            <constraint firstItem="8pa-fh-GTr" firstAttribute="top" secondItem="aDj-ln-GDm" secondAttribute="top" id="b3f-sD-c1Y"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="aDj-ln-GDm"/>
                     </view>
                     <connections>
                         <outlet property="kolodaView" destination="20n-bX-GNa" id="Sxi-xb-e6g"/>
@@ -103,10 +101,6 @@
         <scene sceneID="Eo4-eU-0BW">
             <objects>
                 <viewController id="fxe-os-rgH" userLabel="Signup View Controller" customClass="SignupViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3O2-2Q-5tV"/>
-                        <viewControllerLayoutGuide type="bottom" id="o6u-d9-PcC"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="61z-TP-084">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,10 +168,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="TTZ-d3-N1y" secondAttribute="trailing" id="3VR-pF-x2M"/>
-                            <constraint firstItem="o6u-d9-PcC" firstAttribute="top" secondItem="TTZ-d3-N1y" secondAttribute="bottom" id="RsD-pY-SXT"/>
+                            <constraint firstItem="uDi-Mn-a03" firstAttribute="bottom" secondItem="TTZ-d3-N1y" secondAttribute="bottom" id="RsD-pY-SXT"/>
                             <constraint firstItem="TTZ-d3-N1y" firstAttribute="leading" secondItem="61z-TP-084" secondAttribute="leadingMargin" id="fx9-kJ-kKR"/>
-                            <constraint firstItem="TTZ-d3-N1y" firstAttribute="top" secondItem="3O2-2Q-5tV" secondAttribute="bottom" id="ish-0I-dH6"/>
+                            <constraint firstItem="TTZ-d3-N1y" firstAttribute="top" secondItem="uDi-Mn-a03" secondAttribute="top" id="ish-0I-dH6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="uDi-Mn-a03"/>
                     </view>
                     <navigationItem key="navigationItem" title="Signup" id="wpT-Uu-hvA"/>
                     <connections>
@@ -193,41 +188,56 @@
         <scene sceneID="clt-H7-lLA">
             <objects>
                 <viewController storyboardIdentifier="StartViewController" id="5uR-im-idW" customClass="StartViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sf4-jJ-mgt"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ryr-hS-3QC"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8se-6U-LcY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nt6-qJ-gWy">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nt6-qJ-gWy">
                                 <rect key="frame" x="16" y="52" width="343" height="718"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" barStyle="black" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqv-zw-vsj">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="96"/>
-                                        <items>
-                                            <navigationItem title="Welcome to cena" id="XOP-aT-JGY"/>
-                                        </items>
-                                    </navigationBar>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="g4A-Cs-Uuh">
-                                        <rect key="frame" x="0.0" y="104" width="343" height="525.66666666666663"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
-                                        <rect key="frame" x="0.0" y="637.66666666666663" width="343" height="80.333333333333371"/>
-                                        <color key="backgroundColor" name="pink"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="qYz-G3-dFy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Start tutorial">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="UVE-3W-q8s"/>
-                                            <segue destination="dcU-1G-76n" kind="presentation" id="lKk-qX-ljN"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ARf-EA-d72">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Welcome To Cena" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIh-fZ-rjt">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's together discover the food you like!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yg-Sf-SDf">
+                                                <rect key="frame" x="0.0" y="48.666666666666671" width="343" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="k7K-ZN-mgq">
+                                        <rect key="frame" x="0.0" y="626" width="343" height="92"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg4-NK-CbG" customClass="ActiveLabel" customModule="ActiveLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.99997999999999998" blue="0.99999000000000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
+                                                <rect key="frame" x="0.0" y="32" width="343" height="60"/>
+                                                <color key="backgroundColor" name="pink"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="qYz-G3-dFy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="Accept And Start Tutorial">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="f1f-di-9OF"/>
+                                                    <segue destination="dcU-1G-76n" kind="presentation" id="lKk-qX-ljN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -235,13 +245,14 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="nt6-qJ-gWy" secondAttribute="trailing" id="DTV-Lw-ONg"/>
                             <constraint firstItem="nt6-qJ-gWy" firstAttribute="leading" secondItem="8se-6U-LcY" secondAttribute="leadingMargin" id="jvo-Di-eEr"/>
-                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="top" secondItem="sf4-jJ-mgt" secondAttribute="bottom" constant="8" id="wPG-NF-8Cu"/>
-                            <constraint firstItem="Ryr-hS-3QC" firstAttribute="top" secondItem="nt6-qJ-gWy" secondAttribute="bottom" constant="8" id="wSX-JE-k3j"/>
+                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="top" secondItem="KQ6-0N-mF8" secondAttribute="top" constant="8" id="wPG-NF-8Cu"/>
+                            <constraint firstItem="KQ6-0N-mF8" firstAttribute="bottom" secondItem="nt6-qJ-gWy" secondAttribute="bottom" constant="8" id="wSX-JE-k3j"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="KQ6-0N-mF8"/>
                     </view>
                     <connections>
                         <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="l7s-Hm-SF5"/>
-                        <outlet property="startView" destination="g4A-Cs-Uuh" id="P3a-tC-cvW"/>
+                        <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-fZ-WQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,10 +263,6 @@
         <scene sceneID="QWH-Aj-Ybe">
             <objects>
                 <viewController id="dcU-1G-76n" userLabel="Tutorial" customClass="TutorialViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7iy-A4-a8X"/>
-                        <viewControllerLayoutGuide type="bottom" id="LH4-uQ-f7X"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gWl-vi-2EB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +320,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="login:" destination="dcU-1G-76n" eventType="touchUpInside" id="B2a-KV-gxk"/>
                                             <segue destination="hWl-AS-oZ0" kind="show" id="S63-ZW-dhb"/>
                                         </connections>
                                     </button>
@@ -323,10 +329,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Rb6-Pu-klu" secondAttribute="trailing" id="2Hn-Pg-zx3"/>
-                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="top" secondItem="7iy-A4-a8X" secondAttribute="bottom" id="VyB-z6-RPL"/>
+                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="top" secondItem="8Bi-KF-hco" secondAttribute="top" id="VyB-z6-RPL"/>
                             <constraint firstItem="Rb6-Pu-klu" firstAttribute="leading" secondItem="gWl-vi-2EB" secondAttribute="leadingMargin" id="nbi-qx-bxP"/>
-                            <constraint firstItem="LH4-uQ-f7X" firstAttribute="top" secondItem="Rb6-Pu-klu" secondAttribute="bottom" id="pQt-pH-fCW"/>
+                            <constraint firstItem="8Bi-KF-hco" firstAttribute="bottom" secondItem="Rb6-Pu-klu" secondAttribute="bottom" id="pQt-pH-fCW"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Bi-KF-hco"/>
                     </view>
                     <navigationItem key="navigationItem" id="sxA-Bi-AFe"/>
                     <connections>
@@ -345,10 +352,6 @@
         <scene sceneID="xZe-pr-Vdx">
             <objects>
                 <viewController storyboardIdentifier="SummaryViewController" id="hWl-AS-oZ0" userLabel="Summary" customClass="SummaryViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3tq-KT-mAu"/>
-                        <viewControllerLayoutGuide type="bottom" id="U2t-Ra-nKB"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KvO-2o-9Nb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,6 +386,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="discoverButtonPressed:" destination="hWl-AS-oZ0" eventType="touchUpInside" id="FxB-1P-WCg"/>
                                             <segue destination="dh2-Wx-deB" kind="presentation" id="NaC-Rm-ygc"/>
                                         </connections>
                                     </button>
@@ -393,9 +397,10 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="K0n-gH-Vyh" secondAttribute="trailing" id="C18-A3-gXN"/>
                             <constraint firstItem="K0n-gH-Vyh" firstAttribute="leading" secondItem="KvO-2o-9Nb" secondAttribute="leadingMargin" id="a1d-g7-n4s"/>
-                            <constraint firstItem="K0n-gH-Vyh" firstAttribute="top" secondItem="3tq-KT-mAu" secondAttribute="bottom" constant="8" id="gVo-2j-zYd"/>
-                            <constraint firstItem="U2t-Ra-nKB" firstAttribute="top" secondItem="K0n-gH-Vyh" secondAttribute="bottom" constant="8" id="sbr-3i-9OY"/>
+                            <constraint firstItem="K0n-gH-Vyh" firstAttribute="top" secondItem="HdS-Ia-ywe" secondAttribute="top" constant="8" id="gVo-2j-zYd"/>
+                            <constraint firstItem="HdS-Ia-ywe" firstAttribute="bottom" secondItem="K0n-gH-Vyh" secondAttribute="bottom" constant="8" id="sbr-3i-9OY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="HdS-Ia-ywe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome to cena" largeTitleDisplayMode="always" id="P9z-v9-8SC">
                         <barButtonItem key="backBarButtonItem" title="Welcome" id="eIk-j3-Xfs"/>
@@ -419,6 +424,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bUO-HP-ggH"/>
+        <segue reference="lKk-qX-ljN"/>
     </inferredMetricsTieBreakers>
 </document>
