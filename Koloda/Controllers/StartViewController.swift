@@ -4,6 +4,7 @@ import SkyFloatingLabelTextField
 import TransitionButton
 import ActiveLabel
 import RLBAlertsPickers
+import PromiseKit
 
 struct KeychhainConfiguration {
     static let serviceName = "CenaSwiper"
@@ -15,6 +16,8 @@ class StartViewController: UIViewController {
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
     let customType = ActiveType.custom(pattern: Legal.TermsAndPrivacyRegex)
+    let alertTitle = "No Connection"
+    let alertMessage = "Please make sure that you are connected to the internet and that your icloud account is set up and try again."
     
 //    let termsAndPolicyLabel = ActiveLabel()
     
@@ -49,29 +52,34 @@ class StartViewController: UIViewController {
     
     
     // MARK: IBActions
-    @IBAction func startTutorialAction(_ sender: UIButton) {
-        // TODO: Switch to promises or reactive programming
-        startTutorialButton.startAnimation() // 2: Then start the animation when the user tap the button
+    @IBAction func startTutorialAction(_ button: TransitionButton) {
+        button.startAnimation()
         let backgroundQueue = DispatchQueue.global(qos: .background)
-//        let nextViewController = TutorialViewController()
-//        self.present(nextViewController, animated: true, completion: nil)
-//        backgroundQueue.async {
-//            AuthController().saveCloudKitIdentifier()
-//            sleep(1)
-//            DispatchQueue.main.async {
-//                // 4: Stop the animation, here you have three options for the `animationStyle` property:
-//                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
-//                // .shake: when you want to reflect to the user that the task did not complete successfly
-//                // .normal
-//                self.startTutorialButton.stopAnimation(animationStyle: .expand, completion: {
-//                    let nextViewController = TutorialViewController()
-//                    self.present(nextViewController, animated: true, completion: nil)
-//                })
-//            }
-//        }
+        backgroundQueue.async {
+            firstly {
+                AuthController().saveCloudKitIdentifier3()
+                }.done { userId -> Void in
+                    UserDefaults.standard.setValue(userId, forKey: "username")
+                    DispatchQueue.main.async {
+                        button.stopAnimation(animationStyle: .expand, completion: {
+                            self.performSegue(withIdentifier: "ShowTutorial", sender: nil)
+                        })
+                    }
+                    
+                }.catch { _ in
+                        DispatchQueue.main.async {
+                            button.stopAnimation(animationStyle: .shake, completion: {
+                                let alert = Util.createSimpleAlert(title: self.alertTitle, message: self.alertMessage)
+                                self.present(alert, animated: true)
+                            })
+                    }
+                    
+            }
+        }
     }
     
     //MARK: Private methods
+
     
     func setupTermsAndPolicyLabel() {
         termsAndPolicyLabel.customize { label in

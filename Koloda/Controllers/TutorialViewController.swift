@@ -71,10 +71,6 @@ class TutorialViewController: CustomTransitionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.coachMarksController.start(on: self)
-        // TODO: Switch to promises or reactive programming
-        if !AuthController().isRegistered() {
-            AuthController().saveCloudKitIdentifier()
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

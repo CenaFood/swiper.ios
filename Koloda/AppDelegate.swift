@@ -24,15 +24,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         return true
     }
-    
-    
-    func login() {
-        guard let credentials = AuthController().getCredentials() else {
-            print("Could not get iCloud identifier")
-            return
-        }
-        CenaAPI().login(credentials: credentials)
-    }
-    
-    
 }

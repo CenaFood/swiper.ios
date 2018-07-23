@@ -12,6 +12,7 @@ target 'cena' do
   pod 'ReachabilitySwift'
   pod 'ActiveLabel'
   pod 'RLBAlertsPickers'
+  pod "PromiseKit", "~> 6.0"
 end
 
 post_install do |installer|

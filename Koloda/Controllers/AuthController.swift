@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import UIKit
+import PromiseKit
 
 class AuthController {
     public func getJWTToken() -> String {
@@ -77,20 +78,26 @@ class AuthController {
         return UserDefaults.standard.value(forKey: "username") as? String
     }
     
-    func saveCloudKitIdentifier() {
-        #if IOS_SIMULATOR
-        UserDefaults.standard.setValue(DummyUser.userID, forKey: "username")
-        #else
-        let container = CKContainer.default()
-        container.fetchUserRecordID {(recordID, error) in
-            guard let recordID = recordID else {
-                NSLog("Error: \(String(describing: error))")
-                return
+    
+    func saveCloudKitIdentifier3() -> Promise<String> {
+        return Promise<String> { seal in
+            #if IOS_SIMULATOR
+            seal.fulfill(DummyUser.userID)
+            #else
+            let container = CKContainer.default()
+            container.fetchUserRecordID {(recordID, error) in
+                
+                if let recordID = recordID {
+                    seal.fulfill(recordID.recordName)
+                }
+                else if let error = error {
+                    NSLog("Error: \(String(describing: error))")
+                    seal.reject(error)
+                }
             }
-            UserDefaults.standard.setValue(recordID.recordName, forKey: "username")
+            #endif
+            }
         }
-        #endif
-    }
     
     public func getCredentials() -> Credentials? {
         #if IOS_SIMULATOR
