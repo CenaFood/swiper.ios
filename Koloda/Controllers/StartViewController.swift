@@ -18,7 +18,6 @@ class StartViewController: UIViewController {
     
 //    let termsAndPolicyLabel = ActiveLabel()
     
-    @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startTutorialButton: UIButton!
     @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
     
@@ -75,10 +74,6 @@ class StartViewController: UIViewController {
         alert.addTextViewer(text: .attributedText(legalText))
         alert.addAction(title: "OK", style: .cancel)
         alert.show()
-    }
-    
-    func setupTitle() {
-        welcomeTitle.layer.cornerRadius = 8.0
     }
     
     func setupStartButton() {

@@ -55,6 +55,8 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         if reachability.connection == .none {
             self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
         }
+        AuthController().login()
+        print("Hello darkness")
     }
     
     //MARK: Private functions

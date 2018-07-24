@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
         print("Is already a user? \(hasLoginKey)")
-        let viewController =  hasLoginKey ? storyboard.instantiateViewController(withIdentifier: "SummaryViewController") : storyboard.instantiateViewController(withIdentifier: "StartViewController")
+        let viewController =  hasLoginKey ? storyboard.instantiateViewController(withIdentifier: "StartTabBarController") : storyboard.instantiateViewController(withIdentifier: "StartViewController")
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
         return true

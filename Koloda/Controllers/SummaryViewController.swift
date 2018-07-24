@@ -12,17 +12,8 @@ class SummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .white
         setupStartImage()
-        setupStartButton()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+//        setupStartButton()
     }
     
     
@@ -53,6 +44,5 @@ class SummaryViewController: UIViewController {
         AuthController().login()
     }
 }
-
 
 
