@@ -27,6 +27,27 @@
 		AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */; };
 		AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AB1FDEEDF7004ECE1F /* QueryOperation.swift */; };
 		AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */; };
+		AF5FF3AB210896D70087366B /* ProjectStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3AA210896D70087366B /* ProjectStatusController.swift */; };
+		AF5FF3AD2108979B0087366B /* ChartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3AC2108979B0087366B /* ChartObject.swift */; };
+		AF5FF3B021089A230087366B /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3AF21089A230087366B /* Objects.plist */; };
+		AF5FF3CF2108AE720087366B /* EatFitSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3B32108AE6F0087366B /* EatFitSlideViewController.xib */; };
+		AF5FF3D02108AE720087366B /* EatFitSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3B42108AE6F0087366B /* EatFitSlideViewController.swift */; };
+		AF5FF3D12108AE720087366B /* EatFitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3B62108AE6F0087366B /* EatFitViewController.swift */; };
+		AF5FF3D22108AE720087366B /* EatFitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3B72108AE6F0087366B /* EatFitViewController.xib */; };
+		AF5FF3D32108AE720087366B /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3BA2108AE6F0087366B /* Tween.swift */; };
+		AF5FF3D42108AE720087366B /* UIView+YALAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3BD2108AE700087366B /* UIView+YALAppearance.swift */; };
+		AF5FF3D52108AE720087366B /* UIView+YALFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3BE2108AE700087366B /* UIView+YALFrames.swift */; };
+		AF5FF3D62108AE720087366B /* UILabel+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3BF2108AE700087366B /* UILabel+Animation.swift */; };
+		AF5FF3D72108AE720087366B /* CAAnimationGroup+Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C02108AE700087366B /* CAAnimationGroup+Sequence.swift */; };
+		AF5FF3D82108AE720087366B /* UIPageViewController+YALPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C32108AE710087366B /* UIPageViewController+YALPageController.swift */; };
+		AF5FF3D92108AE720087366B /* YALPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C42108AE710087366B /* YALPageController.swift */; };
+		AF5FF3DA2108AE720087366B /* RoundChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C62108AE710087366B /* RoundChartView.swift */; };
+		AF5FF3DB2108AE720087366B /* EatFitPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C72108AE710087366B /* EatFitPageControl.swift */; };
+		AF5FF3DC2108AE720087366B /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C82108AE710087366B /* SlideLabel.swift */; };
+		AF5FF3DD2108AE720087366B /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FF3C92108AE710087366B /* DropView.swift */; };
+		AF5FF3DE2108AE720087366B /* DIN Condensed Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3CC2108AE710087366B /* DIN Condensed Bold.ttf */; };
+		AF5FF3DF2108AE720087366B /* DIN Alternate Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3CD2108AE710087366B /* DIN Alternate Bold.ttf */; };
+		AF5FF3E02108AE720087366B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF5FF3CE2108AE720087366B /* Info.plist */; };
 		AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68009E1FE120A400F03CB4 /* Annotation.swift */; };
 		AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */; };
 		AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6A1FDABB55005FE69F /* Challenge.swift */; };
@@ -73,6 +94,28 @@
 		AF5819AA1FDEEDF6004ECE1F /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		AF5819AB1FDEEDF7004ECE1F /* QueryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOperation.swift; sourceTree = "<group>"; };
 		AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
+		AF5FF3AA210896D70087366B /* ProjectStatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusController.swift; sourceTree = "<group>"; };
+		AF5FF3AC2108979B0087366B /* ChartObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartObject.swift; sourceTree = "<group>"; };
+		AF5FF3AF21089A230087366B /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
+		AF5FF3B32108AE6F0087366B /* EatFitSlideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatFitSlideViewController.xib; sourceTree = "<group>"; };
+		AF5FF3B42108AE6F0087366B /* EatFitSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatFitSlideViewController.swift; sourceTree = "<group>"; };
+		AF5FF3B62108AE6F0087366B /* EatFitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatFitViewController.swift; sourceTree = "<group>"; };
+		AF5FF3B72108AE6F0087366B /* EatFitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EatFitViewController.xib; sourceTree = "<group>"; };
+		AF5FF3BA2108AE6F0087366B /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
+		AF5FF3BB2108AE700087366B /* EatFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EatFit.h; sourceTree = "<group>"; };
+		AF5FF3BD2108AE700087366B /* UIView+YALAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+YALAppearance.swift"; sourceTree = "<group>"; };
+		AF5FF3BE2108AE700087366B /* UIView+YALFrames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+YALFrames.swift"; sourceTree = "<group>"; };
+		AF5FF3BF2108AE700087366B /* UILabel+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Animation.swift"; sourceTree = "<group>"; };
+		AF5FF3C02108AE700087366B /* CAAnimationGroup+Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+Sequence.swift"; sourceTree = "<group>"; };
+		AF5FF3C32108AE710087366B /* UIPageViewController+YALPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+YALPageController.swift"; sourceTree = "<group>"; };
+		AF5FF3C42108AE710087366B /* YALPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YALPageController.swift; sourceTree = "<group>"; };
+		AF5FF3C62108AE710087366B /* RoundChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundChartView.swift; sourceTree = "<group>"; };
+		AF5FF3C72108AE710087366B /* EatFitPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatFitPageControl.swift; sourceTree = "<group>"; };
+		AF5FF3C82108AE710087366B /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
+		AF5FF3C92108AE710087366B /* DropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		AF5FF3CC2108AE710087366B /* DIN Condensed Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN Condensed Bold.ttf"; sourceTree = "<group>"; };
+		AF5FF3CD2108AE710087366B /* DIN Alternate Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN Alternate Bold.ttf"; sourceTree = "<group>"; };
+		AF5FF3CE2108AE720087366B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF68009E1FE120A400F03CB4 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenaAPI.swift; sourceTree = "<group>"; };
 		AFA61F6A1FDABB55005FE69F /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -127,6 +170,8 @@
 		607FACD21AFB9204008FA782 /* cena swiper */ = {
 			isa = PBXGroup;
 			children = (
+				AF5FF3AE21089A080087366B /* Resources */,
+				AF5FF379210894D10087366B /* Project Status */,
 				AFBED51C20E0EC4100F1B55C /* Controllers */,
 				AFA61F641FDAA0A1005FE69F /* Services */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -197,6 +242,129 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		AF5FF379210894D10087366B /* Project Status */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3BB2108AE700087366B /* EatFit.h */,
+				AF5FF3BC2108AE700087366B /* Extensions */,
+				AF5FF3CE2108AE720087366B /* Info.plist */,
+				AF5FF3CA2108AE710087366B /* Resources */,
+				AF5FF3B82108AE6F0087366B /* Various */,
+				AF5FF3C12108AE700087366B /* Vendors */,
+				AF5FF3B12108AE6F0087366B /* ViewController */,
+				AF5FF3C52108AE710087366B /* Views */,
+			);
+			path = "Project Status";
+			sourceTree = "<group>";
+		};
+		AF5FF3AE21089A080087366B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3AF21089A230087366B /* Objects.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF5FF3B12108AE6F0087366B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3B22108AE6F0087366B /* Slide */,
+				AF5FF3B52108AE6F0087366B /* PagingViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AF5FF3B22108AE6F0087366B /* Slide */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3B32108AE6F0087366B /* EatFitSlideViewController.xib */,
+				AF5FF3B42108AE6F0087366B /* EatFitSlideViewController.swift */,
+			);
+			path = Slide;
+			sourceTree = "<group>";
+		};
+		AF5FF3B52108AE6F0087366B /* PagingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3B62108AE6F0087366B /* EatFitViewController.swift */,
+				AF5FF3B72108AE6F0087366B /* EatFitViewController.xib */,
+			);
+			path = PagingViewController;
+			sourceTree = "<group>";
+		};
+		AF5FF3B82108AE6F0087366B /* Various */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3B92108AE6F0087366B /* Tween */,
+			);
+			path = Various;
+			sourceTree = "<group>";
+		};
+		AF5FF3B92108AE6F0087366B /* Tween */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3BA2108AE6F0087366B /* Tween.swift */,
+			);
+			path = Tween;
+			sourceTree = "<group>";
+		};
+		AF5FF3BC2108AE700087366B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3BD2108AE700087366B /* UIView+YALAppearance.swift */,
+				AF5FF3BE2108AE700087366B /* UIView+YALFrames.swift */,
+				AF5FF3BF2108AE700087366B /* UILabel+Animation.swift */,
+				AF5FF3C02108AE700087366B /* CAAnimationGroup+Sequence.swift */,
+			);
+			name = Extensions;
+			path = ../../../../tutorials/EatFit/EatFit/Extensions;
+			sourceTree = "<group>";
+		};
+		AF5FF3C12108AE700087366B /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3C22108AE700087366B /* YALPageController */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		AF5FF3C22108AE700087366B /* YALPageController */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3C32108AE710087366B /* UIPageViewController+YALPageController.swift */,
+				AF5FF3C42108AE710087366B /* YALPageController.swift */,
+			);
+			path = YALPageController;
+			sourceTree = "<group>";
+		};
+		AF5FF3C52108AE710087366B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3C62108AE710087366B /* RoundChartView.swift */,
+				AF5FF3C72108AE710087366B /* EatFitPageControl.swift */,
+				AF5FF3C82108AE710087366B /* SlideLabel.swift */,
+				AF5FF3C92108AE710087366B /* DropView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF5FF3CA2108AE710087366B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3CB2108AE710087366B /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF5FF3CB2108AE710087366B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AF5FF3CC2108AE710087366B /* DIN Condensed Bold.ttf */,
+				AF5FF3CD2108AE710087366B /* DIN Alternate Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AFA61F641FDAA0A1005FE69F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +388,7 @@
 				AFAAC4C8205FEFB100157514 /* Identifier.swift */,
 				AF4984FF2056E4CF0033FDA5 /* APIBase.swift */,
 				AFBED51A20E0E01400F1B55C /* Config.swift */,
+				AF5FF3AC2108979B0087366B /* ChartObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +402,7 @@
 				AF5231A81F9A1190001A184D /* StartViewController.swift */,
 				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
 				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
+				AF5FF3AA210896D70087366B /* ProjectStatusController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -308,8 +478,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				AF5FF3DF2108AE720087366B /* DIN Alternate Bold.ttf in Resources */,
+				AF5FF3B021089A230087366B /* Objects.plist in Resources */,
 				4420661D1B44577500FD4CAD /* OverlayView.xib in Resources */,
+				AF5FF3CF2108AE720087366B /* EatFitSlideViewController.xib in Resources */,
+				AF5FF3D22108AE720087366B /* EatFitViewController.xib in Resources */,
+				AF5FF3DE2108AE720087366B /* DIN Condensed Bold.ttf in Resources */,
 				44B5EC2B1B660C9100895E3D /* CustomOverlayView.xib in Resources */,
+				AF5FF3E02108AE720087366B /* Info.plist in Resources */,
 				AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -381,19 +557,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
+				AF5FF3D32108AE720087366B /* Tween.swift in Sources */,
+				AF5FF3AB210896D70087366B /* ProjectStatusController.swift in Sources */,
 				AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */,
 				AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
 				AFA61F711FDABC75005FE69F /* Project.swift in Sources */,
 				AF4985002056E4CF0033FDA5 /* APIBase.swift in Sources */,
+				AF5FF3DD2108AE720087366B /* DropView.swift in Sources */,
 				AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */,
+				AF5FF3AD2108979B0087366B /* ChartObject.swift in Sources */,
+				AF5FF3D72108AE720087366B /* CAAnimationGroup+Sequence.swift in Sources */,
 				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
+				AF5FF3DC2108AE720087366B /* SlideLabel.swift in Sources */,
+				AF5FF3D92108AE720087366B /* YALPageController.swift in Sources */,
 				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
 				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
 				AFBED51B20E0E01400F1B55C /* Config.swift in Sources */,
+				AF5FF3D62108AE720087366B /* UILabel+Animation.swift in Sources */,
 				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,
+				AF5FF3DB2108AE720087366B /* EatFitPageControl.swift in Sources */,
+				AF5FF3D12108AE720087366B /* EatFitViewController.swift in Sources */,
+				AF5FF3DA2108AE720087366B /* RoundChartView.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
+				AF5FF3D82108AE720087366B /* UIPageViewController+YALPageController.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,
@@ -401,10 +589,13 @@
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
 				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
+				AF5FF3D52108AE720087366B /* UIView+YALFrames.swift in Sources */,
+				AF5FF3D02108AE720087366B /* EatFitSlideViewController.swift in Sources */,
 				AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */,
 				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
 				AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */,
 				AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */,
+				AF5FF3D42108AE720087366B /* UIView+YALAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
