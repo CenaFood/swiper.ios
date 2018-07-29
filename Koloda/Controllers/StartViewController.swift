@@ -52,9 +52,9 @@ class StartViewController: UIViewController {
     @IBAction func startTutorialAction(_ button: TransitionButton) {
         button.startAnimation()
         let backgroundQueue = DispatchQueue.global(qos: .background)
-        backgroundQueue.async {
+        backgroundQueue.asyncAfter(deadline: .now() + 1) {
             firstly {
-                AuthController().saveCloudKitIdentifier3()
+                AuthController().saveCloudKitIdentifier()
                 }.done { userId -> Void in
                     UserDefaults.standard.setValue(userId, forKey: "username")
                     DispatchQueue.main.async {

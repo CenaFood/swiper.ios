@@ -90,6 +90,10 @@ class TutorialViewController: CustomTransitionViewController {
     @IBAction func noFoodButtonTapped() {
         kolodaView?.swipe(.up)
     }
+    
+    @IBAction func continueButtonPressed(_ sender: UIButton) {
+        AuthController().login()
+    }
 }
 
 

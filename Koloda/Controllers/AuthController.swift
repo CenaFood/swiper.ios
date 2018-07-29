@@ -79,7 +79,7 @@ class AuthController {
     }
     
     
-    func saveCloudKitIdentifier3() -> Promise<String> {
+    func saveCloudKitIdentifier() -> Promise<String> {
         return Promise<String> { seal in
             #if IOS_SIMULATOR
             seal.fulfill(DummyUser.userID)

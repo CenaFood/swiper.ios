@@ -67,9 +67,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R8R-QW-7tn" firstAttribute="bottom" secondItem="8pa-fh-GTr" secondAttribute="bottom" id="0Bf-8D-wwp"/>
-                            <constraint firstItem="8pa-fh-GTr" firstAttribute="leading" secondItem="PAT-Xa-b2g" secondAttribute="leadingMargin" id="446-yN-ih9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8pa-fh-GTr" secondAttribute="trailing" id="E6i-P0-fOZ"/>
+                            <constraint firstItem="R8R-QW-7tn" firstAttribute="bottom" secondItem="8pa-fh-GTr" secondAttribute="bottom" constant="16" id="0Bf-8D-wwp"/>
+                            <constraint firstItem="8pa-fh-GTr" firstAttribute="leading" secondItem="R8R-QW-7tn" secondAttribute="leading" constant="16" id="446-yN-ih9"/>
+                            <constraint firstItem="R8R-QW-7tn" firstAttribute="trailing" secondItem="8pa-fh-GTr" secondAttribute="trailing" constant="16" id="E6i-P0-fOZ"/>
                             <constraint firstItem="8pa-fh-GTr" firstAttribute="top" secondItem="R8R-QW-7tn" secondAttribute="top" constant="16" id="b3f-sD-c1Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R8R-QW-7tn"/>
@@ -216,11 +216,10 @@
                                                 <color key="textColor" red="1" green="0.99997999999999998" blue="0.99999000000000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-<<<<<<< HEAD
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-Ik-bxg">
                                                 <rect key="frame" x="0.0" y="32" width="288" height="60"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r">
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r" customClass="TransitionButton" customModule="TransitionButton">
                                                         <rect key="frame" x="32" y="0.0" width="224" height="60"/>
                                                         <color key="backgroundColor" name="pink"/>
                                                         <constraints>
@@ -232,35 +231,13 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="f1f-di-9OF"/>
-                                                            <segue destination="ZRF-1P-kG3" kind="presentation" id="lKk-qX-ljN"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-=======
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r" customClass="TransitionButton" customModule="TransitionButton">
-                                                <rect key="frame" x="0.0" y="32" width="343" height="60"/>
-                                                <color key="backgroundColor" name="pink"/>
->>>>>>> feature/Promises
                                                 <constraints>
                                                     <constraint firstItem="5RZ-J2-e4r" firstAttribute="leading" secondItem="ngi-Ik-bxg" secondAttribute="leading" constant="32" id="V37-dP-QnI"/>
                                                 </constraints>
-<<<<<<< HEAD
                                             </stackView>
-=======
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <state key="normal" title="Accept And Start Tutorial">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="2bl-A8-HGJ"/>
-                                                </connections>
-                                            </button>
->>>>>>> feature/Promises
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -268,17 +245,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="nt6-qJ-gWy" secondAttribute="trailing" id="DTV-Lw-ONg"/>
-                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="leading" secondItem="8se-6U-LcY" secondAttribute="leadingMargin" id="jvo-Di-eEr"/>
-                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="top" secondItem="nTH-se-HKc" secondAttribute="top" constant="8" id="wPG-NF-8Cu"/>
-                            <constraint firstItem="nTH-se-HKc" firstAttribute="bottom" secondItem="nt6-qJ-gWy" secondAttribute="bottom" constant="8" id="wSX-JE-k3j"/>
+                            <constraint firstItem="nTH-se-HKc" firstAttribute="trailing" secondItem="nt6-qJ-gWy" secondAttribute="trailing" constant="16" id="DTV-Lw-ONg"/>
+                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="leading" secondItem="nTH-se-HKc" secondAttribute="leading" constant="16" id="jvo-Di-eEr"/>
+                            <constraint firstItem="nt6-qJ-gWy" firstAttribute="top" secondItem="nTH-se-HKc" secondAttribute="top" constant="16" id="wPG-NF-8Cu"/>
+                            <constraint firstItem="nTH-se-HKc" firstAttribute="bottom" secondItem="nt6-qJ-gWy" secondAttribute="bottom" constant="16" id="wSX-JE-k3j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nTH-se-HKc"/>
                     </view>
                     <connections>
                         <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="z2z-bj-045"/>
                         <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
-                        <segue destination="dcU-1G-76n" kind="presentation" identifier="ShowTutorial" id="CdN-4b-o2l"/>
+                        <segue destination="ZRF-1P-kG3" kind="presentation" identifier="ShowTutorial" id="wV5-I2-wYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-fZ-WQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +325,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="W1G-II-GRj" kind="presentation" id="S63-ZW-dhb"/>
+                                                    <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="W52-B9-ml6"/>
+                                                    <segue destination="W1G-II-GRj" kind="presentation" id="e1d-vc-QtC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -361,10 +339,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="leading" secondItem="3kA-OJ-TsD" secondAttribute="leading" constant="16" id="1f7-DQ-aln"/>
-                            <constraint firstItem="3kA-OJ-TsD" firstAttribute="trailing" secondItem="Rb6-Pu-klu" secondAttribute="trailing" constant="16" id="Iyt-Cr-Wfq"/>
-                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="top" secondItem="3kA-OJ-TsD" secondAttribute="top" constant="16" id="J3A-Ch-25G"/>
-                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="bottom" secondItem="3kA-OJ-TsD" secondAttribute="bottom" id="YTt-M0-fTX"/>
+                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="top" secondItem="3kA-OJ-TsD" secondAttribute="top" constant="16" id="fNS-bW-814"/>
+                            <constraint firstItem="3kA-OJ-TsD" firstAttribute="trailing" secondItem="Rb6-Pu-klu" secondAttribute="trailing" constant="16" id="mhi-Ep-abp"/>
+                            <constraint firstItem="3kA-OJ-TsD" firstAttribute="bottom" secondItem="Rb6-Pu-klu" secondAttribute="bottom" constant="16" id="sF2-UA-sK6"/>
+                            <constraint firstItem="Rb6-Pu-klu" firstAttribute="leading" secondItem="3kA-OJ-TsD" secondAttribute="leading" constant="16" id="wBe-bd-QA5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3kA-OJ-TsD"/>
                     </view>
@@ -518,10 +496,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="KSl-tc-lYz"/>
-=======
-        <segue reference="CdN-4b-o2l"/>
->>>>>>> feature/Promises
+        <segue reference="wV5-I2-wYt"/>
     </inferredMetricsTieBreakers>
 </document>
