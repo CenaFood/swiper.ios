@@ -16,10 +16,9 @@ class StartViewController: UIViewController {
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
     let customType = ActiveType.custom(pattern: Legal.TermsAndPrivacyRegex)
-    let alertTitle = "No Connection"
-    let alertMessage = "Please make sure that you are connected to the internet and that your icloud account is set up and try again."
+    let alertTitle = "No iCloud Account"
+    let alertMessage = "It seems that you are not signed in with an iCloud account. We use your iCloud account to identify you so that you don't have to create any profile. Please sign in with an iCloud account and make sure that you are connected to the internet."
     
-//    let termsAndPolicyLabel = ActiveLabel()
     
     @IBOutlet weak var welcomeTitle: UILabel!
     @IBOutlet weak var startTutorialButton: TransitionButton!
@@ -113,17 +112,6 @@ class StartViewController: UIViewController {
         let font = UIFont.systemFont(ofSize: size)
         startTutorialButton.titleLabel?.font = font
         startTutorialButton.setTitle("Accept And Start Tutorial", for: .normal)
-    }
-    
-    
-    func testAPI() {
-        let email = "helloichbins123"
-        let password = "sindwirschonda123"
-        let credentials = Credentials(email: email, password: password)
-        //let credentials = Identifier(identifier: "_dd34f6e7e339e18c795d4f380403c091")
-        print("Starting test")
-        CenaAPI().register(credentials: credentials)
-        //CenaAPI().login(credentials: credentials)
     }
 }
 
