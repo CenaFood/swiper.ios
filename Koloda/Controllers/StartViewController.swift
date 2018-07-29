@@ -4,6 +4,7 @@ import SkyFloatingLabelTextField
 import TransitionButton
 import ActiveLabel
 import RLBAlertsPickers
+import PromiseKit
 
 struct KeychhainConfiguration {
     static let serviceName = "CenaSwiper"
@@ -15,10 +16,11 @@ class StartViewController: UIViewController {
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
     let customType = ActiveType.custom(pattern: Legal.TermsAndPrivacyRegex)
+    let alertTitle = "No iCloud Account"
+    let alertMessage = "It seems that you are not signed in with an iCloud account. We use your iCloud account to identify you so that you don't have to create any profile. Please sign in with an iCloud account and make sure that you are connected to the internet."
     
-//    let termsAndPolicyLabel = ActiveLabel()
-    
-    @IBOutlet weak var startTutorialButton: UIButton!
+    @IBOutlet weak var welcomeTitle: UILabel!
+    @IBOutlet weak var startTutorialButton: TransitionButton!
     @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
     
     // MARK: Lifecycle
@@ -47,12 +49,34 @@ class StartViewController: UIViewController {
     
     
     // MARK: IBActions
-    @IBAction func startTutorialAction(_ sender: UIButton) {
-        // TODO: Switch to promises or reactive programming
-        AuthController().saveCloudKitIdentifier()
+    @IBAction func startTutorialAction(_ button: TransitionButton) {
+        button.startAnimation()
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.async {
+            firstly {
+                AuthController().saveCloudKitIdentifier3()
+                }.done { userId -> Void in
+                    UserDefaults.standard.setValue(userId, forKey: "username")
+                    DispatchQueue.main.async {
+                        button.stopAnimation(animationStyle: .expand, completion: {
+                            self.performSegue(withIdentifier: "ShowTutorial", sender: nil)
+                        })
+                    }
+                    
+                }.catch { _ in
+                        DispatchQueue.main.async {
+                            button.stopAnimation(animationStyle: .shake, completion: {
+                                let alert = Util.createSimpleAlert(title: self.alertTitle, message: self.alertMessage)
+                                self.present(alert, animated: true)
+                            })
+                    }
+                    
+            }
+        }
     }
     
     //MARK: Private methods
+
     
     func setupTermsAndPolicyLabel() {
         termsAndPolicyLabel.customize { label in
@@ -82,17 +106,6 @@ class StartViewController: UIViewController {
         let font = UIFont.systemFont(ofSize: size)
         startTutorialButton.titleLabel?.font = font
         startTutorialButton.setTitle("Accept And Start Tutorial", for: .normal)
-    }
-    
-    
-    func testAPI() {
-        let email = "helloichbins123"
-        let password = "sindwirschonda123"
-        let credentials = Credentials(email: email, password: password)
-        //let credentials = Identifier(identifier: "_dd34f6e7e339e18c795d4f380403c091")
-        print("Starting test")
-        CenaAPI().register(credentials: credentials)
-        //CenaAPI().login(credentials: credentials)
     }
 }
 

@@ -216,6 +216,7 @@
                                                 <color key="textColor" red="1" green="0.99997999999999998" blue="0.99999000000000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+<<<<<<< HEAD
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-Ik-bxg">
                                                 <rect key="frame" x="0.0" y="32" width="288" height="60"/>
                                                 <subviews>
@@ -235,10 +236,31 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+=======
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-J2-e4r" customClass="TransitionButton" customModule="TransitionButton">
+                                                <rect key="frame" x="0.0" y="32" width="343" height="60"/>
+                                                <color key="backgroundColor" name="pink"/>
+>>>>>>> feature/Promises
                                                 <constraints>
                                                     <constraint firstItem="5RZ-J2-e4r" firstAttribute="leading" secondItem="ngi-Ik-bxg" secondAttribute="leading" constant="32" id="V37-dP-QnI"/>
                                                 </constraints>
+<<<<<<< HEAD
                                             </stackView>
+=======
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="Accept And Start Tutorial">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startTutorialAction:" destination="5uR-im-idW" eventType="touchUpInside" id="2bl-A8-HGJ"/>
+                                                </connections>
+                                            </button>
+>>>>>>> feature/Promises
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -254,8 +276,9 @@
                         <viewLayoutGuide key="safeArea" id="nTH-se-HKc"/>
                     </view>
                     <connections>
-                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="l7s-Hm-SF5"/>
+                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="z2z-bj-045"/>
                         <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
+                        <segue destination="dcU-1G-76n" kind="presentation" identifier="ShowTutorial" id="CdN-4b-o2l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-fZ-WQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,6 +518,10 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="KSl-tc-lYz"/>
+=======
+        <segue reference="CdN-4b-o2l"/>
+>>>>>>> feature/Promises
     </inferredMetricsTieBreakers>
 </document>
