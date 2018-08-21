@@ -13,6 +13,9 @@ target 'cena' do
   pod 'ActiveLabel'
   pod 'RLBAlertsPickers'
   pod "PromiseKit", "~> 6.0"
+  pod 'UICircularProgressRing'
+  pod 'PieCharts'
+  pod 'GradientProgressBar', '~> 1.0'
 end
 
 post_install do |installer|
