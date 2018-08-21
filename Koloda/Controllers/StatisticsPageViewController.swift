@@ -11,9 +11,11 @@ import UIKit
 class StatisticsPageViewController: UIPageViewController {
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.getViewController(withIdentifier: "MyImpactNavigationController"),
-            self.getViewController(withIdentifier: "ProjectStatusNavigationController")]
+            self.getViewController(withIdentifier: "MyImpactController"),
+            self.getViewController(withIdentifier: "ProjectStatusController")]
     }()
+    
+    fileprivate var currentIndex: Int!
 
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController {
     return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
@@ -25,7 +27,22 @@ class StatisticsPageViewController: UIPageViewController {
         self.delegate = self
     
         if let firstVC = pages.first {
-        setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let myImpactViewController = pages.first as? MyImpactViewController {
+            print("My Impact Tab view has appeared")
+            myImpactViewController.progressRing.startProgress(to: 49, duration: 3)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let myImpactViewController = pages.first as? MyImpactViewController {
+            myImpactViewController.progressRing.resetProgress()
         }
     }
 }
@@ -51,9 +68,16 @@ class StatisticsPageViewController: UIPageViewController {
         }
         
         func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-            return 0
+            return currentIndex ?? 0
         }
     }
     
-extension StatisticsPageViewController: UIPageViewControllerDelegate { }
+extension StatisticsPageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        if let myImpactViewController = pendingViewControllers.first as? MyImpactViewController {
+            myImpactViewController.navigationController?.navigationBar.topItem?.title = "My Impact"
+        }
+    }
+    
+}
 

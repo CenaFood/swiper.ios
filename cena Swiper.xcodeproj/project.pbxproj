@@ -30,6 +30,8 @@
 		AF5E7AF121061C1C00405B10 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5E7AF021061C1C00405B10 /* Util.swift */; };
 		AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68009E1FE120A400F03CB4 /* Annotation.swift */; };
 		AF727506212C00620085EF23 /* StatisticsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727505212C00620085EF23 /* StatisticsPageViewController.swift */; };
+		AF727508212C16000085EF23 /* MyImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727507212C16000085EF23 /* MyImpactViewController.swift */; };
+		AF72750A212C4B500085EF23 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727509212C4B500085EF23 /* MyTabBarController.swift */; };
 		AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */; };
 		AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6A1FDABB55005FE69F /* Challenge.swift */; };
 		AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6C1FDABB8C005FE69F /* Image.swift */; };
@@ -78,6 +80,8 @@
 		AF5E7AF021061C1C00405B10 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		AF68009E1FE120A400F03CB4 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		AF727505212C00620085EF23 /* StatisticsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPageViewController.swift; sourceTree = "<group>"; };
+		AF727507212C16000085EF23 /* MyImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImpactViewController.swift; sourceTree = "<group>"; };
+		AF727509212C4B500085EF23 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenaAPI.swift; sourceTree = "<group>"; };
 		AFA61F6A1FDABB55005FE69F /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		AFA61F6C1FDABB8C005FE69F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
 				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
 				AF727505212C00620085EF23 /* StatisticsPageViewController.swift */,
+				AF727507212C16000085EF23 /* MyImpactViewController.swift */,
+				AF727509212C4B500085EF23 /* MyTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -407,7 +413,9 @@
 				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
 				AFBED51B20E0E01400F1B55C /* Config.swift in Sources */,
 				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,
+				AF72750A212C4B500085EF23 /* MyTabBarController.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
+				AF727508212C16000085EF23 /* MyImpactViewController.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,

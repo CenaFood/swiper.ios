@@ -365,7 +365,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="SNU-z3-ujE">
             <objects>
-                <tabBarController storyboardIdentifier="StartTabBarController" title="Tab Bar Controller" automaticallyAdjustsScrollViewInsets="NO" id="W1G-II-GRj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StartTabBarController" title="Tab Bar Controller" automaticallyAdjustsScrollViewInsets="NO" id="W1G-II-GRj" customClass="MyTabBarController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="dlt-bs-SUz">
@@ -377,7 +377,7 @@
                     <connections>
                         <segue destination="Owv-fx-cuV" kind="relationship" relationship="viewControllers" id="fi4-3v-qdH"/>
                         <segue destination="vWe-n0-jLL" kind="relationship" relationship="viewControllers" id="2x1-Jj-6MM"/>
-                        <segue destination="7vD-Z3-QWE" kind="relationship" relationship="viewControllers" id="UWa-9c-9uX"/>
+                        <segue destination="RYF-qr-pgh" kind="relationship" relationship="viewControllers" id="UWa-9c-9uX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQy-m8-cFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,28 +430,57 @@
         <!--My Impact Page-->
         <scene sceneID="4vq-Vf-LhI">
             <objects>
-                <viewController storyboardIdentifier="My Impact" title="My Impact Page" id="dqM-0b-z3S" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyImpactController" title="My Impact Page" id="dqM-0b-z3S" customClass="MyImpactViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWJ-R0-3qc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-LG-40k">
+                                <rect key="frame" x="16" y="80" width="288" height="472"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2w-Ri-8xj" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="472"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o7-r7-j0x">
+                                        <rect key="frame" x="121" y="221" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startAnimation:" destination="dqM-0b-z3S" eventType="touchUpInside" id="Htr-vU-hwf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VZU-LG-40k" firstAttribute="top" secondItem="62f-a1-PsL" secondAttribute="top" constant="16" id="9ad-ko-8v1"/>
+                            <constraint firstItem="62f-a1-PsL" firstAttribute="bottom" secondItem="VZU-LG-40k" secondAttribute="bottom" constant="16" id="YSd-CT-Yhp"/>
+                            <constraint firstItem="62f-a1-PsL" firstAttribute="trailing" secondItem="VZU-LG-40k" secondAttribute="trailing" constant="16" id="Yw4-Ty-ubT"/>
+                            <constraint firstItem="VZU-LG-40k" firstAttribute="leading" secondItem="62f-a1-PsL" secondAttribute="leading" constant="16" id="k4H-Ly-cRp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="62f-a1-PsL"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Impact" id="Dbh-qh-OKn"/>
+                    <connections>
+                        <outlet property="progressRing" destination="G2w-Ri-8xj" id="DMe-ci-45T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAI-e1-Vic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7744" y="2347"/>
+            <point key="canvasLocation" x="8741.25" y="2346.1267605633802"/>
         </scene>
         <!--Statistics Page View Controller-->
         <scene sceneID="nCm-4d-Q6w">
             <objects>
                 <pageViewController storyboardIdentifier="StatisticsPageViewController" autoresizesArchivedViewToFullSize="NO" title="Statistics Page View Controller" transitionStyle="scroll" pageSpacing="8" navigationOrientation="horizontal" spineLocation="none" id="7vD-Z3-QWE" customClass="StatisticsPageViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PFQ-fD-gnw"/>
+                    <navigationItem key="navigationItem" title="Test" id="1rA-9E-Gs3"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwY-GV-siW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5955" y="2346"/>
+            <point key="canvasLocation" x="6952.5" y="2345.0704225352115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUG-y2-xMP">
@@ -511,30 +540,10 @@
             </objects>
             <point key="canvasLocation" x="5056.875" y="796.47887323943667"/>
         </scene>
-        <!--My Impact Navigation Controller-->
-        <scene sceneID="tHE-G5-RXR">
-            <objects>
-                <navigationController storyboardIdentifier="MyImpactNavigationController" title="My Impact Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Enn-e8-XRH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Tli-w1-Ygn"/>
-                    <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="a5A-DE-wgm">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dqM-0b-z3S" kind="relationship" relationship="rootViewController" id="QC7-AY-XeK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eZi-4b-Dgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6953" y="2345"/>
-        </scene>
         <!--Project Status-->
         <scene sceneID="WHW-Hn-bBJ">
             <objects>
-                <viewController storyboardIdentifier="Project Status" title="Project Status" id="oCb-iT-1dC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectStatusController" title="Project Status" id="oCb-iT-1dC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ddc-y7-3GF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -547,23 +556,24 @@
             </objects>
             <point key="canvasLocation" x="7743.75" y="3078.1690140845071"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MAv-mT-Ed3">
+        <!--Statistics Navigation Controller-->
+        <scene sceneID="IBt-F9-8gt">
             <objects>
-                <navigationController storyboardIdentifier="ProjectStatusNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xA1-Af-CSa" sceneMemberID="viewController">
+                <navigationController title="Statistics Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="RYF-qr-pgh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="PFQ-fD-gnw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ACs-0c-8I1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="taC-C8-h2P">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oCb-iT-1dC" kind="relationship" relationship="rootViewController" id="6tc-Tu-Usf"/>
+                        <segue destination="7vD-Z3-QWE" kind="relationship" relationship="rootViewController" id="AfN-Sk-e7M"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lx0-jj-Ymq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJq-vI-i1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6953" y="3079"/>
+            <point key="canvasLocation" x="5955" y="2345.0704225352115"/>
         </scene>
     </scenes>
     <resources>
