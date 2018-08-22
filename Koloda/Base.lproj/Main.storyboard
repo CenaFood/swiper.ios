@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd5-80-mNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6054.375" y="796.47887323943667"/>
+            <point key="canvasLocation" x="3139" y="3675"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="Eo4-eU-0BW">
@@ -177,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYq-ds-rQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957.5999999999999" y="788.42364532019712"/>
+            <point key="canvasLocation" x="5672" y="397"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="clt-H7-lLA">
@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-fZ-WQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658.4000000000001" y="1613.0541871921182"/>
+            <point key="canvasLocation" x="2363" y="931"/>
         </scene>
         <!--Tutorial-->
         <scene sceneID="QWH-Aj-Ybe">
@@ -360,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bL-Yf-0hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4108.125" y="1611.9718309859154"/>
+            <point key="canvasLocation" x="3139" y="1626"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SNU-z3-ujE">
@@ -382,7 +382,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQy-m8-cFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5113.125" y="1611.9718309859154"/>
+            <point key="canvasLocation" x="3139" y="2308"/>
         </scene>
         <!--Summary-->
         <scene sceneID="RCR-mC-FlG">
@@ -425,25 +425,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weu-3q-C2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6952.5" y="1611.9718309859154"/>
+            <point key="canvasLocation" x="2318" y="3675"/>
         </scene>
         <!--My Impact Page-->
         <scene sceneID="4vq-Vf-LhI">
             <objects>
-                <viewController storyboardIdentifier="MyImpactController" title="My Impact Page" id="dqM-0b-z3S" customClass="MyImpactViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="My Contribution" title="My Impact Page" id="dqM-0b-z3S" customClass="MyImpactViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWJ-R0-3qc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-LG-40k">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-LG-40k">
+                                <rect key="frame" x="16" y="36" width="288" height="516"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2w-Ri-8xj" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="472"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="436"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="valueKnobSize">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" name="tealBlue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                                <real key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                                <color key="value" name="tealBlue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                <real key="value" value="-90"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                                <real key="value" value="-90"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="valueKnobColor">
+                                                <color key="value" name="tealBlue"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o7-r7-j0x">
-                                        <rect key="frame" x="121" y="221" width="46" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhR-G4-DIK">
+                                        <rect key="frame" x="0.0" y="444" width="288" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o7-r7-j0x">
+                                        <rect key="frame" x="0.0" y="452" width="288" height="64"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -466,21 +501,22 @@
                     <navigationItem key="navigationItem" title="My Impact" id="Dbh-qh-OKn"/>
                     <connections>
                         <outlet property="progressRing" destination="G2w-Ri-8xj" id="DMe-ci-45T"/>
+                        <outlet property="swipesText" destination="FhR-G4-DIK" id="UAc-rM-eex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAI-e1-Vic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8741.25" y="2346.1267605633802"/>
+            <point key="canvasLocation" x="4560" y="3675"/>
         </scene>
         <!--Statistics Page View Controller-->
         <scene sceneID="nCm-4d-Q6w">
             <objects>
                 <pageViewController storyboardIdentifier="StatisticsPageViewController" autoresizesArchivedViewToFullSize="NO" title="Statistics Page View Controller" transitionStyle="scroll" pageSpacing="8" navigationOrientation="horizontal" spineLocation="none" id="7vD-Z3-QWE" customClass="StatisticsPageViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Test" id="1rA-9E-Gs3"/>
+                    <navigationItem key="navigationItem" title="My Contribution" id="1rA-9E-Gs3"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwY-GV-siW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6952.5" y="2345.0704225352115"/>
+            <point key="canvasLocation" x="4847" y="2999"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cUG-y2-xMP">
@@ -499,11 +535,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alq-eb-LHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3110.625" y="1611.9718309859154"/>
+            <point key="canvasLocation" x="3139" y="931"/>
         </scene>
         <!--Info-->
         <scene sceneID="qhx-9F-7X3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aI-mo-fda" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Owv-fx-cuV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="info" selectedImage="info" id="GDe-bD-ied"/>
                     <toolbarItems/>
@@ -517,9 +554,8 @@
                         <segue destination="dFp-je-WGU" kind="relationship" relationship="rootViewController" id="tRj-nJ-bCM"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7aI-mo-fda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5955" y="1611.9718309859154"/>
+            <point key="canvasLocation" x="2318" y="2999"/>
         </scene>
         <!--Discover-->
         <scene sceneID="kaY-4l-Mz3">
@@ -538,12 +574,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRx-l9-7W9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5056.875" y="796.47887323943667"/>
+            <point key="canvasLocation" x="3139" y="2999"/>
         </scene>
         <!--Project Status-->
         <scene sceneID="WHW-Hn-bBJ">
             <objects>
-                <viewController storyboardIdentifier="ProjectStatusController" title="Project Status" id="oCb-iT-1dC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Project Status" title="Project Status" id="oCb-iT-1dC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ddc-y7-3GF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -554,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeT-Ck-W0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7743.75" y="3078.1690140845071"/>
+            <point key="canvasLocation" x="5231" y="3675"/>
         </scene>
         <!--Statistics Navigation Controller-->
         <scene sceneID="IBt-F9-8gt">
@@ -573,7 +609,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJq-vI-i1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5955" y="2345.0704225352115"/>
+            <point key="canvasLocation" x="3863" y="2999"/>
         </scene>
     </scenes>
     <resources>
@@ -584,6 +620,15 @@
         <image name="info" width="25" height="25"/>
         <namedColor name="pink">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tealBlue">
+            <color red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tealBlue">
+            <color red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tealBlue">
+            <color red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

@@ -43,6 +43,7 @@
 		AFBED51B20E0E01400F1B55C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51A20E0E01400F1B55C /* Config.swift */; };
 		AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51D20E0EC7500F1B55C /* AuthController.swift */; };
 		AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */; };
+		AFEF0287212DA3700048DDDC /* ProjectStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF0286212DA3700048DDDC /* ProjectStatusViewController.swift */; };
 		BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		AFBED51D20E0EC7500F1B55C /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AFD480592031EFB20090E5D4 /* cena.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cena.entitlements; sourceTree = "<group>"; };
 		AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		AFEF0286212DA3700048DDDC /* ProjectStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatusViewController.swift; sourceTree = "<group>"; };
 		CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6781607B5327BAF503C32E3 /* Koloda.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Koloda.podspec; path = ../Koloda.podspec; sourceTree = "<group>"; };
 		FD6C1F0A0D51AE17226C7CE9 /* Pods-cena.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				AF727505212C00620085EF23 /* StatisticsPageViewController.swift */,
 				AF727507212C16000085EF23 /* MyImpactViewController.swift */,
 				AF727509212C4B500085EF23 /* MyTabBarController.swift */,
+				AFEF0286212DA3700048DDDC /* ProjectStatusViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				AF72750A212C4B500085EF23 /* MyTabBarController.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
 				AF727508212C16000085EF23 /* MyImpactViewController.swift in Sources */,
+				AFEF0287212DA3700048DDDC /* ProjectStatusViewController.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,

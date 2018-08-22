@@ -11,10 +11,13 @@ import UICircularProgressRing
 
 class MyImpactViewController: UIViewController {
     @IBOutlet weak var progressRing: UICircularProgressRing!
+    @IBOutlet weak var swipesText: UILabel!
     
     override func viewDidLoad() {
-        self.progressRing.maxValue = 100
-        self.progressRing.innerRingColor = UIColor.blue
+        self.progressRing.maxValue = 500
+        self.progressRing.minValue = 0
+        self.progressRing.ringStyle = .ontop
+        self.progressRing.font = .boldSystemFont(ofSize: 34)
     }
     
     @IBAction func startAnimation(_ sender: UIButton) {
