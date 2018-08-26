@@ -9,17 +9,16 @@
 import UIKit
 import UICircularProgressRing
 
-struct classConstants {
-    static let ControllerNames: [String] = ["My Contribution", "Project Status"]
-    static let swipesCount = 80.0
-    static let swipesTarget = 500.0
+struct pageNames {
+    static let YourContribution = "Your Contribution"
+    static let CommunityContribution = "Community Contribution"
 }
 
 class StatisticsPageViewController: UIPageViewController {
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.getViewController(withIdentifier: classConstants.ControllerNames[0]),
-            self.getViewController(withIdentifier: classConstants.ControllerNames[1])]
+            self.getViewController(withIdentifier: pageNames.YourContribution),
+            self.getViewController(withIdentifier: pageNames.CommunityContribution)]
     }()
     
     fileprivate var currentIndex: Int!
@@ -34,25 +33,28 @@ class StatisticsPageViewController: UIPageViewController {
         self.delegate = self
         currentIndex = 0
         
-        if let firstVC = pages.first {
+        if let firstVC = pages.first as? YourContributionController {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+//            setViewControllers([firstVC], direction: .forward, animated: true) { completed in
+//                if completed { firstVC.resetProgressRing() }
+//            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let myContribution = pages[0] as? MyImpactViewController {
-            myContribution.progressRing.startProgress(to: UICircularProgressRing.ProgressValue(classConstants.swipesCount / classConstants.swipesTarget * 100), duration: 2) {
-                let remainingSwipes = classConstants.swipesTarget - classConstants.swipesCount
-                myContribution.swipesText.text = "You have already swiped \(classConstants.swipesCount) meals. Only \(remainingSwipes) swipes remaining! You're awesome!"
-//                myContribution.progressRing.innerRingColor = .yellow
-//                myContribution.progressRing.startAngle = 90
-//                myContribution.progressRing.value = 0
-//                myContribution.progressRing.startProgress(to: 50, duration: 8)
-            }
+        if let yourContribution = pages.first as? YourContributionController {
+            yourContribution.startRingAnimation()
         }
     }
     
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let yourContribution = pages.first as? YourContributionController {
+            yourContribution.resetProgressRing()
+        }
+    }
 }
     
     extension StatisticsPageViewController: UIPageViewControllerDataSource {
@@ -82,19 +84,27 @@ extension StatisticsPageViewController: UIPageViewControllerDelegate {
     }
     
     private func getPage(page: UIViewController?) -> UIViewController? {
-        if let myImpactViewController = page as? MyImpactViewController {
+        if let myImpactViewController = page as? YourContributionController {
             return myImpactViewController
-        } else if let projectStatusViewController = page as? ProjectStatusViewController {
+        } else if let projectStatusViewController = page as? CommunityContributionController {
             return projectStatusViewController
         }
         return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        let nextViewController = pendingViewControllers.first
-        guard let nextIndex = getPageIndex(page: nextViewController, pages: pages) else { return }
-        currentIndex = nextIndex
-        nextViewController?.navigationController?.navigationBar.topItem?.title = classConstants.ControllerNames[currentIndex]
+//        let nextViewController = pendingViewControllers.first
+//        guard let nextIndex = getPageIndex(page: nextViewController, pages: pages) else { return }
+//        nextViewController?.navigationController?.navigationBar.topItem?.title = classConstants.ControllerNames[currentIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if finished && completed {
+            let currentPage = pageViewController.viewControllers?.first
+            guard let index = getPageIndex(page: currentPage, pages: pages) else { return }
+            currentIndex = index
+            self.navigationItem.title = currentPage?.navigationItem.title
+        }
     }
     
 }

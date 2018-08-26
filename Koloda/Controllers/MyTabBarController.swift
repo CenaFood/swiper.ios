@@ -17,7 +17,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let myImpactController = viewController as? MyImpactViewController {
+        if let myImpactController = viewController as? YourContributionController {
             print("My Impact Controller selected")
             myImpactController.progressRing.startProgress(to: 88, duration: 5)
         }
