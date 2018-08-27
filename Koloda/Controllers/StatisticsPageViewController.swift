@@ -33,26 +33,36 @@ class StatisticsPageViewController: UIPageViewController {
         self.delegate = self
         currentIndex = 0
         
-        if let firstVC = pages.first as? YourContributionController {
+        if let firstVC = pages.first as? ProgressContainerViewController {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-//            setViewControllers([firstVC], direction: .forward, animated: true) { completed in
-//                if completed { firstVC.resetProgressRing() }
-//            }
+//            setViewControllers([firstVC], direction: .forward, animated: true) { _ in
+//                firstVC.progressViewController?.startRingAnimation()
+//        }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: update personal swipes and community swipes
+        // let personalSwipes
+        // let totalSwipes
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let yourContribution = pages.first as? YourContributionController {
-            yourContribution.startRingAnimation()
+        print("We are at index \(currentIndex!)")
+        if let yourContribution = pages[currentIndex] as? ProgressContainerViewController {
+            print("Starting ring animation")
+            yourContribution.progressViewController?.startRingAnimation()
         }
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if let yourContribution = pages.first as? YourContributionController {
-            yourContribution.resetProgressRing()
+        let progressPages = pages as? [ProgressContainerViewController]
+        for page in progressPages ?? [] {
+            page.progressViewController?.resetProgressRing()
         }
     }
 }
@@ -100,10 +110,11 @@ extension StatisticsPageViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if finished && completed {
-            let currentPage = pageViewController.viewControllers?.first
+            let currentPage = pageViewController.viewControllers?.first as? ProgressContainerViewController
             guard let index = getPageIndex(page: currentPage, pages: pages) else { return }
             currentIndex = index
             self.navigationItem.title = currentPage?.navigationItem.title
+            currentPage?.progressViewController?.startRingAnimation()
         }
     }
     

@@ -47,3 +47,8 @@ struct Legal {
     
     static let TermsAndPrivacyRegex = "\\sterms\\sof\\sservice|\\sprivacy\\spolicy"
 }
+
+struct AppleColors {
+    static let blue: UIColor = UIColor(named: "tealBlue") ?? .blue
+    static let pink: UIColor = UIColor(named: "pink") ?? .purple
+}

@@ -365,7 +365,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="SNU-z3-ujE">
             <objects>
-                <tabBarController storyboardIdentifier="StartTabBarController" title="Tab Bar Controller" automaticallyAdjustsScrollViewInsets="NO" id="W1G-II-GRj" customClass="MyTabBarController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StartTabBarController" title="Tab Bar Controller" automaticallyAdjustsScrollViewInsets="NO" id="W1G-II-GRj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="dlt-bs-SUz">
@@ -430,80 +430,63 @@
         <!--Your Contribution-->
         <scene sceneID="4vq-Vf-LhI">
             <objects>
-                <viewController storyboardIdentifier="Your Contribution" title="Your Contribution" id="dqM-0b-z3S" customClass="YourContributionController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Progress" title="Your Contribution" id="dqM-0b-z3S" customClass="ProgressViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWJ-R0-3qc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-LG-40k">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2w-Ri-8xj" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="288"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="G2w-Ri-8xj" secondAttribute="height" multiplier="1:1" id="tVo-mL-nU1"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="valueKnobSize">
-                                                <real key="value" value="16"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                <color key="value" name="tealBlue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
-                                                <color key="value" name="tealBlue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
-                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                <real key="value" value="-90"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
-                                                <real key="value" value="-90"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="valueKnobColor">
-                                                <color key="value" name="tealBlue"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o7-r7-j0x">
-                                        <rect key="frame" x="0.0" y="296" width="288" height="176"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startAnimation:" destination="dqM-0b-z3S" eventType="touchUpInside" id="Htr-vU-hwf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2w-Ri-8xj" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="16" y="80" width="288" height="408"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="valueKnobSize">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" name="tealBlue"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" name="tealBlue"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="-90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="-90"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="valueKnobColor">
+                                        <color key="value" name="tealBlue"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VZU-LG-40k" firstAttribute="top" secondItem="62f-a1-PsL" secondAttribute="top" constant="16" id="9ad-ko-8v1"/>
-                            <constraint firstItem="62f-a1-PsL" firstAttribute="bottom" secondItem="VZU-LG-40k" secondAttribute="bottom" constant="16" id="YSd-CT-Yhp"/>
-                            <constraint firstItem="62f-a1-PsL" firstAttribute="trailing" secondItem="VZU-LG-40k" secondAttribute="trailing" constant="16" id="Yw4-Ty-ubT"/>
-                            <constraint firstItem="VZU-LG-40k" firstAttribute="leading" secondItem="62f-a1-PsL" secondAttribute="leading" constant="16" id="k4H-Ly-cRp"/>
+                            <constraint firstItem="62f-a1-PsL" firstAttribute="trailing" secondItem="G2w-Ri-8xj" secondAttribute="trailing" constant="16" id="FG2-iJ-SsB"/>
+                            <constraint firstItem="G2w-Ri-8xj" firstAttribute="leading" secondItem="62f-a1-PsL" secondAttribute="leading" constant="16" id="PK0-8M-bam"/>
+                            <constraint firstItem="G2w-Ri-8xj" firstAttribute="top" secondItem="62f-a1-PsL" secondAttribute="top" constant="16" id="SfU-bh-3wi"/>
+                            <constraint firstItem="62f-a1-PsL" firstAttribute="bottom" secondItem="G2w-Ri-8xj" secondAttribute="bottom" constant="16" id="rCb-77-d6l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62f-a1-PsL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Contribution" id="Dbh-qh-OKn"/>
+                    <navigationItem key="navigationItem" title="Progress" id="Dbh-qh-OKn"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
-                        <outlet property="progressRing" destination="G2w-Ri-8xj" id="DMe-ci-45T"/>
+                        <outlet property="progressRing" destination="G2w-Ri-8xj" id="N5p-O0-Sha"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAI-e1-Vic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4560" y="3675"/>
+            <point key="canvasLocation" x="5640" y="2965"/>
         </scene>
         <!--Statistics Page View Controller-->
         <scene sceneID="nCm-4d-Q6w">
@@ -581,63 +564,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-aK-6eS">
-                                <rect key="frame" x="16" y="80" width="288" height="472"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-Wq-ztc" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="472"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="valueKnobSize">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="valueKnobColor">
-                                                <color key="value" name="pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
-                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                <color key="value" name="pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
-                                                <color key="value" name="pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
-                                                <real key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                <real key="value" value="-90"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
-                                                <real key="value" value="-90"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aad-MC-7xt">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <connections>
+                                    <segue destination="dqM-0b-z3S" kind="embed" id="zDG-gi-rgV"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ejd-aK-6eS" firstAttribute="leading" secondItem="N72-hS-Uiz" secondAttribute="leading" constant="16" id="6Ug-0Y-Sci"/>
-                            <constraint firstItem="Ejd-aK-6eS" firstAttribute="top" secondItem="N72-hS-Uiz" secondAttribute="top" constant="16" id="ENq-bw-Z9X"/>
-                            <constraint firstItem="N72-hS-Uiz" firstAttribute="trailing" secondItem="Ejd-aK-6eS" secondAttribute="trailing" constant="16" id="QTb-MM-w6N"/>
-                            <constraint firstItem="N72-hS-Uiz" firstAttribute="bottom" secondItem="Ejd-aK-6eS" secondAttribute="bottom" constant="16" id="jih-sP-fIA"/>
+                            <constraint firstItem="aad-MC-7xt" firstAttribute="leading" secondItem="N72-hS-Uiz" secondAttribute="leading" id="1TH-sB-1JS"/>
+                            <constraint firstItem="N72-hS-Uiz" firstAttribute="bottom" secondItem="aad-MC-7xt" secondAttribute="bottom" id="Tzh-4m-KXO"/>
+                            <constraint firstItem="N72-hS-Uiz" firstAttribute="trailing" secondItem="aad-MC-7xt" secondAttribute="trailing" id="U8b-nT-3U0"/>
+                            <constraint firstItem="aad-MC-7xt" firstAttribute="top" secondItem="N72-hS-Uiz" secondAttribute="top" id="qjN-xd-z8V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N72-hS-Uiz"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Community contribution" id="Tby-Ug-Ffx"/>
+                    <navigationItem key="navigationItem" title="Community" id="Tby-Ug-Ffx"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <connections>
-                        <outlet property="progressRing" destination="VDJ-Wq-ztc" id="SBo-Al-OE1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeT-Ck-W0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5231" y="3675"/>
+            <point key="canvasLocation" x="5640" y="3665"/>
         </scene>
         <!--Statistics Navigation Controller-->
         <scene sceneID="IBt-F9-8gt">
@@ -658,6 +606,37 @@
             </objects>
             <point key="canvasLocation" x="3863" y="2999"/>
         </scene>
+        <!--Project Status-->
+        <scene sceneID="8eY-Rn-3Wk">
+            <objects>
+                <viewController storyboardIdentifier="Your Contribution" title="Project Status" id="ao2-rK-QOG" customClass="YourContributionController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nK1-lq-5tp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-xv-WHo">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <connections>
+                                    <segue destination="dqM-0b-z3S" kind="embed" id="QoO-ZD-Zcr"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0yJ-lf-6WS" firstAttribute="bottom" secondItem="tBA-xv-WHo" secondAttribute="bottom" id="9VD-4A-cr3"/>
+                            <constraint firstItem="0yJ-lf-6WS" firstAttribute="trailing" secondItem="tBA-xv-WHo" secondAttribute="trailing" id="Xuc-EJ-fLt"/>
+                            <constraint firstItem="tBA-xv-WHo" firstAttribute="top" secondItem="0yJ-lf-6WS" secondAttribute="top" id="qMf-dI-Shd"/>
+                            <constraint firstItem="tBA-xv-WHo" firstAttribute="leading" secondItem="0yJ-lf-6WS" secondAttribute="leading" id="xuV-4I-mY2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0yJ-lf-6WS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="You" id="4yT-6G-Nu4"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iU-LF-rrt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4866" y="3664"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn_dislike" width="62" height="62"/>
@@ -677,5 +656,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wV5-I2-wYt"/>
+        <segue reference="zDG-gi-rgV"/>
     </inferredMetricsTieBreakers>
 </document>
