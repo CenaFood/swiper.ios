@@ -9,75 +9,189 @@
 import UIKit
 import UICircularProgressRing
 import SwiftEntryKit
+import PromiseKit
 
 struct classConstants {
     static let maxValue = 100
     static let minValue = 0
     static let swipesCount = 60
-    static let swipesTarget = 100
+    static let swipesTarget = 1000
     static let ringStyle: UICircularProgressRingStyle = .ontop
     static let font: UIFont = .preferredFont(forTextStyle: .largeTitle)
+    static let projectName = "cena"
 }
 
-protocol Progress {
-    var innerRingColor: UIColor? { get }
-//    var outerRingColor: UIColor { get set }
-//    var fontColor: UIColor {get set }
-//    var swipesCount: Int { get set }
+
+protocol ProgressRingProtocol {
+    var value: Int { get }
+    var minValue: Int { get }
+    var maxValue: Int { get }
+    var ringStyle: UICircularProgressRingStyle { get }
+    var font: UIFont { get }
+    var color: UIColor { get }
+    var swipesCount: Int { get set }
+    var swipesTarget: Int { get }
+//    var willAnimate: Bool { get set }
+    
+    func setupProgressRing(progressRing: UICircularProgressRing)
+    func resetProgressRing(progressRing: UICircularProgressRing)
+    func calculatePercentage() -> Double
+    func startRingAnimation(progressRing: UICircularProgressRing?)
+    func getSwipesCount(stats: [Stats]) -> Int?
+    func setSwipesCount()
 }
 
-class ProgressViewController: UIViewController{
-    @IBOutlet weak var progressRing: UICircularProgressRing!
-    fileprivate var willAnimate: Bool = true
-    var color = UIColor(named: "tealBlue")!
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.progressRing.value = 20
-        self.progressRing.maxValue = UICircularProgressRing.ProgressValue(classConstants.maxValue)
-        self.progressRing.minValue = UICircularProgressRing.ProgressValue(classConstants.minValue)
-        self.progressRing.ringStyle = classConstants.ringStyle
-        self.progressRing.font = classConstants.font
+public protocol NotificationProtocol {
+    var notificationTitle: String { get }
+    var notificationText: String { get }
+    var notificationImage: UIImage? { get }
+    func presentBottomFloat(title: String, description: String, image: UIImage?)
+
+}
+
+extension ProgressRingProtocol {
+    var value: Int {
+        return 0
     }
     
-    func resetProgressRing() {
-        progressRing.resetProgress()
-        willAnimate = true
+    var minValue: Int {
+        return 0
     }
     
-    func setRingColor(color: UIColor) {
+    var maxValue: Int {
+        return 100
+    }
+    
+    var ringStyle: UICircularProgressRingStyle {
+        return .ontop
+    }
+    
+    var font: UIFont {
+        return .preferredFont(forTextStyle: .largeTitle)
+    }
+    
+    var swipesCount: Int {
+        get { return swipesCount }
+        set { setSwipesCount()}
+    }
+    
+//    var willAnimate: Bool {
+//        get { return willAnimate }
+//        set { willAnimate}
+//    }
+    
+    func setupProgressRing(progressRing: UICircularProgressRing) {
+        progressRing.value = UICircularProgressRing.ProgressValue(value)
+        progressRing.maxValue = UICircularProgressRing.ProgressValue(maxValue)
+        progressRing.minValue = UICircularProgressRing.ProgressValue(minValue)
+        progressRing.ringStyle = ringStyle
+        progressRing.font = font
         progressRing.innerRingColor = color
         progressRing.fontColor = color
-        self.color = color
     }
     
-    func startRingAnimation() {
-        if willAnimate {
-            progressRing.startProgress(to: UICircularProgressRing.ProgressValue(classConstants.swipesCount), duration: 2) {
-                let remainingSwipes = classConstants.swipesTarget - classConstants.swipesCount
-                let descriptionText = "You have already swiped \(classConstants.swipesCount) meals. Only \(remainingSwipes) swipes remaining! You're awesome!"
-                self.presentBottomFloat(descriptionText: descriptionText)
-                self.willAnimate = false
-            }
+    
+    func resetProgressRing(progressRing: UICircularProgressRing) {
+        progressRing.resetProgress()
+    }
+    
+    
+    func calculatePercentage() -> Double {
+        return Double(swipesCount) / Double(swipesTarget) * 100
+    }
+    
+    func presentBottomFloat(title: String, description: String, image: UIImage?) {
+        var attributes = EKAttributes.bottomNote
+        Util.setupAttribute(attributes: &attributes, color: color)
+        let contentView = Util.createNotification(title: title, description: description, image: image)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+}
+
+//extension ProgressViewController {
+//}
+
+class ProgressViewController: UIViewController, ProgressRingProtocol, NotificationProtocol {
+
+    // MARK: Properties
+    
+    var swipesCount: Int = 0 {
+        didSet { startRingAnimation(progressRing: self.progressRing) }
+    }
+    
+    var color: UIColor {
+        get { return AppleColors.blue }
+    }
+    
+    var swipesTarget: Int {
+        return 400
+    }
+    
+    let notificationTitle: String = "You're Awesome"
+    
+    var notificationText: String {
+        var remainingSwipes = (swipesTarget - swipesCount)
+        if remainingSwipes < 0 {
+            remainingSwipes = 0
+        }
+        return "You have already swiped \(swipesCount) meals. Only \(remainingSwipes) swipes remaining!"
+    }
+    
+    var notificationImage: UIImage? {
+        return nil
+    }
+    
+    
+    @IBOutlet weak var progressRing: UICircularProgressRing!
+    
+    // MARK: Lifecycles
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupProgressRing(progressRing: self.progressRing)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setSwipesCount()
+    }
+    
+    // Private functions
+    
+    func startRingAnimation(progressRing: UICircularProgressRing?) {
+        guard let progressRing = progressRing else { return }
+        progressRing.startProgress(to: UICircularProgressRing.ProgressValue(calculatePercentage()), duration: 2) {
+            self.presentBottomFloat(title: self.notificationTitle, description: self.notificationText, image: self.notificationImage)
         }
     }
     
-    private func presentBottomFloat(descriptionText: String) {
-        var attributes = EKAttributes.bottomNote
-        //            attributes.entryBackground = .gradient(gradient: .init(colors: [.red, .green], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
-        attributes.entryBackground = .color(color: color)
-        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
-        attributes.displayDuration = 5
-        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
-        attributes.positionConstraints.maxSize = .init(width: .intrinsic, height: .intrinsic)
-        
-        let title = EKProperty.LabelContent(text: "On Fire", style: .init(font: .preferredFont(forTextStyle: .headline), color: .white))
-        let description = EKProperty.LabelContent(text: descriptionText, style: .init(font: .preferredFont(forTextStyle: .body), color: .white))
-        let image = EKProperty.ImageContent(image: UIImage(named: "fire")!, size: CGSize(width: 16, height: 20))
-        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
-        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-        
-        let contentView = EKNotificationMessageView(with: notificationMessage)
-        SwiftEntryKit.display(entry: contentView, using: attributes)
+    func setSwipesCount() {
+            let backgroundQueue = DispatchQueue.global(qos: .background)
+            backgroundQueue.async {
+                firstly {
+                    CenaAPI().getStats()
+                    }.done { projectStats -> Void in
+                        if let swipesCount = self.getSwipesCount(stats: projectStats) {
+                            self.swipesCount = swipesCount
+                        }
+                    }.catch { _ in
+                        DispatchQueue.main.async {
+                            let alert = Util.createSimpleAlert(title: "error", message: "No internet")
+                                self.present(alert, animated: true)
+                        }
+                }
+            }
     }
+    
+    func getSwipesCount(stats: [Stats]) -> Int? {
+        for stat in stats {
+            if stat.projectName == classConstants.projectName {
+                return stat.personalLabelsCount
+            }
+        }
+        return nil
+    }
+
+    
+    
 }

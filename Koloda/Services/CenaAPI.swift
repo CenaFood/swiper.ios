@@ -12,8 +12,7 @@ import Kingfisher
 import DeviceCheck
 import CloudKit
 import JWTDecode
-
-private var globalToken = ""
+import PromiseKit
 
 class CenaAPI {
     private let currentDevice = DCDevice.current
@@ -32,6 +31,7 @@ class CenaAPI {
         case authenticateWithToken
         case register(Credentials)
         case login(Credentials)
+        case getStats
         // Base endpoint
         //private static let basePath = "http://86.119.37.97:5001"
         private static let basePath = "https://cenaswiper.luethi.rocks"
@@ -48,7 +48,7 @@ class CenaAPI {
         // Set the method
         var method: String {
             switch self {
-            case .getAllChallenges, .getChallenge: return "GET"
+            case .getAllChallenges, .getChallenge, .getStats: return "GET"
             case .createAnnotation, .authenticateWithToken, .register, .login: return "POST"
             case .updateAnnotation: return "PUT"
             case .deleteAnnotation: return "DELETE"
@@ -70,6 +70,7 @@ class CenaAPI {
                 case .authenticateWithToken: relativePath = "/auth/login"
                 case .register: relativePath = "/auth/register"
                 case .login: relativePath = "/auth/login"
+                case .getStats: relativePath = "/stats"
                 }
                 
                 var url = URL(string: API.basePath)!
@@ -82,7 +83,7 @@ class CenaAPI {
             // Set up request parameters
             let parameters: APIBase? = {
                 switch self {
-                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken: return nil
+                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .getStats: return nil
                 case .createAnnotation(let annotation), .updateAnnotation(_, let annotation): return annotation
                 case .register(let credentials): return credentials
                 case .login(let credentials): return credentials
@@ -112,7 +113,7 @@ class CenaAPI {
             
             let token: String? = {
                 switch self {
-                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .createAnnotation(_), .updateAnnotation(_, _): return AuthController().getJWTToken() // TODO: return JWTToken from keychain
+                case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .createAnnotation(_), .updateAnnotation(_, _), .getStats: return AuthController().getJWTToken()
                 case .register(_), .login(_): return nil
                 }
             }()
@@ -150,6 +151,7 @@ class CenaAPI {
     let session = URLSession(configuration: .default)
     
     
+    
         
     func getAllChallenges(completion: @escaping ([Challenge]) -> ()) {
         let task = session.dataTask(with: API.getAllChallenges.asURLRequest()) { (data, response, error) in
@@ -170,6 +172,27 @@ class CenaAPI {
         task.resume()
     }
     
+    func getStats() -> Promise<[Stats]> {
+        return Promise<[Stats]> { seal in
+            let task = session.dataTask(with: API.getStats.asURLRequest()) { (data, response, error) in
+                if let error = error {
+                    NSLog("Error: \(String(describing: error))")
+                    seal.reject(error)
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    NSLog("statusCode not OK")
+                    return
+                }
+                do {
+                    let projectStats = try JSONDecoder().decode([Stats].self, from: data!)
+                    seal.fulfill(projectStats)
+                } catch let decodeError as NSError {
+                    seal.reject(decodeError)
+                }
+            }
+                task.resume()
+        }
+    }
 
     func fetchImageURLs(completion: @escaping ([Challenge], [String]) -> ()) {
         getAllChallenges() { challenges in
