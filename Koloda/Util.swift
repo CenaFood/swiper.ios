@@ -25,6 +25,7 @@ class Util {
         attributes.displayDuration = 5
         attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
         attributes.positionConstraints.maxSize = .init(width: .intrinsic, height: .intrinsic)
+        attributes.screenInteraction = .dismiss
     }
     
     static func createSimpleMessage(title: String, description: String, image: UIImage?) -> EKSimpleMessage {

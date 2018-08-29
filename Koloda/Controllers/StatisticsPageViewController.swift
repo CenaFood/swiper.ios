@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 import PromiseKit
+import SwiftEntryKit
 
 struct pageNames {
     static let YourContribution = "Your Contribution"
@@ -33,6 +34,9 @@ class StatisticsPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         currentIndex = 0
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+
         
         
         if let firstVC = pages.first {
@@ -42,6 +46,15 @@ class StatisticsPageViewController: UIPageViewController {
 //        }
         }
         
+    }
+    
+    @objc func reload() {
+        guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
+        currentPage.resetProgressRing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            currentPage.startRingAnimation()
+            print("Reload tapped")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,21 +72,19 @@ class StatisticsPageViewController: UIPageViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        print("We are at index \(currentIndex!)")
-//        if let yourContribution = pages[currentIndex] as? ProgressContainerViewController {
-//            print("Starting ring animation")
-//            yourContribution.progressViewController?.startRingAnimation()
-//        }
     }
     
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        let progressPage = pages[0] as? ProgressViewController
-        let communityPage = pages[1] as? CommunityContributionController
-        progressPage?.resetProgressRing(progressRing: (progressPage?.progressRing)!)
-//        communityPage?.resetProgressRing(progressRing: (communityPage?.progressRing)!)
-//        for page in progressPages ?? [] {
+    override func viewWillDisappear(_ animated: Bool) {
+        print("Statistics page view is disappearing")
+        super.viewWillDisappear(animated)
+        SwiftEntryKit.dismiss()
+        for page in self.pages {
+            guard let page = page as? ProgressRingProtocol else { return }
+            page.resetProgressRing()
+            page.willAnimate = true
+        }
+        //        for page in progressPages ?? [] {
 //            page.progressViewController?.resetProgressRing()
 //        }
     }

@@ -1,4 +1,4 @@
-//
+ //
 //  ProgressViewController.swift
 //  cena
 //
@@ -22,7 +22,8 @@ struct classConstants {
 }
 
 
-protocol ProgressRingProtocol {
+protocol ProgressRingProtocol: class {
+    var progressRing: UICircularProgressRing! { get }
     var value: Int { get }
     var minValue: Int { get }
     var maxValue: Int { get }
@@ -31,23 +32,21 @@ protocol ProgressRingProtocol {
     var color: UIColor { get }
     var swipesCount: Int { get set }
     var swipesTarget: Int { get }
-//    var willAnimate: Bool { get set }
+    var willAnimate: Bool { get set }
     
     func setupProgressRing(progressRing: UICircularProgressRing)
-    func resetProgressRing(progressRing: UICircularProgressRing)
+    func resetProgressRing()
     func calculatePercentage() -> Double
-    func startRingAnimation(progressRing: UICircularProgressRing?)
+    func startRingAnimation()
     func getSwipesCount(stats: [Stats]) -> Int?
     func setSwipesCount()
-}
-
-public protocol NotificationProtocol {
+    
     var notificationTitle: String { get }
     var notificationText: String { get }
     var notificationImage: UIImage? { get }
     func presentBottomFloat(title: String, description: String, image: UIImage?)
-
 }
+
 
 extension ProgressRingProtocol {
     var value: Int {
@@ -70,16 +69,6 @@ extension ProgressRingProtocol {
         return .preferredFont(forTextStyle: .largeTitle)
     }
     
-    var swipesCount: Int {
-        get { return swipesCount }
-        set { setSwipesCount()}
-    }
-    
-//    var willAnimate: Bool {
-//        get { return willAnimate }
-//        set { willAnimate}
-//    }
-    
     func setupProgressRing(progressRing: UICircularProgressRing) {
         progressRing.value = UICircularProgressRing.ProgressValue(value)
         progressRing.maxValue = UICircularProgressRing.ProgressValue(maxValue)
@@ -90,8 +79,15 @@ extension ProgressRingProtocol {
         progressRing.fontColor = color
     }
     
+    func startRingAnimation() {
+        guard let progressRing = progressRing else { return }
+        progressRing.startProgress(to: UICircularProgressRing.ProgressValue(calculatePercentage()), duration: 2) {
+            self.presentBottomFloat(title: self.notificationTitle, description: self.notificationText, image: self.notificationImage)
+        }
+    }
     
-    func resetProgressRing(progressRing: UICircularProgressRing) {
+    func resetProgressRing() {
+        guard let progressRing = progressRing else { return }
         progressRing.resetProgress()
     }
     
@@ -111,12 +107,18 @@ extension ProgressRingProtocol {
 //extension ProgressViewController {
 //}
 
-class ProgressViewController: UIViewController, ProgressRingProtocol, NotificationProtocol {
+class ProgressViewController: UIViewController, ProgressRingProtocol {
+    
+    
+    
+    
+    var willAnimate: Bool = true
+    
 
     // MARK: Properties
     
     var swipesCount: Int = 0 {
-        didSet { startRingAnimation(progressRing: self.progressRing) }
+        didSet { startRingAnimation() }
     }
     
     var color: UIColor {
@@ -142,6 +144,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, Notificati
     }
     
     
+    
     @IBOutlet weak var progressRing: UICircularProgressRing!
     
     // MARK: Lifecycles
@@ -151,19 +154,30 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, Notificati
         setupProgressRing(progressRing: self.progressRing)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !progressRing.isAnimating {
+            progressRing.continueProgress()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setSwipesCount()
+        if willAnimate {
+            setSwipesCount()
+            willAnimate = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if progressRing.isAnimating {
+            progressRing.pauseProgress()
+        }
     }
     
     // Private functions
     
-    func startRingAnimation(progressRing: UICircularProgressRing?) {
-        guard let progressRing = progressRing else { return }
-        progressRing.startProgress(to: UICircularProgressRing.ProgressValue(calculatePercentage()), duration: 2) {
-            self.presentBottomFloat(title: self.notificationTitle, description: self.notificationText, image: self.notificationImage)
-        }
-    }
     
     func setSwipesCount() {
             let backgroundQueue = DispatchQueue.global(qos: .background)
@@ -192,6 +206,11 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, Notificati
         return nil
     }
 
+    @objc func reload(_ sender: UIBarButtonItem) {
+        print("reload tapped")
+        progressRing.value = 0
+        self.startRingAnimation()
+    }
     
     
 }

@@ -45,7 +45,7 @@ extension CommunityContributionController {
     }
 }
 
-class CommunityContributionController: UIViewController, ProgressRingProtocol, NotificationProtocol {
+class CommunityContributionController: UIViewController, ProgressRingProtocol {
     
     func setSwipesCount() {
         let backgroundQueue = DispatchQueue.global(qos: .background)
@@ -72,26 +72,39 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, N
     
     
     var swipesCount: Int = 0 {
-        didSet { startRingAnimation(progressRing: progressRing) }
+        didSet { startRingAnimation() }
     }
     
-    func startRingAnimation(progressRing: UICircularProgressRing?) {
-        guard let progressRing = progressRing else { return }
-        progressRing.startProgress(to: UICircularProgressRing.ProgressValue(calculatePercentage()), duration: 2) {
-            self.presentBottomFloat(title: self.notificationTitle, description: self.notificationText, image: self.notificationImage)
-        }
-    }
+    var willAnimate: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Trying to load community controller")
         setupProgressRing(progressRing: progressRing)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !progressRing.isAnimating {
+            progressRing.continueProgress()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setSwipesCount()
+        if willAnimate {
+            setSwipesCount()
+            willAnimate = false
+        }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if progressRing.isAnimating {
+            progressRing.pauseProgress()
+        }
+    }
+    
 }
 
 
