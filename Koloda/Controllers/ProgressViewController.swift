@@ -10,6 +10,7 @@ import UIKit
 import UICircularProgressRing
 import SwiftEntryKit
 import PromiseKit
+import LTMorphingLabel
 
 struct classConstants {
     static let maxValue = 100
@@ -21,137 +22,44 @@ struct classConstants {
     static let projectName = "cena"
 }
 
-
-protocol ProgressRingProtocol: class {
-    var progressRing: UICircularProgressRing! { get }
-    var value: Int { get }
-    var minValue: Int { get }
-    var maxValue: Int { get }
-    var ringStyle: UICircularProgressRingStyle { get }
-    var font: UIFont { get }
-    var color: UIColor { get }
-    var swipesCount: Int { get set }
-    var swipesTarget: Int { get }
-    var willAnimate: Bool { get set }
-    
-    func setupProgressRing(progressRing: UICircularProgressRing)
-    func resetProgressRing()
-    func calculatePercentage() -> Double
-    func startRingAnimation()
-    func getSwipesCount(stats: [Stats]) -> Int?
-    func setSwipesCount()
-    
-    var notificationTitle: String { get }
-    var notificationText: String { get }
-    var notificationImage: UIImage? { get }
-    func presentBottomFloat(title: String, description: String, image: UIImage?)
-}
-
-
-extension ProgressRingProtocol {
-    var value: Int {
-        return 0
-    }
-    
-    var minValue: Int {
-        return 0
-    }
-    
-    var maxValue: Int {
-        return 100
-    }
-    
-    var ringStyle: UICircularProgressRingStyle {
-        return .ontop
-    }
-    
-    var font: UIFont {
-        return .preferredFont(forTextStyle: .largeTitle)
-    }
-    
-    func setupProgressRing(progressRing: UICircularProgressRing) {
-        progressRing.value = UICircularProgressRing.ProgressValue(value)
-        progressRing.maxValue = UICircularProgressRing.ProgressValue(maxValue)
-        progressRing.minValue = UICircularProgressRing.ProgressValue(minValue)
-        progressRing.ringStyle = ringStyle
-        progressRing.font = font
-        progressRing.innerRingColor = color
-        progressRing.fontColor = color
-    }
-    
-    func startRingAnimation() {
-        guard let progressRing = progressRing else { return }
-        progressRing.startProgress(to: UICircularProgressRing.ProgressValue(calculatePercentage()), duration: 2) {
-            self.presentBottomFloat(title: self.notificationTitle, description: self.notificationText, image: self.notificationImage)
-        }
-    }
-    
-    func resetProgressRing() {
-        guard let progressRing = progressRing else { return }
-        progressRing.resetProgress()
-    }
-    
-    
-    func calculatePercentage() -> Double {
-        return Double(swipesCount) / Double(swipesTarget) * 100
-    }
-    
-    func presentBottomFloat(title: String, description: String, image: UIImage?) {
-        var attributes = EKAttributes.bottomNote
-        Util.setupAttribute(attributes: &attributes, color: color)
-        let contentView = Util.createNotification(title: title, description: description, image: image)
-        SwiftEntryKit.display(entry: contentView, using: attributes)
-    }
-}
-
-//extension ProgressViewController {
-//}
-
-class ProgressViewController: UIViewController, ProgressRingProtocol {
-    
-    
-    
+class ProgressViewController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
+    // MARK: Properties
     
     var willAnimate: Bool = true
     
-
-    // MARK: Properties
-    
     var swipesCount: Int = 0 {
-        didSet { startRingAnimation() }
-    }
-    
-    var color: UIColor {
-        get { return AppleColors.blue }
-    }
-    
-    var swipesTarget: Int {
-        return 400
-    }
-    
-    let notificationTitle: String = "You're Awesome"
-    
-    var notificationText: String {
-        var remainingSwipes = (swipesTarget - swipesCount)
-        if remainingSwipes < 0 {
-            remainingSwipes = 0
+        didSet {
+            print("current level: \(currentLevel), level: \(level)")
+            if currentLevel < level {
+                UserDefaults.standard.set(self.level, forKey: "currentLevel")
+                DispatchQueue.main.async {
+                    self.startLevelUpAnimation()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.startRingAnimation()
+                }
+            }
         }
-        return "You have already swiped \(swipesCount) meals. Only \(remainingSwipes) swipes remaining!"
     }
     
-    var notificationImage: UIImage? {
-        return nil
-    }
+    // MARK: IBOutlets
     
-    
-    
+    @IBOutlet weak var rankName: LTMorphingLabel!
     @IBOutlet weak var progressRing: UICircularProgressRing!
+    @IBOutlet weak var progressDescription: UILabel!
     
     // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupProgressRing(progressRing: self.progressRing)
+        progressRing.delegate = self
+        
+        setupProgressRing()
+        setupRankName()
+        setupProgressDescription(text: progressText[currentLevel])
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -167,6 +75,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol {
             setSwipesCount()
             willAnimate = false
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -178,23 +87,31 @@ class ProgressViewController: UIViewController, ProgressRingProtocol {
     
     // Private functions
     
+    func setupRankName() {
+        rankName.morphingEnabled = false
+        rankName.text = levelText[currentLevel]
+        rankName.numberOfLines = 0
+        rankName.morphingDuration = 2
+        rankName.morphingEffect = .scale
+        rankName.font = UIFont.preferredFont(forTextStyle: .title1)
+    }
     
     func setSwipesCount() {
-            let backgroundQueue = DispatchQueue.global(qos: .background)
-            backgroundQueue.async {
-                firstly {
-                    CenaAPI().getStats()
-                    }.done { projectStats -> Void in
-                        if let swipesCount = self.getSwipesCount(stats: projectStats) {
-                            self.swipesCount = swipesCount
-                        }
-                    }.catch { _ in
-                        DispatchQueue.main.async {
-                            let alert = Util.createSimpleAlert(title: "error", message: "No internet")
-                                self.present(alert, animated: true)
-                        }
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.async {
+            firstly {
+                CenaAPI().getStats()
+                }.done { projectStats -> Void in
+                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
+                        self.swipesCount = swipesCount
+                    }
+                }.catch { _ in
+                    DispatchQueue.main.async {
+                        let alert = Util.noInternetConnectionAlert()
+                            self.present(alert, animated: true)
+                    }
                 }
-            }
+        }
     }
     
     func getSwipesCount(stats: [Stats]) -> Int? {
@@ -205,12 +122,90 @@ class ProgressViewController: UIViewController, ProgressRingProtocol {
         }
         return nil
     }
-
-    @objc func reload(_ sender: UIBarButtonItem) {
-        print("reload tapped")
-        progressRing.value = 0
-        self.startRingAnimation()
+}
+ 
+ extension ProgressViewController {
+    
+    var color: UIColor {
+        get { return AppleColors.blue }
+    }
+    
+    var swipesTarget: Int {
+        return 400
+    }
+    
+    var notificationText: String {
+        return progressText[currentLevel]
     }
     
     
-}
+    var currentLevel: Int {
+        return UserDefaults.standard.value(forKey: "currentLevel") as? Int ?? 0
+    }
+    
+    var level: Int {
+        switch calculatePercentage() {
+        case 0..<5:
+            return 0
+        case 5..<40:
+            return 1
+        case 40..<80:
+            return 2
+        case 80..<100:
+            return 3
+        case 100..<200:
+            return 4
+        case 200..<300:
+            return 5
+        default:
+            return currentLevel
+        }
+    }
+    
+    var levelText: [String] {
+        return ["Beginner", "Junior Swiper", "Senior Swiper", "Master Swiper", "Top Swiper", "Meta"]
+    }
+    
+    var swipedMealsInfo: String {
+        return "You have already swiped \(swipesCount) meals."
+    }
+    
+    var progressText: [String] {
+        return ["Hello newcomer! \(swipedMealsInfo) Keep going because the time will never be just right.", "Hello Junior! \(swipedMealsInfo) You are doing very well. Hang in there and don't give up swiping.", "Hello Senior! \(swipedMealsInfo) You definitely know how to swipe that finger.", "Hello Master! \(swipedMealsInfo) You're awesome and so close to the goal.", "Hello Top Swiper! \(swipedMealsInfo) Congratulations, you have reached the goal! Thank you.", "Hello meta! \(swipedMealsInfo) That is twice as much as you needed. You are a true hero and we will be forever in your debt!"]
+    }
+    
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        label.numberOfLines = 0
+    }
+    
+    func startLevelUpAnimation() {
+        guard let progressRing = progressRing else { return }
+        self.rankName.morphingEnabled = true
+            progressRing.startProgress(to: UICircularProgressRing.ProgressValue(swipesCount), duration: 2) {
+            self.rankName.text = self.levelText[self.level]
+            self.progressRing.pulsate()
+            UIView.animate(withDuration: 2.0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.progressDescription.text = self.progressText[self.currentLevel]
+                self.progressDescription.alpha = 1.0
+                self.progressRing.innerRingColor = .green
+                self.progressRing.fontColor = .green
+                self.progressRing.valueIndicator = " Swipes\nLevel Up"
+            })
+        }
+    }
+ }
+
+ extension UICircularProgressRing {
+    func pulsate() {
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.6
+        pulse.fromValue = 0.98
+        pulse.toValue = 1.05
+        pulse.autoreverses = false
+        pulse.repeatCount = 0
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1
+        
+        layer.add(pulse, forKey: nil)
+    }
+ }

@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 import PromiseKit
+import LTMorphingLabel
 
 extension CommunityContributionController {
     var color: UIColor {
@@ -28,7 +29,7 @@ extension CommunityContributionController {
         if remainingSwipes < 0 {
             remainingSwipes = 0
         }
-        return "The community has already swiped \(swipesCount) meals! Only \(remainingSwipes) swipes remaining to reach our goal."
+        return "The community has already swiped \(swipesCount) meals! Only \(remainingSwipes) swipes remaining to reach our goal. Together we are strong!"
     }
     
     var notificationImage: UIImage? {
@@ -45,42 +46,34 @@ extension CommunityContributionController {
     }
 }
 
-class CommunityContributionController: UIViewController, ProgressRingProtocol {
-    
-    func setSwipesCount() {
-        let backgroundQueue = DispatchQueue.global(qos: .background)
-        backgroundQueue.async {
-            firstly {
-                CenaAPI().getStats()
-                }.done { projectStats -> Void in
-                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
-                        self.swipesCount = swipesCount
-                    }
-                }.catch { _ in
-                    DispatchQueue.main.async {
-                        let alert = Util.createSimpleAlert(title: "error", message: "No internet")
-                        self.present(alert, animated: true)
-                    }
-            }
-        }
-    }
+class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
 
-    
-    
-    @IBOutlet weak var progressRing: UICircularProgressRing!
-    
-    
+    // MARK: Properties
     
     var swipesCount: Int = 0 {
-        didSet { startRingAnimation() }
+        didSet {
+            DispatchQueue.main.async {
+                self.startRingAnimation()
+            }
+        }
     }
     
     var willAnimate: Bool = true
     
+    // MARK: IBOutlets
+    
+    
+    @IBOutlet weak var progressRing: UICircularProgressRing!
+    @IBOutlet weak var progressDescription: UILabel!
+    
+    // MARK: Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupProgressRing(progressRing: progressRing)
+        progressRing.delegate = self
+        
+        setupProgressRing()
+        setupProgressDescription(text: notificationText)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,6 +98,30 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol {
         }
     }
     
+}
+
+extension CommunityContributionController {
+    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
+        label.numberOfLines = 0
+    }
+    
+    func setSwipesCount() {
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.async {
+            firstly {
+                CenaAPI().getStats()
+                }.done { projectStats -> Void in
+                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
+                        self.swipesCount = swipesCount
+                    }
+                }.catch { _ in
+                    DispatchQueue.main.async {
+                        let alert = Util.createSimpleAlert(title: "error", message: "No internet")
+                        self.present(alert, animated: true)
+                    }
+            }
+        }
+    }
 }
 
 

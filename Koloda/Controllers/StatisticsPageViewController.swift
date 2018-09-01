@@ -50,15 +50,33 @@ class StatisticsPageViewController: UIPageViewController {
     
     @objc func reload() {
         guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
+        if currentPage.swipesCount == 0 {
+            currentPage.setSwipesCount()
+        }
         currentPage.resetProgressRing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             currentPage.startRingAnimation()
-            print("Reload tapped")
         }
+        
+        
+//        currentPage.resetProgressRing()
+//        currentPage.progressRing.innerRingColor = AppleColors.blue
+//        currentPage.progressDescription.alpha = 0
+//        currentPage.progressRing.fontColor = AppleColors.blue
+//        currentPage.progressRing.valueIndicator = " Swipes \n of \(currentPage.swipesTarget)"
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            currentPage.startRingAnimation(progressDescription: currentPage.notificationText)
+//            print("Reload tapped")
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
+        if currentPage.willAnimate {
+            currentPage.setSwipesCount()
+            currentPage.willAnimate = false
+        }
     }
     
     private func getProjectStat(stats: [Stats]) -> Stats? {

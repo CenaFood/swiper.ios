@@ -237,7 +237,7 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
     }
 
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
-        return [.left, .right, .up]
+        return [.left, .right, .up, .down]
     }
 
 }

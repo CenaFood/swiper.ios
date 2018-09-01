@@ -33,6 +33,7 @@
 		AF727506212C00620085EF23 /* StatisticsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727505212C00620085EF23 /* StatisticsPageViewController.swift */; };
 		AF8890BD2132F5FA001A54B5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */; };
 		AF8890C12133FE86001A54B5 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890C02133FE86001A54B5 /* Stats.swift */; };
+		AFA0FA87213996680083FC71 /* ProgressRingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */; };
 		AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */; };
 		AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6A1FDABB55005FE69F /* Challenge.swift */; };
 		AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6C1FDABB8C005FE69F /* Image.swift */; };
@@ -78,6 +79,7 @@
 		AF727505212C00620085EF23 /* StatisticsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPageViewController.swift; sourceTree = "<group>"; };
 		AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		AF8890C02133FE86001A54B5 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingProtocol.swift; sourceTree = "<group>"; };
 		AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenaAPI.swift; sourceTree = "<group>"; };
 		AFA61F6A1FDABB55005FE69F /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		AFA61F6C1FDABB8C005FE69F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				AF727505212C00620085EF23 /* StatisticsPageViewController.swift */,
 				AFEF0286212DA3700048DDDC /* CommunityContributionController.swift */,
 				AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */,
+				AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/PieCharts/PieCharts.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
@@ -356,6 +360,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PieCharts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
@@ -409,6 +414,7 @@
 				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
 				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
 				AF8890BD2132F5FA001A54B5 /* ProgressViewController.swift in Sources */,
+				AFA0FA87213996680083FC71 /* ProgressRingProtocol.swift in Sources */,
 				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
 				AFBED51B20E0E01400F1B55C /* Config.swift in Sources */,
 				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,

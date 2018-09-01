@@ -17,6 +17,7 @@ target 'cena' do
   pod 'PieCharts'
   pod 'GradientProgressBar'
   pod 'SwiftEntryKit'
+  pod 'LTMorphingLabel'
 end
 
 post_install do |installer|

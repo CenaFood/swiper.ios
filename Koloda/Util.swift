@@ -19,6 +19,10 @@ class Util {
         return alert
     }
     
+    static func noInternetConnectionAlert() -> UIAlertController {
+        return Util.createSimpleAlert(title: "No Internet", message: "Make sure that airplane mode is turned off and then press the refresh button")
+    }
+    
     static func setupAttribute(attributes: inout EKAttributes, color: UIColor) {
         attributes.entryBackground = .color(color: color)
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
