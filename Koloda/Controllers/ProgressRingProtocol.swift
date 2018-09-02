@@ -89,12 +89,7 @@ extension ProgressRingProtocol {
         return Double(swipesCount) / Double(swipesTarget) * 100
     }
     
-    func presentBottomFloat(title: String, description: String, image: UIImage?) {
-        var attributes = EKAttributes.bottomNote
-        Util.setupAttribute(attributes: &attributes, color: color)
-        let contentView = Util.createNotification(title: title, description: description, image: image)
-        SwiftEntryKit.display(entry: contentView, using: attributes)
-    }
+    
     
     func setupProgressDescription(text: String) {
         progressDescription.numberOfLines = 0

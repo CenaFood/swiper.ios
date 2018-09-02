@@ -13,7 +13,7 @@ import LTMorphingLabel
 
 extension CommunityContributionController {
     var color: UIColor {
-        return AppleColors.pink
+        return AppleColors.red
     }
     
     var swipesTarget: Int {

@@ -51,4 +51,7 @@ struct Legal {
 struct AppleColors {
     static let blue: UIColor = UIColor(named: "tealBlue") ?? .blue
     static let pink: UIColor = UIColor(named: "pink") ?? .purple
+    static let orange: UIColor = UIColor(named: "orange") ?? .orange
+    static let red: UIColor = UIColor(named: "red") ?? .red
+    static let green: UIColor = UIColor(named: "green") ?? .green
 }

@@ -127,7 +127,11 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
  extension ProgressViewController {
     
     var color: UIColor {
-        get { return AppleColors.blue }
+        get { return AppleColors.orange }
+    }
+    
+    var levelUpColor: UIColor {
+        return AppleColors.green
     }
     
     var swipesTarget: Int {
@@ -187,8 +191,8 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
             UIView.animate(withDuration: 2.0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
                 self.progressDescription.text = self.progressText[self.currentLevel]
                 self.progressDescription.alpha = 1.0
-                self.progressRing.innerRingColor = .green
-                self.progressRing.fontColor = .green
+                self.progressRing.innerRingColor = self.levelUpColor
+                self.progressRing.fontColor = self.levelUpColor
                 self.progressRing.valueIndicator = " Swipes\nLevel Up"
             })
         }

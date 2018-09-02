@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7661B51499A009FC9FC /* CustomKolodaView.swift */; };
-		440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */; };
+		440FB7691B515995009FC9FC /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7681B515995009FC9FC /* DiscoverViewController.swift */; };
 		4420661D1B44577500FD4CAD /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4420661B1B44577500FD4CAD /* OverlayView.xib */; };
 		4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */; };
 		446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		440FB7661B51499A009FC9FC /* CustomKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKolodaView.swift; sourceTree = "<group>"; };
-		440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundAnimationViewController.swift; sourceTree = "<group>"; };
+		440FB7681B515995009FC9FC /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		4420661C1B44577500FD4CAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OverlayView.xib; sourceTree = "<group>"; };
 		4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleOverlayView.swift; sourceTree = "<group>"; };
 		446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundKolodaAnimator.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		AFBED51C20E0EC4100F1B55C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
+				440FB7681B515995009FC9FC /* DiscoverViewController.swift */,
 				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
 				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
 				AF5231A81F9A1190001A184D /* StartViewController.swift */,
@@ -430,7 +430,7 @@
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
 				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
 				AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */,
-				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
+				440FB7691B515995009FC9FC /* DiscoverViewController.swift in Sources */,
 				AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */,
 				AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */,
 			);

@@ -47,4 +47,11 @@ class Util {
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
         return EKNotificationMessageView(with: notificationMessage)
     }
+    
+    static func presentBottomFloat(title: String, description: String, image: UIImage?, color: UIColor) {
+        var attributes = EKAttributes.bottomNote
+        Util.setupAttribute(attributes: &attributes, color: color)
+        let contentView = Util.createNotification(title: title, description: description, image: image)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
 }

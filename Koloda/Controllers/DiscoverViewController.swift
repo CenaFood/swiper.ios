@@ -6,6 +6,7 @@ import Kingfisher
 import CoreLocation
 import CloudKit
 import Reachability
+import PromiseKit
 
 private let numberOfStartingCards: Int = 10
 private let frameAnimationSpringBounciness: CGFloat = 9
@@ -13,11 +14,15 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
-class BackgroundAnimationViewController: CustomTransitionViewController {
+class DiscoverViewController: CustomTransitionViewController {
 
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     var userID: String = ""
+    
+    var userSwipesCount: Int = 0
+    var currentDiscoverLevel: Int = 0
+    var communitySwipesCount: Int = 0
 
 
     @IBOutlet weak var kolodaView: KolodaView!
@@ -48,17 +53,40 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         setupLocationManager()
         kolodaView.clipsToBounds = true
         fetchImages()
+        
+        userSwipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
+        communitySwipesCount = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0
+        currentDiscoverLevel = UserDefaults.standard.value(forKey: "currentDiscoverLevel") as? Int ?? 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if reachability.connection == .none {
             self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
+            
         }
         AuthController().login()
+        setSwipesCount()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
     
     //MARK: Private functions
+    
+    func saveUserSwipesCount() {
+        UserDefaults.standard.setValue(userSwipesCount, forKey: "userSwipesCount")
+    }
+    
+    func saveCommunitySwipesCount() {
+        UserDefaults.standard.setValue(communitySwipesCount, forKey: "communitySwipesCount")
+    }
+    
+    func saveCurrentDiscoverLevel() {
+        UserDefaults.standard.setValue(currentDiscoverLevel, forKey: "currentDiscoverLevel")
+    }
 
     func setupQuestionLabel() {
         questionLabel.text = "Would you eat this here and now?"
@@ -73,8 +101,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
     }
-
-
+    
     private func showNoInteretConnectionAlert(message: String) {
         let alert = UIAlertController(title: "No Internet Connection", message: message,
                 preferredStyle: .alert)
@@ -191,7 +218,7 @@ class BackgroundAnimationViewController: CustomTransitionViewController {
 
 
 //MARK: KolodaViewDelegate
-extension BackgroundAnimationViewController: KolodaViewDelegate {
+extension DiscoverViewController: KolodaViewDelegate {
 
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         fetchImages()
@@ -234,6 +261,13 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
         } else if direction == SwipeResultDirection.up {
             updateAnnotation(index: kolodaView.currentCardIndex - 1, answer: "No Food")
         }
+        userSwipesCount += 1
+        if currentDiscoverLevel < level {
+            currentDiscoverLevel = level
+            saveCurrentDiscoverLevel()
+            Util.presentBottomFloat(title: motivatingTitle[currentDiscoverLevel], description: motivatingText[currentDiscoverLevel], image: nil, color: AppleColors.orange)
+            
+        }
     }
 
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
@@ -243,7 +277,7 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
 }
 
 // MARK: KolodaViewDataSource
-extension BackgroundAnimationViewController: KolodaViewDataSource {
+extension DiscoverViewController: KolodaViewDataSource {
 
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
         return .fast
@@ -271,7 +305,7 @@ extension BackgroundAnimationViewController: KolodaViewDataSource {
     }
 }
 
-extension BackgroundAnimationViewController: CLLocationManagerDelegate {
+extension DiscoverViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.first
@@ -288,4 +322,103 @@ extension BackgroundAnimationViewController: CLLocationManagerDelegate {
 
     }
 }
+
+extension DiscoverViewController {
+    
+    var level: Int {
+        switch percentageProgress {
+        case 0..<5:
+            return 0
+        case 5..<15:
+            return 1
+        case 15..<25:
+            return 2
+        case 25..<40:
+            return 3
+        case 40..<50:
+            return 4
+        case 50..<60:
+            return 5
+        case 60..<70:
+            return 6
+        case 70..<80:
+            return 7
+        case 80..<90:
+            return 8
+        case 90..<100:
+            return 9
+        case 100..<150:
+            return 10
+        case 150..<200:
+            return 11
+        case 200..<300:
+            return 12
+        default:
+            return currentDiscoverLevel
+        }
+    }
+        
+    var motivatingText: [String] {
+        return ["If you see this you have found a hidden gem or a bug. Please let me know either way.",
+                "Wow you have just completed your first swipes! Check out the progress on how your are doing and what the goal is.",
+        "But stay strong, the time is never just right.",
+        "Your doing great so far. Thank you for your contribution!",
+            "Amazing work. Have a look in the progress tab.",
+            "Half of it? Really only half of it?",
+            "Never give up.",
+            "Does your thumb hurt already? Keep going.",
+            "Head over to the progress tab to see your well deserved new status.",
+            "Get ready for the last swipes. You are awesome!",
+            "You did it! Thank you, you are fantastic.",
+            "You are hungry for more? So are we. Keep it up!",
+            "You are one hell of a swiping expert. Thank you, we really appreciate it!"
+        ]
+    }
+    
+    var motivatingTitle: [String] {
+        return ["Bug",
+        "Great Work",
+        "The Struggle Is Real",
+        "No Pain, No Gain",
+        "May I Call You Senior?",
+        "Halfway There",
+        "Closer And Closer",
+        "Yeah",
+        "What Should We Call You Now?",
+        "Almost There",
+        "Congratulations",
+        "Overachiever",
+        "Twice As Much, Twice As Good"
+        ]
+    }
+    
+    var userSwipesTarget: Int {
+        return 400
+    }
+    
+    var percentageProgress: Double {
+        return Double(userSwipesCount) / Double(userSwipesTarget) * 100
+    }
+    
+    func setSwipesCount() {
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.async {
+            firstly {
+                CenaAPI().getStats()
+                }.done { projectStats -> Void in
+                    for stat in projectStats {
+                        if stat.projectName == classConstants.projectName {
+                            self.userSwipesCount = stat.personalLabelsCount
+                            self.communitySwipesCount = stat.labelCount
+                        }
+                    }
+                }.catch { _ in
+                    DispatchQueue.main.async {
+                        let alert = Util.noInternetConnectionAlert()
+                        self.present(alert, animated: true)
+                    }
+                }
+            }
+        }
+    }
 
