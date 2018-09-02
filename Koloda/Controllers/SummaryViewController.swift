@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import SkyFloatingLabelTextField
 import TransitionButton
 
 class SummaryViewController: UIViewController {
@@ -31,5 +30,6 @@ class SummaryViewController: UIViewController {
         continueButton.setTitle("Continue", for: .normal)
     }
 }
+
 
 

@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'cena' do
   pod 'Koloda'#, :path => "./"
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'TransitionButton'
   pod 'Kingfisher', '~> 4.0'
   pod 'Instructions'
@@ -14,8 +13,6 @@ target 'cena' do
   pod 'RLBAlertsPickers'
   pod "PromiseKit", "~> 6.0"
   pod 'UICircularProgressRing'
-  pod 'PieCharts'
-  pod 'GradientProgressBar'
   pod 'SwiftEntryKit'
   pod 'LTMorphingLabel'
 end

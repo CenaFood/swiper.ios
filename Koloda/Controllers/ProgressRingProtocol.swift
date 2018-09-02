@@ -52,7 +52,7 @@ extension ProgressRingProtocol {
     }
     
     var font: UIFont {
-        return .preferredFont(forTextStyle: .largeTitle)
+        return .preferredFont(forTextStyle: .title1)
     }
     
     func setupProgressRing() {

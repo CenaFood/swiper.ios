@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import SkyFloatingLabelTextField
 import TransitionButton
 import ActiveLabel
 import RLBAlertsPickers
