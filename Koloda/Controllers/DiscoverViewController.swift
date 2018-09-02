@@ -89,7 +89,7 @@ class DiscoverViewController: CustomTransitionViewController {
     }
 
     func setupQuestionLabel() {
-        questionLabel.text = "Would you eat this here and now?"
+        questionLabel.text = "Would you like to eat or drink this?"
         let size = UIFont.labelFontSize
         let font = UIFont.systemFont(ofSize: size)
         questionLabel.font = font

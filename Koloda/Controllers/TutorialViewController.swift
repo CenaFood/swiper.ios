@@ -168,13 +168,13 @@ extension TutorialViewController: CoachMarksControllerDataSource {
         print("We are at index: \(index)")
         switch index {
         case 0:
-            coachViews.bodyView.hintLabel.text = "Swipe right if you like to eat this here and now."
+            coachViews.bodyView.hintLabel.text = "Swipe right if you like to eat or drink this."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 1:
             coachViews.bodyView.hintLabel.text = "Or press the green like button."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 2:
-            coachViews.bodyView.hintLabel.text = "Swipe left if you don't like to eat this here and now."
+            coachViews.bodyView.hintLabel.text = "Swipe left if you don't like to eat or drink this."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 3:
             coachViews.bodyView.hintLabel.text = "Or press the red dislike button."
