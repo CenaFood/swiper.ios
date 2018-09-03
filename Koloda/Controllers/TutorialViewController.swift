@@ -68,6 +68,10 @@ class TutorialViewController: CustomTransitionViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.coachMarksController.start(on: self)
@@ -75,7 +79,7 @@ class TutorialViewController: CustomTransitionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.coachMarksController.stop(immediately: true)
+        self.coachMarksController.stop(immediately: false)
     }
     
     //MARK: IBActions
@@ -106,7 +110,6 @@ extension TutorialViewController: KolodaViewDelegate {
         kolodaView.resetCurrentCardIndex()
     }
     
-    
     func kolodaShouldApplyAppearAnimation(_ koloda: KolodaView) -> Bool {
         return true
     }
@@ -127,7 +130,7 @@ extension TutorialViewController: KolodaViewDelegate {
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
-        return [.left, .right, .up]
+        return [.left, .right, .up, .down]
     }
         
     
@@ -165,24 +168,27 @@ extension TutorialViewController: CoachMarksControllerDataSource {
         print("We are at index: \(index)")
         switch index {
         case 0:
-            coachViews.bodyView.hintLabel.text = "Swipe right if you like to eat this here and now."
+            coachViews.bodyView.hintLabel.text = "Swipe right if you like to eat or drink this."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 1:
             coachViews.bodyView.hintLabel.text = "Or press the green like button."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 2:
-            coachViews.bodyView.hintLabel.text = "Swipe left if you don't like to eat this here and now."
+            coachViews.bodyView.hintLabel.text = "Swipe left if you don't like to eat or drink this."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 3:
             coachViews.bodyView.hintLabel.text = "Or press the red dislike button."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 4:
-            coachViews.bodyView.hintLabel.text = "Swipe up if there is no food on the picture."
+            coachViews.bodyView.hintLabel.text = "Swipe up or down if there is no food on the picture."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 5:
             coachViews.bodyView.hintLabel.text = "Or press the blue no food button."
             coachViews.bodyView.nextLabel.text = "Ok"
         case 6:
+            coachViews.bodyView.hintLabel.text = "When you are done testing, click here to continue."
+            coachViews.bodyView.nextLabel.text = "Ok"
+        case 7:
             coachViews.bodyView.hintLabel.text = "Now it's your turn. Try it out!"
             coachViews.bodyView.nextLabel.text = "Ok"
         default:
@@ -193,12 +199,12 @@ extension TutorialViewController: CoachMarksControllerDataSource {
 
 
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 7
+        return 8
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
         switch index {
-        case 0, 2, 4, 6:
+        case 0, 2, 4, 7:
             return coachMarksController.helper.makeCoachMark(for: self.kolodaView)
         case 1:
             return coachMarksController.helper.makeCoachMark(for: self.likeButton)
@@ -206,6 +212,8 @@ extension TutorialViewController: CoachMarksControllerDataSource {
             return coachMarksController.helper.makeCoachMark(for: self.dislikeButton)
         case 5:
             return coachMarksController.helper.makeCoachMark(for: self.noFoodButton)
+        case 6:
+            return coachMarksController.helper.makeCoachMark(for: self.continueButton)
         default:
             return coachMarksController.helper.makeCoachMark()
         }
@@ -218,11 +226,21 @@ extension TutorialViewController: CoachMarksControllerDelegate {
     func coachMarksController(_ coachMarksController: CoachMarksController, willHide coachMark: CoachMark, at index: Int) {
         switch index {
         case 0, 1:
-            self.kolodaView.swipe(.right)
+            DispatchQueue.main.async {
+                self.kolodaView.swipe(.right)
+            }
         case 2, 3:
-            self.kolodaView.swipe(.left)
-        case 4, 5:
-            self.kolodaView.swipe(.up)
+            DispatchQueue.main.async {
+                self.kolodaView.swipe(.left)
+            }
+        case 4:
+            DispatchQueue.main.async {
+                self.kolodaView.swipe(.up)
+            }
+        case 5:
+            DispatchQueue.main.async {
+                self.kolodaView.swipe(.down)
+            }
         default:
             break
         }

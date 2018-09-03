@@ -31,6 +31,8 @@ class CustomOverlayView: OverlayView {
                 overlayImageView.image = UIImage(named: overlayNoFood)
             case .right? :
                 overlayImageView.image = UIImage(named: overlayRightImageName)
+            case .down? :
+                overlayImageView.image = UIImage(named: overlayNoFood)
             default:
                 overlayImageView.image = nil
             }

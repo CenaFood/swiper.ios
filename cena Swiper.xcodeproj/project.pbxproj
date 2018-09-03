@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7661B51499A009FC9FC /* CustomKolodaView.swift */; };
-		440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */; };
+		440FB7691B515995009FC9FC /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FB7681B515995009FC9FC /* DiscoverViewController.swift */; };
 		4420661D1B44577500FD4CAD /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4420661B1B44577500FD4CAD /* OverlayView.xib */; };
 		4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */; };
 		446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */; };
@@ -18,6 +18,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		892CEBAB734A67BE3F4674FC /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800B122E2562D839F888AF28 /* Pods_cena.framework */; };
 		AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */; };
 		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
 		AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FD2056E0EA0033FDA5 /* Credentials.swift */; };
@@ -29,6 +30,10 @@
 		AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */; };
 		AF5E7AF121061C1C00405B10 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5E7AF021061C1C00405B10 /* Util.swift */; };
 		AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68009E1FE120A400F03CB4 /* Annotation.swift */; };
+		AF727506212C00620085EF23 /* StatisticsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727505212C00620085EF23 /* StatisticsPageViewController.swift */; };
+		AF8890BD2132F5FA001A54B5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */; };
+		AF8890C12133FE86001A54B5 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890C02133FE86001A54B5 /* Stats.swift */; };
+		AFA0FA87213996680083FC71 /* ProgressRingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */; };
 		AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */; };
 		AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6A1FDABB55005FE69F /* Challenge.swift */; };
 		AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61F6C1FDABB8C005FE69F /* Image.swift */; };
@@ -40,21 +45,17 @@
 		AFBED51B20E0E01400F1B55C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51A20E0E01400F1B55C /* Config.swift */; };
 		AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBED51D20E0EC7500F1B55C /* AuthController.swift */; };
 		AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */; };
-		BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */; };
+		AFEF0287212DA3700048DDDC /* CommunityContributionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEF0286212DA3700048DDDC /* CommunityContributionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		093C6CC368001B8BAFD235CB /* Pods-Koloda_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.release.xcconfig"; sourceTree = "<group>"; };
-		1242FA2632AFB60821C100AF /* Pods-Koloda_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		440FB7661B51499A009FC9FC /* CustomKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKolodaView.swift; sourceTree = "<group>"; };
-		440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundAnimationViewController.swift; sourceTree = "<group>"; };
+		440FB7681B515995009FC9FC /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		4420661C1B44577500FD4CAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OverlayView.xib; sourceTree = "<group>"; };
 		4420661E1B4457E800FD4CAD /* ExampleOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleOverlayView.swift; sourceTree = "<group>"; };
 		446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundKolodaAnimator.swift; sourceTree = "<group>"; };
 		44B5EC281B660C8500895E3D /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
 		44B5EC2A1B660C9100895E3D /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
-		4E2BCB2554163B4F7FFA6380 /* Pods-cena.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.release.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.release.xcconfig"; sourceTree = "<group>"; };
-		5243B3EDBF06248559332C86 /* Pods_Koloda_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koloda_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6DBB80685DABAE785B8715 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* cena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,9 +63,8 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		800B122E2562D839F888AF28 /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Tests/Pods-Koloda_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		AF4984FD2056E0EA0033FDA5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
@@ -76,6 +76,10 @@
 		AF5819AE1FDFC70B004ECE1F /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
 		AF5E7AF021061C1C00405B10 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		AF68009E1FE120A400F03CB4 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		AF727505212C00620085EF23 /* StatisticsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPageViewController.swift; sourceTree = "<group>"; };
+		AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		AF8890C02133FE86001A54B5 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRingProtocol.swift; sourceTree = "<group>"; };
 		AFA61F651FDAA0BB005FE69F /* CenaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenaAPI.swift; sourceTree = "<group>"; };
 		AFA61F6A1FDABB55005FE69F /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		AFA61F6C1FDABB8C005FE69F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -88,9 +92,10 @@
 		AFBED51D20E0EC7500F1B55C /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		AFD480592031EFB20090E5D4 /* cena.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cena.entitlements; sourceTree = "<group>"; };
 		AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koloda_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koloda_Example/Pods-Koloda_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		AFEF0286212DA3700048DDDC /* CommunityContributionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityContributionController.swift; sourceTree = "<group>"; };
+		D0CE6E165CF1AF3B3C632B23 /* Pods-cena.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.release.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.release.xcconfig"; sourceTree = "<group>"; };
 		D6781607B5327BAF503C32E3 /* Koloda.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Koloda.podspec; path = ../Koloda.podspec; sourceTree = "<group>"; };
-		FD6C1F0A0D51AE17226C7CE9 /* Pods-cena.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.debug.xcconfig"; sourceTree = "<group>"; };
+		EDDC89BC4DE314A07153E2C7 /* Pods-cena.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cena.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cena/Pods-cena.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +104,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD4805B2031EFBD0090E5D4 /* CloudKit.framework in Frameworks */,
-				BD216981CE5F0B7CA3397189 /* Pods_cena.framework in Frameworks */,
+				892CEBAB734A67BE3F4674FC /* Pods_cena.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2354978FC66A6808B836A8F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDDC89BC4DE314A07153E2C7 /* Pods-cena.debug.xcconfig */,
+				D0CE6E165CF1AF3B3C632B23 /* Pods-cena.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +127,8 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* cena swiper */,
 				607FACD11AFB9204008FA782 /* Products */,
-				AB88095976C7B6CA809587FB /* Pods */,
 				85B3405D0F2A73D9A709B3FA /* Frameworks */,
+				2354978FC66A6808B836A8F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,23 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				AFD4805A2031EFBD0090E5D4 /* CloudKit.framework */,
-				5243B3EDBF06248559332C86 /* Pods_Koloda_Example.framework */,
-				6B8F0849A95FBCA89C3999EE /* Pods_cena.framework */,
+				800B122E2562D839F888AF28 /* Pods_cena.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AB88095976C7B6CA809587FB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CF2C9E50C19A9188464AE19E /* Pods-Koloda_Example.debug.xcconfig */,
-				093C6CC368001B8BAFD235CB /* Pods-Koloda_Example.release.xcconfig */,
-				A8A21A7254497CF03F2BBEA3 /* Pods-Koloda_Tests.debug.xcconfig */,
-				1242FA2632AFB60821C100AF /* Pods-Koloda_Tests.release.xcconfig */,
-				FD6C1F0A0D51AE17226C7CE9 /* Pods-cena.debug.xcconfig */,
-				4E2BCB2554163B4F7FFA6380 /* Pods-cena.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		AF5819A91FDEEDD6004ECE1F /* Operations */ = {
@@ -223,6 +223,7 @@
 				AFAAC4C8205FEFB100157514 /* Identifier.swift */,
 				AF4984FF2056E4CF0033FDA5 /* APIBase.swift */,
 				AFBED51A20E0E01400F1B55C /* Config.swift */,
+				AF8890C02133FE86001A54B5 /* Stats.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,12 +231,16 @@
 		AFBED51C20E0EC4100F1B55C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				440FB7681B515995009FC9FC /* BackgroundAnimationViewController.swift */,
+				440FB7681B515995009FC9FC /* DiscoverViewController.swift */,
 				446BFD081CB0184A00619E78 /* BackgroundKolodaAnimator.swift */,
 				AF514F1C203B39EE007222CE /* TutorialViewController.swift */,
 				AF5231A81F9A1190001A184D /* StartViewController.swift */,
 				AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */,
 				AFBED51D20E0EC7500F1B55C /* AuthController.swift */,
+				AF727505212C00620085EF23 /* StatisticsPageViewController.swift */,
+				AFEF0286212DA3700048DDDC /* CommunityContributionController.swift */,
+				AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */,
+				AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -247,11 +252,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "cena" */;
 			buildPhases = (
-				0182469EE898CFC3334C577B /* [CP] Check Pods Manifest.lock */,
+				882D14129306E074550FB76B /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				64922D3147424C142700ED20 /* [CP] Embed Pods Frameworks */,
+				708766C6358054E1EAB232A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,7 +327,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0182469EE898CFC3334C577B /* [CP] Check Pods Manifest.lock */ = {
+		708766C6358054E1EAB232A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/RLBAlertsPickers/RLBAlertsPickers.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RLBAlertsPickers.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		882D14129306E074550FB76B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,44 +389,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64922D3147424C142700ED20 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
-				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/RLBAlertsPickers/RLBAlertsPickers.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RLBAlertsPickers.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cena/Pods-cena-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -386,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA61F6D1FDABB8C005FE69F /* Image.swift in Sources */,
+				AF8890C12133FE86001A54B5 /* Stats.swift in Sources */,
 				AF514F1D203B39EE007222CE /* TutorialViewController.swift in Sources */,
 				AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
@@ -395,20 +407,24 @@
 				AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */,
 				AF5819AF1FDFC70B004ECE1F /* ImageOperation.swift in Sources */,
 				AFA61F6F1FDABC35005FE69F /* Location.swift in Sources */,
+				AF8890BD2132F5FA001A54B5 /* ProgressViewController.swift in Sources */,
+				AFA0FA87213996680083FC71 /* ProgressRingProtocol.swift in Sources */,
 				AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */,
 				AFBED51B20E0E01400F1B55C /* Config.swift in Sources */,
 				AFA61F731FDABCD0005FE69F /* User.swift in Sources */,
 				440FB7671B51499A009FC9FC /* CustomKolodaView.swift in Sources */,
+				AFEF0287212DA3700048DDDC /* CommunityContributionController.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,
 				AF5E7AF121061C1C00405B10 /* Util.swift in Sources */,
 				AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */,
 				4420661F1B4457E800FD4CAD /* ExampleOverlayView.swift in Sources */,
+				AF727506212C00620085EF23 /* StatisticsPageViewController.swift in Sources */,
 				AF5819AC1FDEEDF7004ECE1F /* AsyncOperation.swift in Sources */,
 				AF5819AD1FDEEDF7004ECE1F /* QueryOperation.swift in Sources */,
 				AFAAC4C7205FD98A00157514 /* KeychainPasswordItem.swift in Sources */,
-				440FB7691B515995009FC9FC /* BackgroundAnimationViewController.swift in Sources */,
+				440FB7691B515995009FC9FC /* DiscoverViewController.swift in Sources */,
 				AFAAC4C9205FEFB100157514 /* Identifier.swift in Sources */,
 				AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */,
 			);
@@ -552,7 +568,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD6C1F0A0D51AE17226C7CE9 /* Pods-cena.debug.xcconfig */;
+			baseConfigurationReference = EDDC89BC4DE314A07153E2C7 /* Pods-cena.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cena.entitlements;
@@ -573,7 +589,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E2BCB2554163B4F7FFA6380 /* Pods-cena.release.xcconfig */;
+			baseConfigurationReference = D0CE6E165CF1AF3B3C632B23 /* Pods-cena.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = cena.entitlements;
