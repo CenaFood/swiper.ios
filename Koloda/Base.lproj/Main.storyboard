@@ -683,6 +683,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="Jal-mH-eWv"/>
+                                                    <action selector="openMail:" destination="mgj-lx-o2U" eventType="touchUpInside" id="RR3-CK-bxq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -705,7 +706,7 @@
                     <navigationItem key="navigationItem" title="About Us" id="yva-ea-yII"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
-                        <outlet property="infoButton" destination="oQV-EP-vw2" id="cUB-hc-Ybk"/>
+                        <outlet property="infoButton" destination="oQV-EP-vw2" id="VQ8-PZ-201"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyv-NI-3vK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -837,7 +838,7 @@
         <image name="btn_dislike" width="62" height="62"/>
         <image name="btn_like" width="62" height="62"/>
         <image name="btn_no_food" width="62" height="62"/>
-        <image name="cenaAI" width="343" height="343"/>
+        <image name="cenaAI" width="342" height="344"/>
         <image name="discover" width="25" height="25"/>
         <image name="progress" width="25" height="25"/>
         <namedColor name="pink">

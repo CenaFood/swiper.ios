@@ -32,7 +32,6 @@
 		AF68009F1FE120A400F03CB4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF68009E1FE120A400F03CB4 /* Annotation.swift */; };
 		AF727506212C00620085EF23 /* StatisticsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF727505212C00620085EF23 /* StatisticsPageViewController.swift */; };
 		AF7327402141E60E00423F4E /* StatisticsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73273F2141E60E00423F4E /* StatisticsContainerViewController.swift */; };
-		AF7327422142962A00423F4E /* AboutUsIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7327412142962A00423F4E /* AboutUsIntroductionViewController.swift */; };
 		AF7327442142970C00423F4E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7327432142970C00423F4E /* AboutUsViewController.swift */; };
 		AF8890BD2132F5FA001A54B5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */; };
 		AF8890C12133FE86001A54B5 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8890C02133FE86001A54B5 /* Stats.swift */; };
@@ -81,7 +80,6 @@
 		AF68009E1FE120A400F03CB4 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		AF727505212C00620085EF23 /* StatisticsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPageViewController.swift; sourceTree = "<group>"; };
 		AF73273F2141E60E00423F4E /* StatisticsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsContainerViewController.swift; sourceTree = "<group>"; };
-		AF7327412142962A00423F4E /* AboutUsIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsIntroductionViewController.swift; sourceTree = "<group>"; };
 		AF7327432142970C00423F4E /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		AF8890C02133FE86001A54B5 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				AF8890BC2132F5FA001A54B5 /* ProgressViewController.swift */,
 				AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */,
 				AF73273F2141E60E00423F4E /* StatisticsContainerViewController.swift */,
-				AF7327412142962A00423F4E /* AboutUsIntroductionViewController.swift */,
 				AF7327432142970C00423F4E /* AboutUsViewController.swift */,
 			);
 			path = Controllers;
@@ -427,7 +424,6 @@
 				AFEF0287212DA3700048DDDC /* CommunityContributionController.swift in Sources */,
 				44B5EC291B660C8500895E3D /* CustomOverlayView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				AF7327422142962A00423F4E /* AboutUsIntroductionViewController.swift in Sources */,
 				AFBED51E20E0EC7500F1B55C /* AuthController.swift in Sources */,
 				AF5E7AF121061C1C00405B10 /* Util.swift in Sources */,
 				AFA61F661FDAA0BB005FE69F /* CenaAPI.swift in Sources */,
