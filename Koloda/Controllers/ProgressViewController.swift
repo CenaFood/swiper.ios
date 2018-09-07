@@ -90,7 +90,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     func setupRankName() {
         rankName.morphingEnabled = false
         rankName.text = levelText[currentLevel]
-        rankName.numberOfLines = 0
+        rankName.numberOfLines = 1
         rankName.morphingDuration = 2
         rankName.morphingEffect = .scale
         rankName.font = UIFont.preferredFont(forTextStyle: .title1)
@@ -179,7 +179,9 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     }
     
     func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
     }
     
     func startLevelUpAnimation() {

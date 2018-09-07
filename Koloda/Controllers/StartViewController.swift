@@ -58,7 +58,7 @@ class StartViewController: UIViewController {
                     UserDefaults.standard.setValue(userId, forKey: "username")
                     DispatchQueue.main.async {
                         button.stopAnimation(animationStyle: .expand, completion: {
-                            self.performSegue(withIdentifier: "ShowTutorial", sender: nil)
+                            self.performSegue(withIdentifier: "ShowAboutUsIntro", sender: nil)
                         })
                     }
                     

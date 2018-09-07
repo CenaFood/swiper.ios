@@ -96,6 +96,8 @@ extension ProgressRingProtocol {
         progressDescription.font = UIFont.preferredFont(forTextStyle: .body)
         progressDescription.alpha = 0.0
         progressDescription.text = text
+//        progressDescription.adjustsFontSizeToFitWidth = true
+//        progressDescription.minimumScaleFactor = 0.5
     }
 }
 
