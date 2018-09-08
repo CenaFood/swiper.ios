@@ -29,7 +29,9 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     var swipesCount: Int = 0 {
         didSet {
-            print("current level: \(currentLevel), level: \(level)")
+            if swipesCount > maxValue {
+                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
+            }
             if currentLevel < level {
                 UserDefaults.standard.set(self.level, forKey: "currentLevel")
                 DispatchQueue.main.async {
