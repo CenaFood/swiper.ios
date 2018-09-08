@@ -17,6 +17,11 @@ struct pageNames {
 }
 
 class StatisticsPageViewController: UIPageViewController {
+    
+    // MARK: Properties
+    
+    weak var customPageControlDelegate: CustomPageControlDelegate?
+    
     fileprivate lazy var pages: [UIViewController] = {
         return [
             self.getViewController(withIdentifier: pageNames.YourContribution),
@@ -36,14 +41,11 @@ class StatisticsPageViewController: UIPageViewController {
         currentIndex = 0
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
         navigationItem.rightBarButtonItem?.tintColor = .white
-
         
+        customPageControlDelegate?.didUpadtePageCount(viewController: self, newPageCount: pages.count)
         
         if let firstVC = pages.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-//            setViewControllers([firstVC], direction: .forward, animated: true) { _ in
-//                firstVC.progressViewController?.startRingAnimation()
-//        }
         }
         
     }
@@ -57,17 +59,6 @@ class StatisticsPageViewController: UIPageViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             currentPage.startRingAnimation()
         }
-        
-        
-//        currentPage.resetProgressRing()
-//        currentPage.progressRing.innerRingColor = AppleColors.blue
-//        currentPage.progressDescription.alpha = 0
-//        currentPage.progressRing.fontColor = AppleColors.blue
-//        currentPage.progressRing.valueIndicator = " Swipes \n of \(currentPage.swipesTarget)"
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            currentPage.startRingAnimation(progressDescription: currentPage.notificationText)
-//            print("Reload tapped")
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,9 +93,6 @@ class StatisticsPageViewController: UIPageViewController {
             page.resetProgressRing()
             page.willAnimate = true
         }
-        //        for page in progressPages ?? [] {
-//            page.progressViewController?.resetProgressRing()
-//        }
     }
 }
     
@@ -139,9 +127,14 @@ extension StatisticsPageViewController: UIPageViewControllerDelegate {
             let currentPage = pageViewController.viewControllers?.first
             guard let index = getPageIndex(page: currentPage, pages: pages) else { return }
             currentIndex = index
+            customPageControlDelegate?.didUpdatePageIndex(viewController: self, newPageIndex: currentIndex)
             self.navigationItem.title = currentPage?.navigationItem.title
         }
     }
-    
+}
+
+protocol CustomPageControlDelegate: class {
+    func didUpadtePageCount(viewController: UIViewController, newPageCount: Int)
+    func didUpdatePageIndex(viewController: UIViewController, newPageIndex: Int)
 }
 
