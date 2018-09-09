@@ -71,6 +71,8 @@ class DiscoverViewController: CustomTransitionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        saveUserSwipesCount()
+        saveCommunitySwipesCount()
         
     }
     
@@ -148,10 +150,7 @@ class DiscoverViewController: CustomTransitionViewController {
 
     func setupAnnotations() {
         for challenge in challenges {
-            // TODO: uncomment again when userID bug is fixed
-//            let userID: String = self.credentials?.email ?? DummyUser.userID
-            let userID: String = DummyUser.userID
-            let annotation: Annotation = Annotation(challengeID: challenge.id, userID: userID, answer: "", location: nil, localTime: nil)
+            let annotation: Annotation = Annotation(challengeID: challenge.id, answer: "", location: nil, localTime: nil)
             annotations.append(annotation)
         }
     }
@@ -164,7 +163,6 @@ class DiscoverViewController: CustomTransitionViewController {
 
     func updateAnnotation(index: Int, answer: String) {
         guard let latitude = currentLocation?.coordinate.latitude, let longitude = currentLocation?.coordinate.longitude else {
-            print("Error: Could not determine the location")
             return
         }
         let location = Location(latitude: latitude, longitude: longitude)

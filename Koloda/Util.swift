@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import SwiftEntryKit
 
+func print(_ object: Any) {
+    #if DEBUG
+        Swift.print(object)
+    #endif
+}
+
 class Util {
 
     static func createSimpleAlert(title: String, message: String) -> UIAlertController {

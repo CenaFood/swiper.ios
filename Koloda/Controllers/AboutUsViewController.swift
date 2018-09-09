@@ -35,7 +35,6 @@ class AboutUsViewController: UIViewController, MFMailComposeViewControllerDelega
             present(mail, animated: true, completion: nil)
         } else {
             print("Cannot send mail")
-            // give feedback to the user
         }
     }
 }

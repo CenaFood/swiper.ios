@@ -165,7 +165,6 @@ extension TutorialViewController: KolodaViewDataSource {
 extension TutorialViewController: CoachMarksControllerDataSource {
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        print("We are at index: \(index)")
         switch index {
         case 0:
             coachViews.bodyView.hintLabel.text = "Swipe right if you like to eat or drink this."

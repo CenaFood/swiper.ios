@@ -11,7 +11,7 @@ struct KeychhainConfiguration {
     static let accessGroup: String? = nil   
 }
 
-class StartViewController: UIViewController, WKNavigationDelegate {
+class StartViewController: UIViewController {
     var passwordItems: [KeychainPasswordItem] = []
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
@@ -24,7 +24,6 @@ class StartViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var startTutorialButton: TransitionButton!
     @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
     
-    // MARK: Properties
     
     // MARK: Lifecycle
     
@@ -101,10 +100,6 @@ class StartViewController: UIViewController, WKNavigationDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.allow)
-    }
-
     
     func setupTermsAndPolicyLabel() {
         termsAndPolicyLabel.customize { label in
@@ -120,7 +115,7 @@ class StartViewController: UIViewController, WKNavigationDelegate {
     func showLegalAlert(legalType: String) {
         let alert = UIAlertController(style: .actionSheet)
         guard let legalText: [AttributedTextBlock] = Legal.legalTypeToText[legalType] else {
-            print("Error: wrong legalType: \(legalType)")
+            print("No legal text to display")
             return
         }
         alert.addTextViewer(text: .attributedText(legalText))

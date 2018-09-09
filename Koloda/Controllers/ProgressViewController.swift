@@ -13,12 +13,6 @@ import PromiseKit
 import LTMorphingLabel
 
 struct classConstants {
-    static let maxValue = 100
-    static let minValue = 0
-    static let swipesCount = 60
-    static let swipesTarget = 1000
-    static let ringStyle: UICircularProgressRingStyle = .ontop
-    static let font: UIFont = .preferredFont(forTextStyle: .largeTitle)
     static let projectName = "cena"
 }
 
@@ -27,11 +21,8 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     var willAnimate: Bool = true
     
-    var swipesCount: Int = 0 {
+    var swipesCount: Int = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0 {
         didSet {
-            if swipesCount > maxValue {
-                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
-            }
             if currentLevel < level {
                 UserDefaults.standard.set(self.level, forKey: "currentLevel")
                 DispatchQueue.main.async {
@@ -56,7 +47,6 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     override func viewDidLoad() {
         super.viewDidLoad()
         progressRing.delegate = self
-        
         setupProgressRing()
         setupRankName()
         setupProgressDescription(text: progressText[currentLevel])

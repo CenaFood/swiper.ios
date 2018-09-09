@@ -32,20 +32,9 @@ class CenaAPI {
         case register(Credentials)
         case login(Credentials)
         case getStats
-        // Base endpoint
-        //private static let basePath = "http://86.119.37.97:5001"
+        
         private static let basePath = "https://cenaswiper.luethi.rocks"
-        //private static let basePath = "http://localhost:5000"
         
-       
-        /*
-         Head on over to https://bonseyes.com to get your
-         free API key, and then replace the value below with it.
-         */
-        private static let key = ""
-        
-        
-        // Set the method
         var method: String {
             switch self {
             case .getAllChallenges, .getChallenge, .getStats: return "GET"
@@ -55,13 +44,9 @@ class CenaAPI {
             }
         }
         
-        
-        // Construct the request from url, method and parameters
         public func asURLRequest() -> URLRequest {
-            // Build the request endpoint
             let url: URL = {
                 let relativePath: String?
-                // DONE: Set relativePath to use id, as appropriate
                 switch self {
                 case .getAllChallenges: relativePath = "/challenges"
                 case .getChallenge(let id): relativePath = "/challenges/\(id)"
@@ -80,7 +65,6 @@ class CenaAPI {
                 return url
             }()
             
-            // Set up request parameters
             let parameters: APIBase? = {
                 switch self {
                 case .getAllChallenges, .getChallenge, .deleteAnnotation, .authenticateWithToken, .getStats: return nil
@@ -118,12 +102,10 @@ class CenaAPI {
                 }
             }()
             
-            // Create request
             var request = URLRequest(url: url)
             request.httpMethod = method
             request.addValue("application/json", forHTTPHeaderField: "content-type")
             if let JWToken = token {
-                print("Bearer " + JWToken)
                 request.addValue("Bearer " + JWToken, forHTTPHeaderField: "Authorization")
             }
             guard let post = parameters else { return request }
@@ -288,7 +270,6 @@ class CenaAPI {
                 return
             }
             let stringToken = token.base64EncodedString()
-            print(stringToken)
             completion(stringToken)
         }
     }
@@ -302,7 +283,6 @@ class CenaAPI {
                     print("No data or statusCode not OK")
                     return
                 }
-                // save valid token into keychain
             }
             task.resume()
         }

@@ -50,11 +50,8 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
 
     // MARK: Properties
     
-    var swipesCount: Int = 0 {
+    var swipesCount: Int = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0 {
         didSet {
-            if swipesCount > maxValue {
-                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
-            }
             DispatchQueue.main.async {
                 self.startRingAnimation()
             }

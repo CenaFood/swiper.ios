@@ -106,14 +106,6 @@ class StatisticsPageViewController: UIPageViewController {
             guard let index = getPageIndex(page: viewController, pages: pages) else { return nil }
             return index + 1 < pages.count ? pages[index + 1] : nil
         }
-        
-//        func presentationCount(for pageViewController: UIPageViewController) -> Int {
-//            return pages.count
-//        }
-//
-//        func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-//            return currentIndex ?? 0
-//        }
     }
     
 extension StatisticsPageViewController: UIPageViewControllerDelegate {

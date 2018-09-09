@@ -44,7 +44,7 @@ extension ProgressRingProtocol {
     }
     
     var maxValue: Int {
-        return swipesTarget
+        return swipesCount < swipesTarget ? swipesTarget: swipesCount
     }
     
     var ringStyle: UICircularProgressRingStyle {
