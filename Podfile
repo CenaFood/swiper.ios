@@ -10,7 +10,6 @@ target 'cena' do
   pod 'JWTDecode', '~> 2.1'
   pod 'ReachabilitySwift'
   pod 'ActiveLabel'
-  pod 'RLBAlertsPickers'
   pod "PromiseKit", "~> 6.0"
   pod 'UICircularProgressRing'
   pod 'SwiftEntryKit'
