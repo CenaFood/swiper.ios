@@ -33,7 +33,9 @@ struct Legal {
     
     static let legalTypeToText = [PrivacyPolicy: PrivacyPolicyText, TermsOfService: TermsOfServiceText]
     
-    static let TermsAndPrivacyRegex = "\\sterms\\sof\\sservice|\\sprivacy\\spolicy"
+    static let TermsOfServicesRegex = "\\sterms\\sof\\sservice"
+    static let PrivacyPolicyRegex = "\\sprivacy\\spolicy"
+    static let PrivacyPolicyWebsite = "https://cenafood.github.io/website/privacy_policy"
 }
 
 struct AppleColors {

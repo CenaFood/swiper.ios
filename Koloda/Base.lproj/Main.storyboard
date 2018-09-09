@@ -173,7 +173,7 @@
                         <viewLayoutGuide key="safeArea" id="nTH-se-HKc"/>
                     </view>
                     <connections>
-                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="z2z-bj-045"/>
+                        <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="QXn-xC-UWm"/>
                         <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
                         <segue destination="sr7-gH-ZXo" kind="presentation" identifier="ShowAboutUsIntro" id="pbH-XQ-N5y"/>
                     </connections>
@@ -782,7 +782,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="VwE-Ei-rLU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <state key="normal" title="Get Involved">
+                                                <state key="normal" title="Start Tutorial">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -851,9 +851,6 @@
         <image name="progress" width="25" height="25"/>
         <namedColor name="pink">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="pink">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tealBlue">
             <color red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
