@@ -17,22 +17,16 @@ struct classConstants {
 }
 
 class ProgressViewController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
-    // MARK: Properties
     
+    // MARK: Properties
     var willAnimate: Bool = true
     
     var swipesCount: Int = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0 {
         didSet {
-            if currentLevel < level {
-                UserDefaults.standard.set(self.level, forKey: "currentLevel")
-                DispatchQueue.main.async {
-                    self.startLevelUpAnimation()
+            if swipesCount > Int(progressRing.maxValue) {
+                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
             }
-        } else {
-            DispatchQueue.main.async {
-                self.startRingAnimation()
-                }
-            }
+            startRingAnimaton()
         }
     }
     
@@ -46,6 +40,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        swipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
         progressRing.delegate = self
         setupProgressRing()
         setupRankName()
@@ -65,9 +60,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         super.viewWillAppear(animated)
         if willAnimate {
             setSwipesCount()
-            willAnimate = false
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,6 +167,20 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
+    }
+    
+    func startRingAnimaton() {
+        
+        if currentLevel < level {
+            UserDefaults.standard.set(self.level, forKey: "currentLevel")
+            DispatchQueue.main.async {
+                self.startLevelUpAnimation()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.startNormalAnimation()
+            }
+        }
     }
     
     func startLevelUpAnimation() {

@@ -113,8 +113,9 @@ class CenaAPI {
             encoder.dateEncodingStrategy = .iso8601
             do {
                 let data = try encoder.encode(post)
-                let json = String(data: data, encoding: .utf8)
-                print(json!)
+                if let json = String(data: data, encoding: .utf8) {
+                    print("Post parameters: \(json)")
+                }
                 request.httpBody = data
             } catch let encodeError as NSError {
                 print("Encoder error: \(encodeError.localizedDescription) + \(post)\n")

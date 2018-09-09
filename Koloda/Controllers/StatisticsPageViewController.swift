@@ -57,7 +57,7 @@ class StatisticsPageViewController: UIPageViewController {
         }
         currentPage.resetProgressRing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            currentPage.startRingAnimation()
+            currentPage.startNormalAnimation()
         }
     }
     
@@ -85,7 +85,6 @@ class StatisticsPageViewController: UIPageViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("Statistics page view is disappearing")
         super.viewWillDisappear(animated)
         SwiftEntryKit.dismiss()
         for page in self.pages {
