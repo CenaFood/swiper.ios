@@ -1,12 +1,26 @@
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+source 'https://github.com/cocoapods/specs.git'
 use_frameworks!
 
-target 'Koloda_Example' do
-  pod "Koloda", :path => "./"
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
+target 'cena' do
+  pod 'Koloda'#, :path => "./"
   pod 'TransitionButton'
+  pod 'Kingfisher', '~> 4.0'
+  pod 'Instructions'
+  pod 'JWTDecode', '~> 2.1'
+  pod 'ReachabilitySwift'
+  pod 'ActiveLabel'
+  pod 'RLBAlertsPickers'
+  pod "PromiseKit", "~> 6.0"
+  pod 'UICircularProgressRing'
+  pod 'SwiftEntryKit'
+  pod 'LTMorphingLabel'
 end
 
 post_install do |installer|
-  `find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
+  installer.pods_project.build_configurations.each do |config|
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+  end
+ # `find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
 end

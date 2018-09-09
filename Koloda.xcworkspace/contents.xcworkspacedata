@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Koloda.xcodeproj">
+      location = "group:/Users/tricktron/Xcode/cena/cenaSwiper/cena Swiper.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
