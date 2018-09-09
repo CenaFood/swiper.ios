@@ -19,6 +19,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		892CEBAB734A67BE3F4674FC /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800B122E2562D839F888AF28 /* Pods_cena.framework */; };
+		AF3505B7214554A900735DFE /* AboutUsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3505B6214554A900735DFE /* AboutUsIntroViewController.swift */; };
 		AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */; };
 		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
 		AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FD2056E0EA0033FDA5 /* Credentials.swift */; };
@@ -67,6 +68,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		800B122E2562D839F888AF28 /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		AF3505B6214554A900735DFE /* AboutUsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsIntroViewController.swift; sourceTree = "<group>"; };
 		AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		AF4984FD2056E0EA0033FDA5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				AFA0FA86213996680083FC71 /* ProgressRingProtocol.swift */,
 				AF73273F2141E60E00423F4E /* StatisticsContainerViewController.swift */,
 				AF7327432142970C00423F4E /* AboutUsViewController.swift */,
+				AF3505B6214554A900735DFE /* AboutUsIntroViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -348,7 +351,6 @@
 				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/RLBAlertsPickers/RLBAlertsPickers.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
@@ -365,7 +367,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RLBAlertsPickers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
@@ -408,6 +409,7 @@
 				AF4984FE2056E0EA0033FDA5 /* Credentials.swift in Sources */,
 				AF5231A91F9A1190001A184D /* StartViewController.swift in Sources */,
 				446BFD091CB0184A00619E78 /* BackgroundKolodaAnimator.swift in Sources */,
+				AF3505B7214554A900735DFE /* AboutUsIntroViewController.swift in Sources */,
 				AFA61F711FDABC75005FE69F /* Project.swift in Sources */,
 				AF4985002056E4CF0033FDA5 /* APIBase.swift in Sources */,
 				AFA61F6B1FDABB55005FE69F /* Challenge.swift in Sources */,

@@ -21,7 +21,11 @@ class AboutUsViewController: UIViewController, MFMailComposeViewControllerDelega
     // MARK: IBOutlets
     @IBOutlet weak var infoButton: UIButton!
     
-    // MARK: Properties:
+    // MARK: Lifecycles
+    
+    override func viewDidLoad() {
+        infoButton.layer.cornerRadius = 8
+    }
     
     
     

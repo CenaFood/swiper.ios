@@ -172,6 +172,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nTH-se-HKc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fQm-jW-Vnh"/>
                     <connections>
                         <outlet property="startTutorialButton" destination="5RZ-J2-e4r" id="QXn-xC-UWm"/>
                         <outlet property="termsAndPolicyLabel" destination="hg4-NK-CbG" id="OdU-wX-2cD"/>
@@ -180,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZ4-fZ-WQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2326" y="237"/>
+            <point key="canvasLocation" x="4139.130434782609" y="236.41304347826087"/>
         </scene>
         <!--Tutorial-->
         <scene sceneID="QWH-Aj-Ybe">
@@ -239,11 +240,6 @@
                                                 <state key="normal" title="Continue">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="W52-B9-ml6"/>
                                                     <segue destination="dFp-je-WGU" kind="show" id="Tml-Xu-HcE"/>
@@ -331,11 +327,6 @@
                                                 <state key="normal" title="Continue">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="jZv-Ay-ose"/>
                                                     <segue destination="W1G-II-GRj" kind="presentation" id="Lv9-6U-Q2s"/>
@@ -636,10 +627,10 @@
             </objects>
             <point key="canvasLocation" x="3945" y="2999"/>
         </scene>
-        <!--About Us-->
+        <!--About Us Intro-->
         <scene sceneID="oUz-ER-KpL">
             <objects>
-                <viewController storyboardIdentifier="AboutUsViewController" title="About Us Controller" id="mgj-lx-o2U" userLabel="About Us" customClass="AboutUsViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutUsViewController" title="About Us Controller" id="mgj-lx-o2U" userLabel="About Us Intro" customClass="AboutUsViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jKp-IK-x6u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -681,14 +672,6 @@
                                                 <state key="normal" title="Get In Touch With Us">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="Jal-mH-eWv"/>
                                                     <action selector="openMail:" destination="mgj-lx-o2U" eventType="touchUpInside" id="RR3-CK-bxq"/>
@@ -743,7 +726,7 @@
         <!--About Us-->
         <scene sceneID="QY3-hi-O7e">
             <objects>
-                <viewController storyboardIdentifier="AboutUsIntroViewController" title="About Us Intro Controller" id="ks3-Yr-6TN" userLabel="About Us" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutUsIntroViewController" title="About Us Intro Controller" id="ks3-Yr-6TN" userLabel="About Us" customClass="AboutUsIntroViewController" customModule="cena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TcR-kF-ep3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -785,14 +768,6 @@
                                                 <state key="normal" title="Start Tutorial">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="continueButtonPressed:" destination="dcU-1G-76n" eventType="touchUpInside" id="pDo-gW-qJW"/>
                                                     <segue destination="ZRF-1P-kG3" kind="presentation" id="Ztr-6T-TeY"/>
@@ -817,10 +792,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="About Us" id="d85-eN-mHa"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="contactButton" destination="Fka-ef-PpM" id="SeZ-qg-dPr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Si1-7p-l9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4059" y="236"/>
+            <point key="canvasLocation" x="5872.4637681159429" y="235.59782608695653"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xNh-xn-3Kd">
@@ -838,7 +816,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xy-he-gZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3192.753623188406" y="235.59782608695653"/>
+            <point key="canvasLocation" x="5007.2463768115949" y="235.59782608695653"/>
         </scene>
     </scenes>
     <resources>
