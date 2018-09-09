@@ -50,8 +50,6 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
     
 
     // MARK: Properties
-    var maxValue: Int = 0
-    
     var swipesCount: Int = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0 {
         didSet {
             DispatchQueue.main.async {
