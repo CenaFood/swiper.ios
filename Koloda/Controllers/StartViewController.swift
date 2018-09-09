@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import TransitionButton
 import ActiveLabel
-import RLBAlertsPickers
 import PromiseKit
 import WebKit
 
@@ -12,9 +11,8 @@ struct KeychhainConfiguration {
 }
 
 class StartViewController: UIViewController {
+    
     var passwordItems: [KeychainPasswordItem] = []
-    let startTutorialButtonTag = 0
-    let startDiscoveringButtonTag = 1
     let TermsOfServivceType = ActiveType.custom(pattern: Legal.TermsOfServicesRegex)
     let PrivacyPolicyType = ActiveType.custom(pattern: Legal.PrivacyPolicy)
     let alertTitle = "No iCloud Account"
@@ -36,9 +34,6 @@ class StartViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        termsAndPolicyLabel.handleCustomTap(for: TermsOfServivceType) { legalType in
-            self.showLegalAlert(legalType: legalType)
-        }
         termsAndPolicyLabel.handleCustomTap(for: PrivacyPolicyType) { _ in
             self.startWebView()
         }
@@ -86,18 +81,18 @@ class StartViewController: UIViewController {
         let webViewController = UIViewController()
         let webView = WKWebView(frame: webViewController.view.bounds)
         webViewController.view = webView
+        webViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissWebView))
+        
+        let navigationController = UINavigationController(rootViewController: webViewController)
+        navigationController.navigationBar.barStyle = .black
+        navigationController.navigationController?.navigationBar.tintColor = .white
+        self.present(navigationController, animated: true, completion: nil)
         guard let url = URL(string: Legal.PrivacyPolicyWebsite) else { return }
         webView.load(URLRequest(url: url))
-        webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        let navController = UINavigationController(rootViewController: webViewController)
-        navController.navigationBar.barStyle = .black
-        navController.navigationBar.tintColor = .white
-        webViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissWebView))
-        self.present(navController, animated: true, completion: nil)
     }
     
    @objc func dismissWebView() {
-        self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -110,17 +105,6 @@ class StartViewController: UIViewController {
             label.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
             label.customColor[PrivacyPolicyType] = AppleColors.blue
         }
-    }
-    
-    func showLegalAlert(legalType: String) {
-        let alert = UIAlertController(style: .actionSheet)
-        guard let legalText: [AttributedTextBlock] = Legal.legalTypeToText[legalType] else {
-            print("No legal text to display")
-            return
-        }
-        alert.addTextViewer(text: .attributedText(legalText))
-        alert.addAction(title: "OK", style: .cancel)
-        alert.show()
     }
     
     func setupStartButton() {

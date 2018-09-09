@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RLBAlertsPickers
+import UIKit
 
 struct DummyUser {
     static let FirstName = "John"
@@ -20,19 +20,7 @@ struct DummyUser {
 
 struct Legal {
     static let TermsOfService = "terms of service"
-    static let TermsOfServiceText: [AttributedTextBlock] = [
-    .normal(""),
-    .header1("Terms Of Service"),
-    .normal("Here come our terms of services")]
-    
     static let PrivacyPolicy = "privacy policy"
-    static let PrivacyPolicyText: [AttributedTextBlock] = [
-        .normal(""),
-        .header1("Privacy Policy"),
-        .normal("Here comes our privacy policy")]
-    
-    static let legalTypeToText = [PrivacyPolicy: PrivacyPolicyText, TermsOfService: TermsOfServiceText]
-    
     static let TermsOfServicesRegex = "\\sterms\\sof\\sservice"
     static let PrivacyPolicyRegex = "\\sprivacy\\spolicy"
     static let PrivacyPolicyWebsite = "https://cenafood.github.io/website/privacy_policy"
