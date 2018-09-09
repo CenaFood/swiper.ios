@@ -13,33 +13,20 @@ import PromiseKit
 import LTMorphingLabel
 
 struct classConstants {
-    static let maxValue = 100
-    static let minValue = 0
-    static let swipesCount = 60
-    static let swipesTarget = 1000
-    static let ringStyle: UICircularProgressRingStyle = .ontop
-    static let font: UIFont = .preferredFont(forTextStyle: .largeTitle)
     static let projectName = "cena"
 }
 
 class ProgressViewController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
-    // MARK: Properties
     
+    // MARK: Properties
     var willAnimate: Bool = true
     
-    var swipesCount: Int = 0 {
+    var swipesCount: Int = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0 {
         didSet {
-            print("current level: \(currentLevel), level: \(level)")
-            if currentLevel < level {
-                UserDefaults.standard.set(self.level, forKey: "currentLevel")
-                DispatchQueue.main.async {
-                    self.startLevelUpAnimation()
+            if swipesCount > Int(progressRing.maxValue) {
+                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
             }
-        } else {
-            DispatchQueue.main.async {
-                self.startRingAnimation()
-                }
-            }
+            startRingAnimaton()
         }
     }
     
@@ -53,8 +40,8 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        swipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
         progressRing.delegate = self
-        
         setupProgressRing()
         setupRankName()
         setupProgressDescription(text: progressText[currentLevel])
@@ -73,9 +60,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         super.viewWillAppear(animated)
         if willAnimate {
             setSwipesCount()
-            willAnimate = false
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -182,6 +167,20 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
+    }
+    
+    func startRingAnimaton() {
+        
+        if currentLevel < level {
+            UserDefaults.standard.set(self.level, forKey: "currentLevel")
+            DispatchQueue.main.async {
+                self.startLevelUpAnimation()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.startNormalAnimation()
+            }
+        }
     }
     
     func startLevelUpAnimation() {

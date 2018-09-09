@@ -18,13 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
+        
         print("Is already a user? \(hasLoginKey)")
         let viewController =  hasLoginKey ? storyboard.instantiateViewController(withIdentifier: "StartTabBarController") : storyboard.instantiateViewController(withIdentifier: "StartViewController")
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
-//        let pageControl = UIPageControl.appearance()
-//        pageControl.pageIndicatorTintColor = UIColor.lightGray
-//        pageControl.currentPageIndicatorTintColor = UIColor.init(named: "pink")
         return true
     }
 }

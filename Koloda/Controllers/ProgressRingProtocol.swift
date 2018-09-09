@@ -25,7 +25,7 @@ protocol ProgressRingProtocol: class {
     func setupProgressRing()
     func resetProgressRing()
     func calculatePercentage() -> Double
-    func startRingAnimation()
+    func startNormalAnimation()
     func getSwipesCount(stats: [Stats]) -> Int?
     func setSwipesCount()
     func setupProgressDescription(text: String)
@@ -44,7 +44,7 @@ extension ProgressRingProtocol {
     }
     
     var maxValue: Int {
-        return swipesTarget
+        return swipesCount > swipesTarget ? swipesCount : swipesTarget
     }
     
     var ringStyle: UICircularProgressRingStyle {
@@ -66,7 +66,7 @@ extension ProgressRingProtocol {
         progressRing.valueIndicator = " Swipes \n of \(swipesTarget)"
     }
     
-    func startRingAnimation() {
+    func startNormalAnimation() {
         guard let progressRing = progressRing else { return }
         progressRing.startProgress(to: UICircularProgressRing.ProgressValue(swipesCount), duration: 2) {
             UIView.animate(withDuration: 2.0, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
@@ -85,7 +85,6 @@ extension ProgressRingProtocol {
     
     
     func calculatePercentage() -> Double {
-        print(Double(swipesCount) / Double(swipesTarget) * 100)
         return Double(swipesCount) / Double(swipesTarget) * 100
     }
     
@@ -96,8 +95,6 @@ extension ProgressRingProtocol {
         progressDescription.font = UIFont.preferredFont(forTextStyle: .body)
         progressDescription.alpha = 0.0
         progressDescription.text = text
-//        progressDescription.adjustsFontSizeToFitWidth = true
-//        progressDescription.minimumScaleFactor = 0.5
     }
 }
 

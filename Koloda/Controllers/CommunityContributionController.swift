@@ -17,7 +17,7 @@ extension CommunityContributionController {
     }
     
     var swipesTarget: Int {
-        return 100000
+        return 50000
     }
     
     var notificationTitle: String {
@@ -47,13 +47,13 @@ extension CommunityContributionController {
 }
 
 class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
+    
 
     // MARK: Properties
-    
-    var swipesCount: Int = 0 {
+    var swipesCount: Int = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0 {
         didSet {
             DispatchQueue.main.async {
-                self.startRingAnimation()
+                self.startNormalAnimation()
             }
         }
     }

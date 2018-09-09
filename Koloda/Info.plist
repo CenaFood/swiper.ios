@@ -29,7 +29,7 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>NSContactsUsageDescription</key>
 	<string>We use your contacts so that you can connect with your friends and see what they like to eat.</string>

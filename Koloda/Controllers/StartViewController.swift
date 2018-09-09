@@ -4,6 +4,7 @@ import TransitionButton
 import ActiveLabel
 import RLBAlertsPickers
 import PromiseKit
+import WebKit
 
 struct KeychhainConfiguration {
     static let serviceName = "CenaSwiper"
@@ -14,13 +15,15 @@ class StartViewController: UIViewController {
     var passwordItems: [KeychainPasswordItem] = []
     let startTutorialButtonTag = 0
     let startDiscoveringButtonTag = 1
-    let customType = ActiveType.custom(pattern: Legal.TermsAndPrivacyRegex)
+    let TermsOfServivceType = ActiveType.custom(pattern: Legal.TermsOfServicesRegex)
+    let PrivacyPolicyType = ActiveType.custom(pattern: Legal.PrivacyPolicy)
     let alertTitle = "No iCloud Account"
     let alertMessage = "It seems that you are not signed in with an iCloud account. We use your iCloud account to identify you so that you don't have to create any profile. Please sign in with an iCloud account and make sure that you are connected to the internet."
     
-    @IBOutlet weak var welcomeTitle: UILabel!
+    // MARK: IBOutlets
     @IBOutlet weak var startTutorialButton: TransitionButton!
     @IBOutlet weak var termsAndPolicyLabel: ActiveLabel!
+    
     
     // MARK: Lifecycle
     
@@ -33,8 +36,11 @@ class StartViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        termsAndPolicyLabel.handleCustomTap(for: customType) { legalType in
+        termsAndPolicyLabel.handleCustomTap(for: TermsOfServivceType) { legalType in
             self.showLegalAlert(legalType: legalType)
+        }
+        termsAndPolicyLabel.handleCustomTap(for: PrivacyPolicyType) { _ in
+            self.startWebView()
         }
     }
     
@@ -75,23 +81,41 @@ class StartViewController: UIViewController {
     }
     
     //MARK: Private methods
-
+    
+    func startWebView() {
+        let webViewController = UIViewController()
+        let webView = WKWebView(frame: webViewController.view.bounds)
+        webViewController.view = webView
+        guard let url = URL(string: Legal.PrivacyPolicyWebsite) else { return }
+        webView.load(URLRequest(url: url))
+        webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        let navController = UINavigationController(rootViewController: webViewController)
+        navController.navigationBar.barStyle = .black
+        navController.navigationBar.tintColor = .white
+        webViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissWebView))
+        self.present(navController, animated: true, completion: nil)
+    }
+    
+   @objc func dismissWebView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func setupTermsAndPolicyLabel() {
         termsAndPolicyLabel.customize { label in
             label.numberOfLines = 0
-            label.enabledTypes = [customType]
+            label.enabledTypes = [PrivacyPolicyType]
             label.text = "By using this application you agree to our \(Legal.TermsOfService) and \(Legal.PrivacyPolicy)"
             label.textColor = .white
             label.font = UIFont.systemFont(ofSize: UIFont.labelFontSize)
-            label.customColor[customType] = UIColor.init(named: "tealBlue")
+            label.customColor[PrivacyPolicyType] = AppleColors.blue
         }
     }
     
     func showLegalAlert(legalType: String) {
         let alert = UIAlertController(style: .actionSheet)
         guard let legalText: [AttributedTextBlock] = Legal.legalTypeToText[legalType] else {
-            print("Error: wrong legalType: \(legalType)")
+            print("No legal text to display")
             return
         }
         alert.addTextViewer(text: .attributedText(legalText))
@@ -104,8 +128,7 @@ class StartViewController: UIViewController {
         let size = UIFont.buttonFontSize
         let font = UIFont.systemFont(ofSize: size)
         startTutorialButton.titleLabel?.font = font
-        startTutorialButton.setTitle("Accept And Start Tutorial", for: .normal)
+        startTutorialButton.setTitle("Accept And Get Involved", for: .normal)
     }
-}
-
+} 
 

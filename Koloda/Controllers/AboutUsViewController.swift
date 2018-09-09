@@ -12,7 +12,7 @@ import MessageUI
 struct MailConstants {
     static let emailTitle = "Feedback"
     static let userID = AuthController().getUserId()
-    static let messageBody = "Please include the following identifier in your mail so that we can better help you because your data is anonymised:\n\(userID ?? "We could not identify you, please try again")"
+    static let messageBody = "We value your privacy and protect your data. Please include the following identifier in your mail to simplify our process in serving you:\n\n\(userID ?? "We could not identify you, please try again")"
     static let recipient = ["thibault.gagnaux@students.fhnw.ch"]
 }
 
@@ -35,7 +35,6 @@ class AboutUsViewController: UIViewController, MFMailComposeViewControllerDelega
             present(mail, animated: true, completion: nil)
         } else {
             print("Cannot send mail")
-            // give feedback to the user
         }
     }
 }
