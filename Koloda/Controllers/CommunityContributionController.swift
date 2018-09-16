@@ -43,7 +43,13 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
 
     // MARK: Properties
     var willAnimate: Bool = true
-    var swipesCount: Int = 0
+    var swipesCount: Int = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.startNormalAnimation()
+            }
+        }
+    }
     
     // MARK: IBOutlets
     @IBOutlet weak var progressRing: UICircularProgressRing!
@@ -54,20 +60,15 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         progressRing.delegate = self
-        setupProgressRing()
         setupProgressDescription(text: notificationText)
+        resetProgressRing()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !progressRing.isAnimating {
             progressRing.continueProgress()
-        }
-        
-        if willAnimate {
-            swipesCount = getCommunitySwipesCount()
-            startNormalAnimation()
-            willAnimate = false
         }
     }
     
@@ -78,11 +79,40 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if willAnimate {
+            setSwipesCount()
+            prepareProgressRingForAnimation()
+            willAnimate = false
+        }
+    }
+    
 }
 
 extension CommunityContributionController {
     func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
         label.numberOfLines = 0
+    }
+    
+    func setSwipesCount() {
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.async {
+            firstly {
+                CenaAPI().getStats()
+                }.done { projectStats -> Void in
+                    for stat in projectStats {
+                        if stat.projectName == classConstants.projectName {
+                            self.swipesCount = stat.labelCount
+                        }
+                    }
+                }.catch { _ in
+                    DispatchQueue.main.async {
+                        let alert = Util.noInternetConnectionAlert()
+                        self.present(alert, animated: true)
+                    }
+            }
+        }
     }
 }
 

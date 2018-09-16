@@ -52,9 +52,13 @@ class StatisticsPageViewController: UIPageViewController {
     
     @objc func reload() {
         guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
-        currentPage.resetProgressRing()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        if let communityPage = pages[currentIndex] as? CommunityContributionController {
+            communityPage.setSwipesCount()
+        } else {
+            currentPage.resetProgressRing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             currentPage.startNormalAnimation()
+            }
         }
     }
     

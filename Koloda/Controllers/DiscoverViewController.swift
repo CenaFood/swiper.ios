@@ -23,7 +23,6 @@ class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
     
     var userSwipesCount: Int = 0
     var currentDiscoverLevel: Int = 0
-    var communitySwipesCount: Int = 0
 
 
     @IBOutlet weak var kolodaView: KolodaView!
@@ -53,25 +52,31 @@ class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
         setupQuestionLabel()
         setupLocationManager()
         kolodaView.clipsToBounds = true
-        fetchImages()
         
-        setSwipesCount()
+        if isConnectedToInternet() {
+            fetchImages()
+            setSwipesCount()
+        }
         currentDiscoverLevel = getCurrentDiscoverLevel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !isConnectedToInternet() {
+            self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if reachability.connection == .none {
-            self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
-            
+        if isConnectedToInternet() {
+            AuthController().login()
         }
-        AuthController().login()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveUserSwipesCount(count: userSwipesCount)
-        saveCommunitySwipesCount(count: communitySwipesCount)
         saveCurrentDiscoverLevel(level: currentDiscoverLevel)
         
     }
@@ -187,6 +192,7 @@ class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
             self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
             return
         }
+        setSwipesCount()
         refreshButton.isEnabled = false
         
         guard let credentials = AuthController().getCredentials() else {
@@ -383,7 +389,7 @@ extension DiscoverViewController {
     var percentageProgress: Double {
         return Double(userSwipesCount) / Double(userSwipesTarget) * 100
     }
-    
+        
     func setSwipesCount() {
         let backgroundQueue = DispatchQueue.global(qos: .background)
         backgroundQueue.async {
@@ -393,7 +399,6 @@ extension DiscoverViewController {
                     for stat in projectStats {
                         if stat.projectName == classConstants.projectName {
                             self.userSwipesCount = stat.personalLabelsCount
-                            self.communitySwipesCount = stat.labelCount
                         }
                     }
                 }.catch { _ in

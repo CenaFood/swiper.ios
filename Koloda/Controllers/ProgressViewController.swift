@@ -49,7 +49,9 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         if willAnimate {
             updateSwipesCount()
             prepareProgressRingForAnimation()
-            startRingAnimaton()
+            DispatchQueue.main.async {
+                self.startRingAnimaton()
+            }
             willAnimate = false
         }
     }
