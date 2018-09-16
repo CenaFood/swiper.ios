@@ -36,33 +36,16 @@ extension CommunityContributionController {
         return nil
     }
     
-    func getSwipesCount(stats: [Stats]) -> Int? {
-        for stat in stats {
-            if stat.projectName == classConstants.projectName {
-                return stat.labelCount
-            }
-        }
-        return nil
-    }
 }
 
-class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
+class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate, ProgressProtocol {
     
 
     // MARK: Properties
-    var swipesCount: Int = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0 {
-        didSet {
-            DispatchQueue.main.async {
-                self.startNormalAnimation()
-            }
-        }
-    }
-    
     var willAnimate: Bool = true
+    var swipesCount: Int = 0
     
     // MARK: IBOutlets
-    
-    
     @IBOutlet weak var progressRing: UICircularProgressRing!
     @IBOutlet weak var progressDescription: UILabel!
     
@@ -71,7 +54,6 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         progressRing.delegate = self
-        
         setupProgressRing()
         setupProgressDescription(text: notificationText)
     }
@@ -81,12 +63,10 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         if !progressRing.isAnimating {
             progressRing.continueProgress()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         if willAnimate {
-            setSwipesCount()
+            swipesCount = getCommunitySwipesCount()
+            startNormalAnimation()
             willAnimate = false
         }
     }
@@ -103,24 +83,6 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
 extension CommunityContributionController {
     func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel) {
         label.numberOfLines = 0
-    }
-    
-    func setSwipesCount() {
-        let backgroundQueue = DispatchQueue.global(qos: .background)
-        backgroundQueue.async {
-            firstly {
-                CenaAPI().getStats()
-                }.done { projectStats -> Void in
-                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
-                        self.swipesCount = swipesCount
-                    }
-                }.catch { _ in
-                    DispatchQueue.main.async {
-                        let alert = Util.createSimpleAlert(title: "error", message: "No internet")
-                        self.present(alert, animated: true)
-                    }
-            }
-        }
     }
 }
 

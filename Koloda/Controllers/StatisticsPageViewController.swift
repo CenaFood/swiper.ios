@@ -52,46 +52,22 @@ class StatisticsPageViewController: UIPageViewController {
     
     @objc func reload() {
         guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
-        if currentPage.swipesCount == 0 {
-            currentPage.setSwipesCount()
-        }
         currentPage.resetProgressRing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             currentPage.startNormalAnimation()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
-        if currentPage.willAnimate {
-            currentPage.setSwipesCount()
-            currentPage.willAnimate = false
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        for page in self.pages {
+            guard let page = page as? ProgressRingProtocol else { return }
+            page.willAnimate = true
         }
     }
-    
-    private func getProjectStat(stats: [Stats]) -> Stats? {
-        for stat in stats {
-            if stat.projectName == classConstants.projectName {
-                return stat
-            }
-        }
-        return nil
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        SwiftEntryKit.dismiss()
-        for page in self.pages {
-            guard let page = page as? ProgressRingProtocol else { return }
-            page.resetProgressRing()
-            page.willAnimate = true
-        }
     }
 }
     

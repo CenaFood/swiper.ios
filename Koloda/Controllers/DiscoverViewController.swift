@@ -14,7 +14,8 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
-class DiscoverViewController: CustomTransitionViewController {
+
+class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
 
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
@@ -54,9 +55,8 @@ class DiscoverViewController: CustomTransitionViewController {
         kolodaView.clipsToBounds = true
         fetchImages()
         
-        userSwipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
-        communitySwipesCount = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0
-        currentDiscoverLevel = UserDefaults.standard.value(forKey: "currentDiscoverLevel") as? Int ?? 0
+        setSwipesCount()
+        currentDiscoverLevel = getCurrentDiscoverLevel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,29 +66,17 @@ class DiscoverViewController: CustomTransitionViewController {
             
         }
         AuthController().login()
-        setSwipesCount()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        saveUserSwipesCount()
-        saveCommunitySwipesCount()
+        saveUserSwipesCount(count: userSwipesCount)
+        saveCommunitySwipesCount(count: communitySwipesCount)
+        saveCurrentDiscoverLevel(level: currentDiscoverLevel)
         
     }
     
     //MARK: Private functions
-    
-    func saveUserSwipesCount() {
-        UserDefaults.standard.setValue(userSwipesCount, forKey: "userSwipesCount")
-    }
-    
-    func saveCommunitySwipesCount() {
-        UserDefaults.standard.setValue(communitySwipesCount, forKey: "communitySwipesCount")
-    }
-    
-    func saveCurrentDiscoverLevel() {
-        UserDefaults.standard.setValue(currentDiscoverLevel, forKey: "currentDiscoverLevel")
-    }
 
     func setupQuestionLabel() {
         questionLabel.text = "Would you like to eat or drink this?"
@@ -213,8 +201,6 @@ class DiscoverViewController: CustomTransitionViewController {
 }
 
 
-
-
 //MARK: KolodaViewDelegate
 extension DiscoverViewController: KolodaViewDelegate {
 
@@ -262,7 +248,7 @@ extension DiscoverViewController: KolodaViewDelegate {
         userSwipesCount += 1
         if currentDiscoverLevel < level {
             currentDiscoverLevel = level
-            saveCurrentDiscoverLevel()
+            saveCurrentDiscoverLevel(level: currentDiscoverLevel)
             Util.presentBottomFloat(title: motivatingTitle[currentDiscoverLevel], description: motivatingText[currentDiscoverLevel], image: nil, color: AppleColors.orange)
             
         }
