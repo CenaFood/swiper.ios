@@ -192,7 +192,7 @@ class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
             self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
             return
         }
-        setSwipesCount()
+        
         refreshButton.isEnabled = false
         
         guard let credentials = AuthController().getCredentials() else {
@@ -200,6 +200,8 @@ class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
         }
         CenaAPI().login(credentials: credentials)
         fetchImages()
+        setSwipesCount()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.refreshButton.isEnabled = true
         }
@@ -390,7 +392,7 @@ extension DiscoverViewController {
         return Double(userSwipesCount) / Double(userSwipesTarget) * 100
     }
         
-    func setSwipesCount() {
+    public func setSwipesCount() {
         let backgroundQueue = DispatchQueue.global(qos: .background)
         backgroundQueue.async {
             firstly {

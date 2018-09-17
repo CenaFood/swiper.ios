@@ -70,6 +70,11 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         if !progressRing.isAnimating {
             progressRing.continueProgress()
         }
+        if willAnimate {
+            setSwipesCount()
+            prepareProgressRingForAnimation()
+            willAnimate = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,11 +86,6 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if willAnimate {
-            setSwipesCount()
-            prepareProgressRingForAnimation()
-            willAnimate = false
-        }
     }
     
 }
