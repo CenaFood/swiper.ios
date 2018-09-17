@@ -9,6 +9,20 @@
 import UICircularProgressRing
 import SwiftEntryKit
 
+protocol ProgressProtocol: class {
+    func getUserSwipesCount() -> Int
+    
+    func getCommunitySwipesCount() -> Int
+    
+    func getCurrentDiscoverLevel() -> Int
+    
+    func saveUserSwipesCount(count: Int)
+    
+    func saveCommunitySwipesCount(count: Int)
+    
+    func saveCurrentDiscoverLevel(level: Int)
+}
+
 protocol ProgressRingProtocol: class {
     var progressRing: UICircularProgressRing! { get }
     var value: Int { get }
@@ -21,13 +35,12 @@ protocol ProgressRingProtocol: class {
     var swipesTarget: Int { get }
     var willAnimate: Bool { get set }
     var progressDescription: UILabel! { get set }
+    var percentage: Double { get }
     
     func setupProgressRing()
     func resetProgressRing()
-    func calculatePercentage() -> Double
+    func prepareProgressRingForAnimation()
     func startNormalAnimation()
-    func getSwipesCount(stats: [Stats]) -> Int?
-    func setSwipesCount()
     func setupProgressDescription(text: String)
     
     var notificationText: String { get }
@@ -36,7 +49,7 @@ protocol ProgressRingProtocol: class {
 
 extension ProgressRingProtocol {
     var value: Int {
-        return 0
+        return swipesCount
     }
     
     var minValue: Int {
@@ -55,8 +68,11 @@ extension ProgressRingProtocol {
         return .preferredFont(forTextStyle: .title1)
     }
     
+    var percentage: Double {
+        return Double(swipesCount) / Double(swipesTarget) * 100
+    }
+    
     func setupProgressRing() {
-        progressRing.value = UICircularProgressRing.ProgressValue(value)
         progressRing.maxValue = UICircularProgressRing.ProgressValue(maxValue)
         progressRing.minValue = UICircularProgressRing.ProgressValue(minValue)
         progressRing.ringStyle = ringStyle
@@ -79,22 +95,47 @@ extension ProgressRingProtocol {
     func resetProgressRing() {
         guard let progressRing = progressRing else { return }
         progressRing.resetProgress()
+        prepareProgressRingForAnimation()
+    }
+    
+    func prepareProgressRingForAnimation() {
+        guard (progressRing) != nil else { return }
         setupProgressRing()
         progressDescription.alpha = 0.0
     }
-    
-    
-    func calculatePercentage() -> Double {
-        return Double(swipesCount) / Double(swipesTarget) * 100
-    }
-    
-    
     
     func setupProgressDescription(text: String) {
         progressDescription.numberOfLines = 0
         progressDescription.font = UIFont.preferredFont(forTextStyle: .body)
         progressDescription.alpha = 0.0
         progressDescription.text = text
+    }
+}
+
+extension ProgressProtocol {
+    
+    func getUserSwipesCount() -> Int {
+        return UserDefaults.standard.value(forKey: ProgressKeyConstants.UserSwipesCount) as? Int ?? 0
+    }
+    
+    func getCommunitySwipesCount() -> Int {
+        return UserDefaults.standard.value(forKey: ProgressKeyConstants.CommunitySwipesCount) as? Int ?? 0
+    }
+    
+    func getCurrentDiscoverLevel() -> Int {
+        return UserDefaults.standard.value(forKey: ProgressKeyConstants.CurrentDiscoveryLevel) as? Int ?? 0
+    }
+    
+    func saveUserSwipesCount(count: Int) {
+        UserDefaults.standard.setValue(count, forKey: ProgressKeyConstants.UserSwipesCount)
+    }
+    
+    func saveCommunitySwipesCount(count: Int) {
+        UserDefaults.standard.setValue(count, forKey: ProgressKeyConstants.CommunitySwipesCount)
+    }
+    
+    func saveCurrentDiscoverLevel(level: Int) {
+        UserDefaults.standard.setValue(level, forKey: ProgressKeyConstants.CurrentDiscoveryLevel)
     }
 }
 

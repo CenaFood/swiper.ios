@@ -168,6 +168,7 @@ class CenaAPI {
                 }
                 do {
                     let projectStats = try JSONDecoder().decode([Stats].self, from: data!)
+                    
                     seal.fulfill(projectStats)
                 } catch let decodeError as NSError {
                     seal.reject(decodeError)

@@ -8,10 +8,10 @@ target 'cena' do
   pod 'Kingfisher', '~> 4.0'
   pod 'Instructions'
   pod 'JWTDecode', '~> 2.1'
-  pod 'ReachabilitySwift'
+  pod 'ReachabilitySwift', '~> 4.1.0'
   pod 'ActiveLabel'
   pod "PromiseKit", "~> 6.0"
-  pod 'UICircularProgressRing'
+  pod 'UICircularProgressRing', '~> 3.3.2'
   pod 'SwiftEntryKit'
   pod 'LTMorphingLabel'
 end

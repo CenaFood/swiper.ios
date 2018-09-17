@@ -36,21 +36,14 @@ extension CommunityContributionController {
         return nil
     }
     
-    func getSwipesCount(stats: [Stats]) -> Int? {
-        for stat in stats {
-            if stat.projectName == classConstants.projectName {
-                return stat.labelCount
-            }
-        }
-        return nil
-    }
 }
 
-class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
+class CommunityContributionController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate, ProgressProtocol {
     
 
     // MARK: Properties
-    var swipesCount: Int = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0 {
+    var willAnimate: Bool = true
+    var swipesCount: Int = 0 {
         didSet {
             DispatchQueue.main.async {
                 self.startNormalAnimation()
@@ -58,11 +51,7 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         }
     }
     
-    var willAnimate: Bool = true
-    
     // MARK: IBOutlets
-    
-    
     @IBOutlet weak var progressRing: UICircularProgressRing!
     @IBOutlet weak var progressDescription: UILabel!
     
@@ -71,9 +60,9 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
     override func viewDidLoad() {
         super.viewDidLoad()
         progressRing.delegate = self
-        
-        setupProgressRing()
         setupProgressDescription(text: notificationText)
+        resetProgressRing()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,12 +70,9 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         if !progressRing.isAnimating {
             progressRing.continueProgress()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         if willAnimate {
             setSwipesCount()
+            prepareProgressRingForAnimation()
             willAnimate = false
         }
     }
@@ -96,6 +82,10 @@ class CommunityContributionController: UIViewController, ProgressRingProtocol, U
         if progressRing.isAnimating {
             progressRing.pauseProgress()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
 }
@@ -111,12 +101,14 @@ extension CommunityContributionController {
             firstly {
                 CenaAPI().getStats()
                 }.done { projectStats -> Void in
-                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
-                        self.swipesCount = swipesCount
+                    for stat in projectStats {
+                        if stat.projectName == classConstants.projectName {
+                            self.swipesCount = stat.labelCount
+                        }
                     }
                 }.catch { _ in
                     DispatchQueue.main.async {
-                        let alert = Util.createSimpleAlert(title: "error", message: "No internet")
+                        let alert = Util.noInternetConnectionAlert()
                         self.present(alert, animated: true)
                     }
             }
