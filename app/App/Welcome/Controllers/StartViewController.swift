@@ -85,7 +85,7 @@ class StartViewController: UIViewController {
         
         let navigationController = UINavigationController(rootViewController: webViewController)
         navigationController.navigationBar.barStyle = .black
-        navigationController.navigationController?.navigationBar.tintColor = .white
+        navigationController.navigationBar.tintColor = .white
         self.present(navigationController, animated: true, completion: nil)
         guard let url = URL(string: Legal.PrivacyPolicyWebsite) else { return }
         webView.load(URLRequest(url: url))

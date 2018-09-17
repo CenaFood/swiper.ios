@@ -52,46 +52,31 @@ class StatisticsPageViewController: UIPageViewController {
     
     @objc func reload() {
         guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
-        if currentPage.swipesCount == 0 {
-            currentPage.setSwipesCount()
-        }
-        currentPage.resetProgressRing()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        if let communityPage = pages[currentIndex] as? CommunityContributionController {
+            communityPage.resetProgressRing()
+            communityPage.setSwipesCount()
+        } else {
+            currentPage.resetProgressRing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             currentPage.startNormalAnimation()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        guard let currentPage = pages[currentIndex] as? ProgressRingProtocol else { return }
-        if currentPage.willAnimate {
-            currentPage.setSwipesCount()
-            currentPage.willAnimate = false
-        }
-    }
-    
-    private func getProjectStat(stats: [Stats]) -> Stats? {
-        for stat in stats {
-            if stat.projectName == classConstants.projectName {
-                return stat
             }
         }
-        return nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        for page in self.pages {
+            guard let page = page as? ProgressRingProtocol else { return }
+            page.willAnimate = true
+        }
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        SwiftEntryKit.dismiss()
-        for page in self.pages {
-            guard let page = page as? ProgressRingProtocol else { return }
-            page.resetProgressRing()
-            page.willAnimate = true
-        }
     }
 }
     

@@ -14,7 +14,8 @@ private let frameAnimationSpringSpeed: CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent: CGFloat = 0.1
 
-class DiscoverViewController: CustomTransitionViewController {
+
+class DiscoverViewController: CustomTransitionViewController, ProgressProtocol {
 
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
@@ -22,7 +23,6 @@ class DiscoverViewController: CustomTransitionViewController {
     
     var userSwipesCount: Int = 0
     var currentDiscoverLevel: Int = 0
-    var communitySwipesCount: Int = 0
 
 
     @IBOutlet weak var kolodaView: KolodaView!
@@ -52,43 +52,36 @@ class DiscoverViewController: CustomTransitionViewController {
         setupQuestionLabel()
         setupLocationManager()
         kolodaView.clipsToBounds = true
-        fetchImages()
         
-        userSwipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
-        communitySwipesCount = UserDefaults.standard.value(forKey: "communitySwipesCount") as? Int ?? 0
-        currentDiscoverLevel = UserDefaults.standard.value(forKey: "currentDiscoverLevel") as? Int ?? 0
+        if isConnectedToInternet() {
+            fetchImages()
+            setSwipesCount()
+        }
+        currentDiscoverLevel = getCurrentDiscoverLevel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !isConnectedToInternet() {
+            self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if reachability.connection == .none {
-            self.showNoInteretConnectionAlert(message: "Make sure that airplane mode is turned off and then press the refresh button")
-            
+        if isConnectedToInternet() {
+            AuthController().login()
         }
-        AuthController().login()
-        setSwipesCount()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        saveUserSwipesCount()
-        saveCommunitySwipesCount()
+        saveUserSwipesCount(count: userSwipesCount)
+        saveCurrentDiscoverLevel(level: currentDiscoverLevel)
         
     }
     
     //MARK: Private functions
-    
-    func saveUserSwipesCount() {
-        UserDefaults.standard.setValue(userSwipesCount, forKey: "userSwipesCount")
-    }
-    
-    func saveCommunitySwipesCount() {
-        UserDefaults.standard.setValue(communitySwipesCount, forKey: "communitySwipesCount")
-    }
-    
-    func saveCurrentDiscoverLevel() {
-        UserDefaults.standard.setValue(currentDiscoverLevel, forKey: "currentDiscoverLevel")
-    }
 
     func setupQuestionLabel() {
         questionLabel.text = "Would you like to eat or drink this?"
@@ -199,6 +192,7 @@ class DiscoverViewController: CustomTransitionViewController {
             self.showNoInteretConnectionAlert(message: "Still in airplane mode? Please make sure that your device is connected to the internet. Thanks you are awesome!")
             return
         }
+        
         refreshButton.isEnabled = false
         
         guard let credentials = AuthController().getCredentials() else {
@@ -206,13 +200,13 @@ class DiscoverViewController: CustomTransitionViewController {
         }
         CenaAPI().login(credentials: credentials)
         fetchImages()
+        setSwipesCount()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.refreshButton.isEnabled = true
         }
     }
 }
-
-
 
 
 //MARK: KolodaViewDelegate
@@ -262,7 +256,7 @@ extension DiscoverViewController: KolodaViewDelegate {
         userSwipesCount += 1
         if currentDiscoverLevel < level {
             currentDiscoverLevel = level
-            saveCurrentDiscoverLevel()
+            saveCurrentDiscoverLevel(level: currentDiscoverLevel)
             Util.presentBottomFloat(title: motivatingTitle[currentDiscoverLevel], description: motivatingText[currentDiscoverLevel], image: nil, color: AppleColors.orange)
             
         }
@@ -397,8 +391,8 @@ extension DiscoverViewController {
     var percentageProgress: Double {
         return Double(userSwipesCount) / Double(userSwipesTarget) * 100
     }
-    
-    func setSwipesCount() {
+        
+    public func setSwipesCount() {
         let backgroundQueue = DispatchQueue.global(qos: .background)
         backgroundQueue.async {
             firstly {
@@ -407,7 +401,6 @@ extension DiscoverViewController {
                     for stat in projectStats {
                         if stat.projectName == classConstants.projectName {
                             self.userSwipesCount = stat.personalLabelsCount
-                            self.communitySwipesCount = stat.labelCount
                         }
                     }
                 }.catch { _ in

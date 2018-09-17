@@ -16,22 +16,13 @@ struct classConstants {
     static let projectName = "cena"
 }
 
-class ProgressViewController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate {
+class ProgressViewController: UIViewController, ProgressRingProtocol, UICircularProgressRingDelegate, ProgressProtocol {
     
     // MARK: Properties
     var willAnimate: Bool = true
-    
-    var swipesCount: Int = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0 {
-        didSet {
-            if swipesCount > Int(progressRing.maxValue) {
-                progressRing.maxValue = UICircularProgressRing.ProgressValue(swipesCount)
-            }
-            startRingAnimaton()
-        }
-    }
+    var swipesCount: Int = 0
     
     // MARK: IBOutlets
-    
     @IBOutlet weak var rankName: LTMorphingLabel!
     @IBOutlet weak var progressRing: UICircularProgressRing!
     @IBOutlet weak var progressDescription: UILabel!
@@ -40,26 +31,35 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        swipesCount = UserDefaults.standard.value(forKey: "userSwipesCount") as? Int ?? 0
         progressRing.delegate = self
-        setupProgressRing()
         setupRankName()
         setupProgressDescription(text: progressText[currentLevel])
         
-        
+        UserDefaults.standard.addObserver(self, forKeyPath: ProgressKeyConstants.UserSwipesCount, options: NSKeyValueObservingOptions.new, context: nil)
+        swipesCount = getUserSwipesCount()
+        resetProgressRing()
+        startRingAnimaton()
+    }
+    
+    deinit {
+        UserDefaults.standard.removeObserver(self, forKeyPath: ProgressKeyConstants.UserSwipesCount)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if willAnimate {
+            updateSwipesCount()
+            prepareProgressRingForAnimation()
+            DispatchQueue.main.async {
+                self.startRingAnimaton()
+            }
+            willAnimate = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !progressRing.isAnimating {
             progressRing.continueProgress()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if willAnimate {
-            setSwipesCount()
         }
     }
     
@@ -70,8 +70,7 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         }
     }
     
-    // Private functions
-    
+    // MARK: Private methods
     func setupRankName() {
         rankName.morphingEnabled = false
         rankName.text = levelText[currentLevel]
@@ -81,31 +80,8 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
         rankName.font = UIFont.preferredFont(forTextStyle: .title1)
     }
     
-    func setSwipesCount() {
-        let backgroundQueue = DispatchQueue.global(qos: .background)
-        backgroundQueue.async {
-            firstly {
-                CenaAPI().getStats()
-                }.done { projectStats -> Void in
-                    if let swipesCount = self.getSwipesCount(stats: projectStats) {
-                        self.swipesCount = swipesCount
-                    }
-                }.catch { _ in
-                    DispatchQueue.main.async {
-                        let alert = Util.noInternetConnectionAlert()
-                            self.present(alert, animated: true)
-                    }
-                }
-        }
-    }
-    
-    func getSwipesCount(stats: [Stats]) -> Int? {
-        for stat in stats {
-            if stat.projectName == classConstants.projectName {
-                return stat.personalLabelsCount
-            }
-        }
-        return nil
+    func updateSwipesCount() {
+        swipesCount = getUserSwipesCount()
     }
 }
  
@@ -129,11 +105,11 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     
     
     var currentLevel: Int {
-        return UserDefaults.standard.value(forKey: "currentLevel") as? Int ?? 0
+        return UserDefaults.standard.value(forKey: ProgressKeyConstants.CurrentUserLevel) as? Int ?? 0
     }
     
     var level: Int {
-        switch calculatePercentage() {
+        switch percentage {
         case 0..<5:
             return 0
         case 5..<40:
@@ -170,9 +146,8 @@ class ProgressViewController: UIViewController, ProgressRingProtocol, UICircular
     }
     
     func startRingAnimaton() {
-        
         if currentLevel < level {
-            UserDefaults.standard.set(self.level, forKey: "currentLevel")
+            UserDefaults.standard.set(level, forKey: ProgressKeyConstants.CurrentUserLevel)
             DispatchQueue.main.async {
                 self.startLevelUpAnimation()
             }

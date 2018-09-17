@@ -33,3 +33,10 @@ struct AppleColors {
     static let red: UIColor = UIColor(named: "red") ?? .red
     static let green: UIColor = UIColor(named: "green") ?? .green
 }
+
+struct ProgressKeyConstants {
+    static let UserSwipesCount = "userSwipesCount"
+    static let CommunitySwipesCount = "communitySwipesCount"
+    static let CurrentDiscoveryLevel = "currentDiscoveryLevel"
+    static let CurrentUserLevel = "currentUserLevel"
+}
