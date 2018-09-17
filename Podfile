@@ -11,7 +11,7 @@ target 'cena' do
   pod 'ReachabilitySwift', '~> 4.1.0'
   pod 'ActiveLabel'
   pod "PromiseKit", "~> 6.0"
-  pod 'UICircularProgressRing'
+  pod 'UICircularProgressRing', '~> 3.3.2'
   pod 'SwiftEntryKit'
   pod 'LTMorphingLabel'
 end

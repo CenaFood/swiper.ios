@@ -15,6 +15,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		892CEBAB734A67BE3F4674FC /* Pods_cena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 800B122E2562D839F888AF28 /* Pods_cena.framework */; };
+		AF0D84B4214FDAC600B427CD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0D84B3214FDAC600B427CD /* Default-568h@2x.png */; };
 		AF3505B7214554A900735DFE /* AboutUsIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3505B6214554A900735DFE /* AboutUsIntroViewController.swift */; };
 		AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */; };
 		AF4984FB2056A01B0033FDA5 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */; };
@@ -57,6 +58,7 @@
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		800B122E2562D839F888AF28 /* Pods_cena.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cena.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6AF94B3192C604963C53B3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		AF0D84B3214FDAC600B427CD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF3505B6214554A900735DFE /* AboutUsIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsIntroViewController.swift; sourceTree = "<group>"; };
 		AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4984FA2056A01B0033FDA5 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -135,20 +137,10 @@
 		607FACD21AFB9204008FA782 /* cena swiper */ = {
 			isa = PBXGroup;
 			children = (
-				AF2582CB214FBF84007D0943 /* Welcome */,
-				AF2582CA214FBF11007D0943 /* About Us */,
-				AF2582C9214FBF00007D0943 /* Progress */,
-				AF2582C8214FBEDB007D0943 /* Discover */,
-				AFA61F641FDAA0A1005FE69F /* Networking */,
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */,
-				AF2582D2214FCACF007D0943 /* Config */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
+				AF44C845214FD9B600413069 /* App */,
 			);
 			name = "cena swiper";
-			path = Koloda;
+			path = app;
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -157,6 +149,7 @@
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
@@ -285,6 +278,33 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		AF44C844214FD99400413069 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				AF0D84B3214FDAC600B427CD /* Default-568h@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF44C845214FD9B600413069 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AF2582CA214FBF11007D0943 /* About Us */,
+				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				AF2582D2214FCACF007D0943 /* Config */,
+				AF2582C8214FBEDB007D0943 /* Discover */,
+				AF421C1D2102314800C4B1FB /* LaunchScreen.storyboard */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				AFA61F641FDAA0A1005FE69F /* Networking */,
+				AF2582C9214FBF00007D0943 /* Progress */,
+				AF44C844214FD99400413069 /* Resources */,
+				607FACD31AFB9204008FA782 /* Supporting Files */,
+				AF2582CB214FBF84007D0943 /* Welcome */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		AFA61F641FDAA0A1005FE69F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,7 +344,7 @@
 			dependencies = (
 			);
 			name = cena;
-			productName = Koloda;
+			productName = App;
 			productReference = 607FACD01AFB9204008FA782 /* cena.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -379,6 +399,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				44B5EC2B1B660C9100895E3D /* CustomOverlayView.xib in Resources */,
 				AF421C1E2102314800C4B1FB /* LaunchScreen.storyboard in Resources */,
+				AF0D84B4214FDAC600B427CD /* Default-568h@2x.png in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,7 +635,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
-				INFOPLIST_FILE = Koloda/Info.plist;
+				INFOPLIST_FILE = app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
