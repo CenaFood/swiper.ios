@@ -33,7 +33,7 @@ class CenaAPI {
         case login(Credentials)
         case getStats
         
-        private static let basePath = "https://cenaswiper.luethi.rocks"
+        private static let basePath = "https://cenafood.review"
         
         var method: String {
             switch self {
