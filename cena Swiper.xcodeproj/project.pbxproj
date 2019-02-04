@@ -140,7 +140,7 @@
 				AF44C845214FD9B600413069 /* App */,
 			);
 			name = "cena swiper";
-			path = app;
+			path = App;
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -635,7 +635,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
-				INFOPLIST_FILE = app/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
@@ -644,6 +645,7 @@
 				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=*]" = DEBUG;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -655,13 +657,15 @@
 				CODE_SIGN_ENTITLEMENTS = cena.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7NK3Y4Q598;
-				INFOPLIST_FILE = Koloda/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = Swiper;
 				PRODUCT_BUNDLE_IDENTIFIER = cena.swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
