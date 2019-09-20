@@ -32,7 +32,6 @@ This software uses the following open source packages:
 - [SwiftEntryKit](https://github.com/huri000/SwiftEntryKit)
 - [LTMorphingLabel](ltmorphinglabel)
 
----
-
 ## Contact
+
 > Thibault Gagnaux • <thibault@gagnaux.ch>
